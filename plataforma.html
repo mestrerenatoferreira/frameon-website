@@ -557,13 +557,13 @@ document.getElementById('diag-form').addEventListener('submit',async function(e)
   if(!/^[^@]+@[^@]+\.[^@]+$/.test(emailEl.value)){err.textContent=tr.modal_err_email||'Por favor, insira um e-mail corporativo válido.';err.style.display='block';emailEl.focus();return;}
   const btn=document.getElementById('submit-btn'),lbl=document.getElementById('submit-label');
   btn.disabled=true;lbl.textContent=tr.modal_sending||'Enviando...';
-  const data={};new FormData(f).forEach((v,k)=>{if(data[k]){data[k]=Array.isArray(data[k])?[...data[k],v]:[data[k],v];}else data[k]=v;});
-  if(Array.isArray(data.desafio))data.desafio=data.desafio.join(', ');
-  let sent=false;
-  try{const fd=new FormData(f);const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()});if(r.ok)sent=true;}catch(ex){}
-  if(!sent){const body=Object.entries(data).map(([k,v])=>k+': '+v).join('%0A');window.open('mailto:contato@frameonlab.ai?subject=Novo diagnóstico solicitado — FrameOn&body='+body);sent=true;}
-  if(sent){document.getElementById('modal-form-state').style.display='none';document.getElementById('modal-success').classList.add('show');}
-  else{err.textContent=tr.modal_err_generic||'Não foi possível enviar.';err.style.display='block';btn.disabled=false;lbl.textContent=tr.modal_submit||'Enviar solicitação';}
+  try{
+    const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()});
+    if(r.ok){document.getElementById('modal-form-state').style.display='none';document.getElementById('modal-success').classList.add('show');}
+    else{throw new Error('HTTP '+r.status);}
+  }catch(ex){
+    err.textContent=tr.modal_err_generic||'Não foi possível enviar. Tente novamente.';err.style.display='block';btn.disabled=false;lbl.textContent=tr.modal_submit||'Enviar solicitação';
+  }
 });
 </script>
 <script src="i18n.js"></script>
