@@ -1,0 +1,24 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Local env / secrets
+.env
+.env.local
+
+# Build artifacts (if added later)
+dist/
+build/
+node_modules/
+
+# Netlify
+.netlify/
