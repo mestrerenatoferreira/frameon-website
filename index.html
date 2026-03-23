@@ -358,7 +358,8 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
         </button>
       </div>
       <div class="modal-body">
-        <form id="diag-form" novalidate>
+        <form id="diag-form" name="diagnostico" data-netlify="true" novalidate>
+          <input type="hidden" name="form-name" value="diagnostico"/>
           <div class="form-row">
             <div class="form-group">
               <div class="form-label"><span data-i18n="modal_label_name">Nome completo</span> <span style="color:#1E6BFF">*</span></div>
@@ -756,7 +757,7 @@ document.getElementById('diag-form').addEventListener('submit',async function(e)
   const data={};new FormData(f).forEach((v,k)=>{if(data[k]){data[k]=Array.isArray(data[k])?[...data[k],v]:[data[k],v];}else data[k]=v;});
   if(Array.isArray(data.desafio))data.desafio=data.desafio.join(', ');
   let sent=false;
-  try{const r=await fetch('https://formspree.io/f/xdawvpdz',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({...data,_subject:'Novo diagnóstico solicitado — FrameOn',_replyto:data.email})});if(r.ok)sent=true;}catch(ex){}
+  try{const fd=new FormData(f);const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()});if(r.ok)sent=true;}catch(ex){}
   if(!sent){const body=Object.entries(data).map(([k,v])=>k+': '+v).join('%0A');window.open('mailto:contato@frameonlab.ai?subject=Novo diagnóstico solicitado — FrameOn&body='+body);sent=true;}
   if(sent){document.getElementById('modal-form-state').style.display='none';document.getElementById('modal-success').classList.add('show');}
   else{err.textContent=tr.modal_err_generic||'Não foi possível enviar.';err.style.display='block';btn.disabled=false;lbl.textContent=tr.modal_submit||'Enviar solicitação';}
