@@ -6,7 +6,7 @@ const T = {
 pt: {
   /* NAV */
   nav_platform:'Plataforma', nav_howworks:'Como funciona', nav_forwhom:'Para quem é',
-  nav_impl:'Implantação', nav_company:'Empresa', nav_login:'Login', nav_cta:'Agendar diagnóstico',
+  nav_impl:'Implantação', nav_company:'Empresa', nav_blog:'Insights', nav_login:'Login', nav_cta:'Agendar diagnóstico',
   /* FOOTER */
   footer_tagline:'Infraestrutura de inteligência organizacional para a governança da atuação estratégica das organizações.',
   footer_company:'Uma empresa FrameOn Lab',
@@ -14,7 +14,7 @@ pt: {
   footer_link_howworks:'Como funciona', footer_link_arch:'Arquitetura conceitual',
   footer_link_impl:'Implantação', footer_link_pricing:'Modelo de contratação',
   footer_col_org:'Organização', footer_link_forwhom:'Para quem é',
-  footer_link_benefits:'Benefícios estratégicos', footer_link_company:'Empresa',
+  footer_link_benefits:'Benefícios estratégicos', footer_link_company:'Empresa', footer_link_blog:'Insights',
   footer_link_diag:'Agendar diagnóstico', footer_col_contact:'Contato',
   footer_link_consulting:'Diagnóstico consultivo',
   footer_copy:'© 2025 FrameOn Lab. Todos os direitos reservados.',
@@ -252,14 +252,14 @@ pt: {
 /* ─────────────────────────── ENGLISH ─────────────────────────────────── */
 en: {
   nav_platform:'Platform', nav_howworks:'How it works', nav_forwhom:"Who it's for",
-  nav_impl:'Implementation', nav_company:'Company', nav_login:'Login', nav_cta:'Schedule assessment',
+  nav_impl:'Implementation', nav_company:'Company', nav_blog:'Insights', nav_login:'Login', nav_cta:'Schedule assessment',
   footer_tagline:'Organizational intelligence infrastructure for governing the strategic performance of organizations.',
   footer_company:'A FrameOn Lab company',
   footer_col_platform:'Platform', footer_link_whatis:'What is FrameOn',
   footer_link_howworks:'How it works', footer_link_arch:'Conceptual architecture',
   footer_link_impl:'Implementation', footer_link_pricing:'Pricing model',
   footer_col_org:'Organization', footer_link_forwhom:"Who it's for",
-  footer_link_benefits:'Strategic benefits', footer_link_company:'Company',
+  footer_link_benefits:'Strategic benefits', footer_link_company:'Company', footer_link_blog:'Insights',
   footer_link_diag:'Schedule assessment', footer_col_contact:'Contact',
   footer_link_consulting:'Consulting assessment',
   footer_copy:'© 2025 FrameOn Lab. All rights reserved.',
@@ -484,14 +484,14 @@ en: {
 /* ─────────────────────────── SPANISH ─────────────────────────────────── */
 es: {
   nav_platform:'Plataforma', nav_howworks:'Cómo funciona', nav_forwhom:'Para quién es',
-  nav_impl:'Implementación', nav_company:'Empresa', nav_login:'Iniciar sesión', nav_cta:'Agendar diagnóstico',
+  nav_impl:'Implementación', nav_company:'Empresa', nav_blog:'Insights', nav_login:'Iniciar sesión', nav_cta:'Agendar diagnóstico',
   footer_tagline:'Infraestructura de inteligencia organizacional para el gobierno de la actuación estratégica de las organizaciones.',
   footer_company:'Una empresa FrameOn Lab',
   footer_col_platform:'Plataforma', footer_link_whatis:'Qué es FrameOn',
   footer_link_howworks:'Cómo funciona', footer_link_arch:'Arquitectura conceptual',
   footer_link_impl:'Implementación', footer_link_pricing:'Modelo de contratación',
   footer_col_org:'Organización', footer_link_forwhom:'Para quién es',
-  footer_link_benefits:'Beneficios estratégicos', footer_link_company:'Empresa',
+  footer_link_benefits:'Beneficios estratégicos', footer_link_company:'Empresa', footer_link_blog:'Insights',
   footer_link_diag:'Agendar diagnóstico', footer_col_contact:'Contacto',
   footer_link_consulting:'Diagnóstico consultivo',
   footer_copy:'© 2025 FrameOn Lab. Todos los derechos reservados.',
