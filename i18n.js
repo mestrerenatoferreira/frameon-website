@@ -53,12 +53,12 @@ pt: {
   modal_err_email:'Por favor, insira um e-mail corporativo válido.',
   modal_err_generic:'Não foi possível enviar. Tente novamente ou entre em contato por contato@frameonlab.ai',
   /* HERO */
- hero_headline:'Inteligência para <span class="grad-text">execução estratégica.</span>',
-  hero_subhead:'Conecte projetos, decisões e contexto em uma única operação contínua.',
+  hero_headline:'A plataforma de <span class="grad-text">inteligência organizacional</span> que conecta projetos, decisões e contexto.',
+  hero_subhead:'Antecipe riscos, acompanhe responsabilidades e orquestre a operação com visibilidade contínua da execução.',
   hero_sub:'O FrameOn cria visibilidade contínua da execução, dos riscos e das responsabilidades da operação.',
   hero_cta1:'Agendar diagnóstico', hero_cta2:'Conhecer a plataforma',
   hero_m1_val:'Contexto persistente', hero_m1_lbl:'Decisões e execução conectadas',
-  hero_m2_val:'Execução guiada', hero_m2_lbl:'Menos cobrança manual',
+  hero_m2_val:'Execução orientada', hero_m2_lbl:'Menos cobrança manual',
   hero_m3_val:'Memória organizacional', hero_m3_lbl:'Conhecimento contínuo da operação',
   /* COMPLEXITY */
   cmplx_tag:'A nova complexidade estratégica',
@@ -784,11 +784,25 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 
 })();
-/* ===== Aumento de fonte para legibilidade (stopgap pre-redesign) ===== */
+
+/* ============================================================
+   FrameOn - ajustes consolidados (fonte + composicao do hero)
+   Substitui todos os blocos de ajuste anteriores.
+   ============================================================ */
 ;(function(){
-  var s=document.createElement('style');
-  s.setAttribute('data-fonte-bump','1');
+  /* 1) 4o item "Gestao de riscos" (de riscos embaixo) */
+  function add(){
+    var row=document.querySelector('.hero-metrics');
+    if(!row||row.querySelector('[data-extra="riscos"]'))return;
+    var d=document.createElement('div'); d.className='hero-metric'; d.setAttribute('data-extra','riscos');
+    var v=document.createElement('div'); v.className='hero-metric-val'; v.innerHTML='Gestão<br>de riscos';
+    d.appendChild(v); row.appendChild(d);
+  }
+  if(document.readyState!=='loading'){add();} else {document.addEventListener('DOMContentLoaded',add);}
+  /* 2) CSS */
+  var s=document.createElement('style'); s.setAttribute('data-frameon-overrides','1');
   s.textContent=`
+/* legibilidade: aumento de fonte */
 .lead{font-size:18.5px!important}
 .nav-links a{font-size:15px!important}
 .mobile-menu ul li a{font-size:16px!important}
@@ -803,23 +817,21 @@ document.addEventListener('DOMContentLoaded',function(){
 .legal-lang-notice{font-size:14px!important}
 .form-input,.form-select,.form-textarea{font-size:15.5px!important}
 .check-item label,.radio-item label{font-size:13.5px!important}
-`;
-  document.head.appendChild(s);
-})();
-/* ===== HERO: refino de ritmo/composicao (sem mudar identidade) ===== */
-;(function(){
-  var s=document.createElement('style');
-  s.setAttribute('data-hero-rhythm','1');
-  s.textContent=`
-.hero-headline{font-size:clamp(36px,4vw,52px)!important;line-height:1.06!important;max-width:640px!important;margin-bottom:22px!important}
-.hero-subhead{margin-bottom:14px!important}
-.hero-sub{margin-bottom:38px!important}
-.hero-metrics{margin-top:52px!important;padding-top:26px!important}
-.hero-metric-val{margin-bottom:7px!important}
-.hero-metric-lbl{line-height:1.5!important}
+/* hero: composicao e ritmo */
+.hero-sub{display:none!important}
+.hero-metric-lbl{display:none!important}
+.hero-metric-val{margin-bottom:0!important}
+.hero-headline{line-height:1.06!important;margin-bottom:26px!important}
+.hero-subhead{margin-bottom:44px!important}
+.hero-metrics{margin-top:80px!important;padding-top:44px!important}
 @media(min-width:1101px){
-  .hero-content{grid-template-columns:1.05fr .95fr!important;gap:96px!important}
-  .hero-metric+.hero-metric{padding-left:44px!important}
+  .hero{align-items:flex-start!important}
+  .hero-content{max-width:1320px!important;grid-template-columns:1.3fr .9fr!important;gap:80px!important;padding-top:104px!important;padding-bottom:88px!important}
+  .hero-headline{font-size:clamp(36px,4vw,52px)!important;max-width:720px!important}
+  .hero-subhead{max-width:600px!important}
+  .hero-metrics{max-width:none!important}
+  .hero-metric+.hero-metric{padding-left:16px!important}
+  .hero-metric-val{max-width:150px!important}
 }
 `;
   document.head.appendChild(s);
