@@ -784,3 +784,25 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 
 })();
+/* ===== Aumento de fonte para legibilidade (stopgap pre-redesign) ===== */
+;(function(){
+  var s=document.createElement('style');
+  s.setAttribute('data-fonte-bump','1');
+  s.textContent=`
+.lead{font-size:18.5px!important}
+.nav-links a{font-size:15px!important}
+.mobile-menu ul li a{font-size:16px!important}
+.nav-login,.btn-nav{font-size:14px!important}
+.btn-grad,.btn-outline,.btn-cta,.btn-submit{font-size:15px!important}
+.footer-tagline,.f-tag,.footer-links a{font-size:15px!important}
+.footer-copy,.footer-legal a{font-size:13px!important}
+.tension-text,.porque-text,.benefit-desc,.arch-card-text,.arch-card-cta p,.layer-point-text,.impl-step-text,.gov-point-text,.resposta-item-text,.statement-sub,.context-card-text,.emp-cta-inner p,.model-row-text,.model-card-sub,.modal-sub,.success-sub{font-size:16px!important}
+.tension-title,.layer-title,.arch-card-title,.benefit-title,.context-card-title,.model-row-title{font-size:17px!important}
+.legal-content p,.legal-content ul li{font-size:16.5px!important;line-height:1.8!important}
+.legal-meta{font-size:13px!important}
+.legal-lang-notice{font-size:14px!important}
+.form-input,.form-select,.form-textarea{font-size:15.5px!important}
+.check-item label,.radio-item label{font-size:13.5px!important}
+`;
+  document.head.appendChild(s);
+})();
