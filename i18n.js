@@ -53,12 +53,12 @@ pt: {
   modal_err_email:'Por favor, insira um e-mail corporativo válido.',
   modal_err_generic:'Não foi possível enviar. Tente novamente ou entre em contato por contato@frameonlab.ai',
   /* HERO */
- hero_headline:'Inteligência operacional para <span class="grad-text">execução estratégica.</span>',
+ hero_headline:'Inteligência para <span class="grad-text">execução estratégica.</span>',
   hero_subhead:'Conecte projetos, decisões e contexto em uma única operação contínua.',
-  hero_sub:'O FrameOn cria visibilidade contínua da execução, dos riscos e das responsabilidades da operação sem substituir o stack que sua empresa já utiliza.',
+  hero_sub:'O FrameOn cria visibilidade contínua da execução, dos riscos e das responsabilidades da operação.',
   hero_cta1:'Agendar diagnóstico', hero_cta2:'Conhecer a plataforma',
   hero_m1_val:'Contexto persistente', hero_m1_lbl:'Decisões e execução conectadas',
-  hero_m2_val:'Execução guiada', hero_m2_lbl:'Menos coordenação manual',
+  hero_m2_val:'Execução guiada', hero_m2_lbl:'Menos cobrança manual',
   hero_m3_val:'Memória organizacional', hero_m3_lbl:'Conhecimento contínuo da operação',
   /* COMPLEXITY */
   cmplx_tag:'A nova complexidade estratégica',
