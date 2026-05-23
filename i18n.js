@@ -806,3 +806,21 @@ document.addEventListener('DOMContentLoaded',function(){
 `;
   document.head.appendChild(s);
 })();
+/* ===== HERO: refino de ritmo/composicao (sem mudar identidade) ===== */
+;(function(){
+  var s=document.createElement('style');
+  s.setAttribute('data-hero-rhythm','1');
+  s.textContent=`
+.hero-headline{font-size:clamp(36px,4vw,52px)!important;line-height:1.06!important;max-width:640px!important;margin-bottom:22px!important}
+.hero-subhead{margin-bottom:14px!important}
+.hero-sub{margin-bottom:38px!important}
+.hero-metrics{margin-top:52px!important;padding-top:26px!important}
+.hero-metric-val{margin-bottom:7px!important}
+.hero-metric-lbl{line-height:1.5!important}
+@media(min-width:1101px){
+  .hero-content{grid-template-columns:1.05fr .95fr!important;gap:96px!important}
+  .hero-metric+.hero-metric{padding-left:44px!important}
+}
+`;
+  document.head.appendChild(s);
+})();
