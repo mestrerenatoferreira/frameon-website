@@ -836,3 +836,25 @@ document.addEventListener('DOMContentLoaded',function(){
 `;
   document.head.appendChild(s);
 })();
+/* ===== JSON-LD Organization (com legalName/CNPJ/foundingDate) ===== */
+;(function(){
+  if(document.querySelector('script[data-jsonld-frameon]'))return;
+  var s=document.createElement('script');
+  s.type='application/ld+json';
+  s.setAttribute('data-jsonld-frameon','1');
+  s.textContent=JSON.stringify({
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"FrameOn",
+    "alternateName":"FrameOn Lab",
+    "legalName":"FrameOn Lab Ltda",
+    "taxID":"65.644.521/0001-27",
+    "foundingDate":"2026-03-11",
+    "url":"https://frameonlab.ai",
+    "description":"A plataforma de inteligência organizacional que conecta projetos, decisões e contexto. Antecipe riscos, acompanhe responsabilidades e orquestre a operação com visibilidade contínua da execução.",
+    "email":"contato@frameonlab.ai",
+    "knowsAbout":["Inteligência organizacional","Memória organizacional","Governança estratégica","Gestão de iniciativas estratégicas","Gestão de riscos"],
+    "sameAs":["https://www.linkedin.com/company/frameon-lab/"]
+  });
+  document.head.appendChild(s);
+})();
