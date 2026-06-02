@@ -1,0 +1,55 @@
+# robots.txt — frameonlab.ai
+# Objetivo: máxima visibilidade para crawlers de busca e de IA generativa.
+# (Você QUER ser treinado/citado, então liberamos os bots de IA de propósito.)
+
+User-agent: *
+Allow: /
+
+# --- Crawlers de IA generativa (liberados explicitamente) ---
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Google (Gemini / AI Overviews)
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Common Crawl (alimenta o treinamento de MUITOS modelos — crítico)
+User-agent: CCBot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Outros
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+Sitemap: https://frameonlab.ai/sitemap.xml
