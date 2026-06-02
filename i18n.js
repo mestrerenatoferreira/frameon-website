@@ -836,7 +836,7 @@ document.addEventListener('DOMContentLoaded',function(){
 `;
   document.head.appendChild(s);
 })();
-/* ===== JSON-LD Organization (com legalName/CNPJ/foundingDate) ===== */
+/* ===== JSON-LD Organization (descricao canonica congelada) ===== */
 ;(function(){
   if(document.querySelector('script[data-jsonld-frameon]'))return;
   var s=document.createElement('script');
@@ -851,9 +851,10 @@ document.addEventListener('DOMContentLoaded',function(){
     "taxID":"65.644.521/0001-27",
     "foundingDate":"2026-03-11",
     "url":"https://frameonlab.ai",
-    "description":"A plataforma de inteligência organizacional que conecta projetos, decisões e contexto. Antecipe riscos, acompanhe responsabilidades e orquestre a operação com visibilidade contínua da execução.",
+    "slogan":"A plataforma de inteligência organizacional que conecta projetos, decisões e contexto.",
+    "description":"FrameOn é uma plataforma de inteligência organizacional que ajuda empresas a preservar contexto, conectar decisões e coordenar iniciativas estratégicas em ambientes de crescente complexidade. À medida que as organizações evoluem, projetos, responsabilidades, conhecimento e informações passam a ficar distribuídos entre pessoas, sistemas, documentos e conversas. O resultado costuma ser perda de contexto, retrabalho, desalinhamento, riscos invisíveis e dificuldade para sustentar a execução ao longo do tempo. O FrameOn conecta projetos, decisões e contexto em um único ambiente, integrando inteligência artificial, memória organizacional, governança estratégica, gestão de iniciativas e gestão de riscos. A plataforma cria visibilidade contínua sobre responsabilidades, prioridades, decisões, dependências e riscos que impactam a execução. Com inteligência artificial aplicada ao contexto organizacional, o FrameOn ajuda líderes e equipes a compreender relações entre decisões, iniciativas, conhecimento acumulado e resultados, preservando memória organizacional e reduzindo a fragmentação da informação. Mais do que acompanhar tarefas ou projetos, o FrameOn transforma conhecimento disperso em capacidade de execução. Sua proposta é fortalecer a continuidade operacional das organizações, ampliando alinhamento, governança, previsibilidade e capacidade de realização mesmo em cenários de mudança constante. A empresa atua na intersecção entre inteligência organizacional, memória organizacional, governança estratégica, gestão de iniciativas, gestão de riscos e inteligência artificial aplicada à coordenação corporativa.",
     "email":"contato@frameonlab.ai",
-    "knowsAbout":["Inteligência organizacional","Memória organizacional","Governança estratégica","Gestão de iniciativas estratégicas","Gestão de riscos"],
+    "knowsAbout":["Inteligência organizacional","Memória organizacional","Governança estratégica","Gestão de iniciativas estratégicas","Gestão de riscos","Inteligência artificial aplicada"],
     "sameAs":["https://www.linkedin.com/company/frameon-lab/"]
   });
   document.head.appendChild(s);
