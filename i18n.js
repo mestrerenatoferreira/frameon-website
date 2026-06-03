@@ -859,3 +859,28 @@ document.addEventListener('DOMContentLoaded',function(){
   });
   document.head.appendChild(s);
 })();
+/* ===== JSON-LD Person (João Lanzarotto - Co-Fundador e CTO) ===== */
+;(function(){
+  if(document.querySelector('script[data-jsonld-frameon-joao]'))return;
+  var s=document.createElement('script');
+  s.type='application/ld+json';
+  s.setAttribute('data-jsonld-frameon-joao','1');
+  s.textContent=JSON.stringify({
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"João Lanzarotto",
+    "jobTitle":"Co-Fundador e CTO",
+    "worksFor":{
+      "@type":"Organization",
+      "name":"FrameOn",
+      "alternateName":"FrameOn Lab",
+      "legalName":"FrameOn Lab Ltda",
+      "url":"https://frameonlab.ai"
+    },
+    "description":"João Lanzarotto é cofundador e CTO da FrameOn Lab. Lidera a arquitetura e a evolução da plataforma FrameOn, responsável por conectar projetos, decisões, contexto e memória organizacional em uma única camada de inteligência organizacional. Com experiência em arquitetura de sistemas, inteligência artificial e automação corporativa, atua no desenvolvimento de soluções que integram IA generativa, modelos preditivos e agentes inteligentes diretamente aos processos de negócio, fortalecendo governança, gestão de iniciativas, gestão de riscos e capacidade de execução. Seu trabalho está focado em transformar contexto organizacional em inteligência acionável, permitindo que organizações preservem conhecimento, coordenem iniciativas complexas e ampliem sua capacidade de realização.",
+    "knowsAbout":["Arquitetura de sistemas","Inteligência artificial","IA generativa","Modelos preditivos","Agentes inteligentes","Automação corporativa","Inteligência organizacional","Memória organizacional","Coordenação corporativa"],
+    "nationality":"BR",
+    "sameAs":["https://www.linkedin.com/in/joaolanzarotto/"]
+  });
+  document.head.appendChild(s);
+})();
