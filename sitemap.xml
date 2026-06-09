@@ -1,31 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://frameonlab.ai/</loc>
-    <lastmod>2026-06-02</lastmod>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <url>
     <loc>https://frameonlab.ai/insights/</loc>
-    <lastmod>2026-06-02</lastmod>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!--
-    IMPORTANTE: assim que cada artigo de insight tiver URL PRÓPRIA
-    (ex.: /insights/memoria-organizacional), adicione um bloco para cada um.
-    Páginas sem URL própria NÃO podem entrar no sitemap nem ser citadas pela IA.
-
   <url>
-    <loc>https://frameonlab.ai/insights/SLUG-DO-ARTIGO</loc>
-    <lastmod>AAAA-MM-DD</lastmod>
+    <loc>https://frameonlab.ai/insights/o-que-e-inteligencia-organizacional/</loc>
+    <lastmod>2026-06-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  -->
-
+  <url>
+    <loc>https://frameonlab.ai/insights/como-reduzir-perda-de-contexto-na-operacao/</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://frameonlab.ai/insights/memoria-organizacional-nas-empresas/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://frameonlab.ai/insights/como-preservar-conhecimento-organizacional/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://frameonlab.ai/insights/como-evitar-retrabalho-operacional/</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://frameonlab.ai/insights/governanca-de-iniciativas-estrategicas-na-pratica/</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://frameonlab.ai/insights/execucao-estrategica-nas-empresas/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
