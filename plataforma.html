@@ -253,7 +253,9 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
         </button>
       </div>
       <div class="modal-body">
-        <form id="diag-form" name="diagnostico" data-netlify="true" novalidate>
+        <form id="diag-form" name="diagnostico" novalidate>
+          <input type="hidden" name="access_key" value="6c8f9cfc-a995-4936-9818-de3208043950"/>
+          <input type="hidden" name="subject" value="Novo diagnostico - FrameOn (site)"/>
           <input type="hidden" name="form-name" value="diagnostico"/>
           <div class="form-row">
             <div class="form-group">
@@ -566,7 +568,7 @@ document.getElementById('diag-form').addEventListener('submit',async function(e)
   const btn=document.getElementById('submit-btn'),lbl=document.getElementById('submit-label');
   btn.disabled=true;lbl.textContent=tr.modal_sending||'Enviando...';
   try{
-    const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()});
+    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)});
     if(r.ok){document.getElementById('modal-form-state').style.display='none';document.getElementById('modal-success').classList.add('show');}
     else{throw new Error('HTTP '+r.status);}
   }catch(ex){

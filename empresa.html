@@ -315,7 +315,9 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
         </button>
       </div>
       <div class="modal-body">
-        <form id="diag-form" name="diagnostico" data-netlify="true" novalidate>
+        <form id="diag-form" name="diagnostico" novalidate>
+          <input type="hidden" name="access_key" value="6c8f9cfc-a995-4936-9818-de3208043950"/>
+          <input type="hidden" name="subject" value="Novo diagnostico - FrameOn (site)"/>
           <input type="hidden" name="form-name" value="diagnostico"/>
           <div class="form-row">
             <div class="form-group">
@@ -594,7 +596,7 @@ document.getElementById('diag-form').addEventListener('submit',async function(e)
   const data={};new FormData(f).forEach((v,k)=>{if(data[k]){data[k]=Array.isArray(data[k])?[...data[k],v]:[data[k],v];}else data[k]=v;});
   if(Array.isArray(data.desafio))data.desafio=data.desafio.join(', ');
   let sent=false;
-  try{const fd=new FormData(f);const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()});if(r.ok)sent=true;}catch(ex){}
+  try{const fd=new FormData(f);const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Accept':'application/json'},body:fd});if(r.ok)sent=true;}catch(ex){}
   if(!sent){const body=Object.entries(data).map(([k,v])=>k+': '+v).join('%0A');window.open('mailto:contato@frameonlab.ai?subject=Novo diagnóstico solicitado — FrameOn&body='+body);sent=true;}
   if(sent){document.getElementById('modal-form-state').style.display='none';document.getElementById('modal-success').classList.add('show');}
   else{err.textContent=tr.modal_err_generic||'Não foi possível enviar.';err.style.display='block';btn.disabled=false;lbl.textContent=tr.modal_submit||'Enviar solicitação';}

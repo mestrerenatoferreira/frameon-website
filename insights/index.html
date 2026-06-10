@@ -510,6 +510,38 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 .article-body hr{border:none;border-top:1px solid var(--border-mid);margin:40px 0}
 .article-foot{margin-top:56px;padding-top:32px;border-top:1px solid var(--border-mid)}
 .back-to-blog{display:inline-flex;align-items:center;gap:8px;color:var(--white-muted);font-size:14px;text-decoration:none;margin-bottom:32px}
+.back-to-blog:hover{color:var(--cyan)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px;margin-top:8px}
+.post-card{display:flex;flex-direction:column;background:var(--bg-card);border:1px solid var(--border-mid);border-radius:6px;overflow:hidden;transition:transform .25s ease,border-color .25s ease}
+.post-card:hover{transform:translateY(-4px);border-color:var(--cyan)}
+.post-card a.card-link{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit}
+.post-card .cover{aspect-ratio:16/9;background:var(--grad-main);background-size:cover;background-position:center}
+.post-card .card-body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.post-card .card-date{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.post-card h2{font-size:20px;font-weight:600;color:var(--white-tech);line-height:1.3;letter-spacing:-.01em}
+.post-card p{color:var(--white-muted);font-size:14.5px;flex:1}
+.post-card .read-more{color:var(--teal);font-size:13px;font-weight:600}
+.article-wrap{max-width:760px;margin:0 auto;padding:140px 24px 100px}
+.article-head{margin-bottom:40px;border-bottom:1px solid var(--border-mid);padding-bottom:32px}
+.article-head .article-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.article-head h1{font-size:clamp(30px,4vw,46px);line-height:1.15;margin-bottom:16px}
+.article-head .article-desc{color:var(--white-dim);font-size:19px;line-height:1.6}
+.article-head .article-author{color:var(--white-muted);font-size:14px;margin-top:14px}
+.article-cover{width:100%;border-radius:8px;margin-bottom:40px;display:block}
+.article-body{color:var(--white-dim);font-size:17px;line-height:1.8}
+.article-body h2{font-size:28px;margin:48px 0 18px;color:var(--white-tech);letter-spacing:-.02em;line-height:1.25}
+.article-body h3{font-size:22px;margin:36px 0 14px;color:var(--white-tech)}
+.article-body h4{font-size:18px;margin:28px 0 12px;color:var(--white-tech)}
+.article-body p{margin-bottom:22px}
+.article-body ul,.article-body ol{margin:0 0 22px 24px}
+.article-body li{margin-bottom:10px}
+.article-body a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px}
+.article-body img{max-width:100%;height:auto;border-radius:8px;margin:24px 0}
+.article-body blockquote{border-left:3px solid var(--cyan);padding:8px 20px;margin:24px 0;color:var(--white-tech);background:rgba(0,174,239,.05)}
+.article-body strong{color:var(--white-tech)}
+.article-body hr{border:none;border-top:1px solid var(--border-mid);margin:40px 0}
+.article-foot{margin-top:56px;padding-top:32px;border-top:1px solid var(--border-mid)}
+.back-to-blog{display:inline-flex;align-items:center;gap:8px;color:var(--white-muted);font-size:14px;text-decoration:none;margin-bottom:32px}
 .back-to-blog:hover{color:var(--cyan)}</style>
 </head>
 <body>
@@ -570,7 +602,9 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
         </button>
       </div>
       <div class="modal-body">
-        <form id="diag-form" name="diagnostico" data-netlify="true" novalidate>
+        <form id="diag-form" name="diagnostico" novalidate>
+          <input type="hidden" name="access_key" value="6c8f9cfc-a995-4936-9818-de3208043950"/>
+          <input type="hidden" name="subject" value="Novo diagnostico - FrameOn (site)"/>
           <input type="hidden" name="form-name" value="diagnostico"/>
           <div class="form-row">
             <div class="form-group">
@@ -652,6 +686,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
     </div>
   </div>
 </div>
+
 
 
 
@@ -838,7 +873,7 @@ document.getElementById('diag-form').addEventListener('submit',async function(e)
   const btn=document.getElementById('submit-btn'),lbl=document.getElementById('submit-label');
   btn.disabled=true;lbl.textContent=tr.modal_sending||'Enviando...';
   try{
-    const r=await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(f)).toString()});
+    const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Accept':'application/json'},body:new FormData(f)});
     if(r.ok){document.getElementById('modal-form-state').style.display='none';document.getElementById('modal-success').classList.add('show');}
     else{throw new Error('HTTP '+r.status);}
   }catch(ex){
