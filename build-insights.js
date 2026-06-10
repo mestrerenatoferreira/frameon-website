@@ -1,31 +1,24 @@
 /* ============================================================================
- * FrameOn - Gerador estatico do Insights (zero dependencias)
+ * FrameOn - Gerador estatico do Insights (zero dependencias) - MULTI-IDIOMA
  * ----------------------------------------------------------------------------
- * OBJETIVO:
- *   Substituir o embed do Soro (que injeta artigos via JavaScript e fica
- *   invisivel para crawlers de IA) por PAGINAS REAIS renderizadas no build.
- *   O texto completo de cada artigo passa a existir no HTML inicial.
+ * Substitui o embed do Soro por PAGINAS REAIS renderizadas no build, com o
+ * texto completo no HTML inicial (visivel para crawlers de IA / busca).
  *
- * O QUE FAZ:
- *   1. Le insights/index.html e reaproveita o "mobiliario" do site (CSS, nav,
- *      menu mobile, modal, rodape, scripts e Google Analytics), para que as
- *      paginas do Insights fiquem identicas ao resto do FrameOn.
- *   2. Le os metadados em _insights-build/articles.json e o corpo de cada
- *      artigo em _insights-build/bodies/<slug>.html (export "Copy as HTML" do
- *      Soro, ou identico via API do embed).
- *   3. Gera insights/<slug>/index.html (URL limpa /insights/<slug>/) com:
- *      <title>/meta description proprios, canonical, H1, hierarquia de headings
- *      e JSON-LD Article (headline, datePublished, dateModified, author, image).
- *   4. Reescreve insights/index.html como INDICE estatico (cards) - SEM o embed.
- *   5. Atualiza sitemap.xml com uma <url> por artigo.
+ * IDIOMAS:
+ *   - pt (padrao) -> /insights/<slug>/        (e indice /insights/)
+ *   - en          -> /en/insights/<slug>/     (e indice /en/insights/)
+ *   - es          -> /es/insights/<slug>/     (e indice /es/insights/)
+ *   Cada pagina recebe <html lang>, canonical proprio, hreflang para as outras
+ *   versoes e JSON-LD Article com inLanguage.
  *
- * COMO USAR:
- *   - Para atualizar um artigo: no Soro clique "Copy as HTML" e cole em
- *     _insights-build/bodies/<slug>.html (o <slug> tem que bater com articles.json).
- *   - Rode:  node build-insights.js
- *   - Confira insights/index.html e as paginas, depois commit/push.
+ * FONTES (em _insights-build/):
+ *   - articles.json                      -> metadados PT (base).
+ *   - bodies/<slug>.html                 -> corpo PT (Copy as HTML do Soro).
+ *   - i18n/<lang>/articles.json          -> overrides de title/excerpt/dateDisplay.
+ *   - i18n/<lang>/bodies/<slug>.html     -> corpo traduzido.
+ *   Um artigo so e gerado num idioma se existir o arquivo de corpo daquele idioma.
  *
- *   Artigos sem arquivo de corpo correspondente sao PULADOS (com aviso).
+ * USO:  node build-insights.js
  * ========================================================================== */
 
 'use strict';
@@ -37,10 +30,40 @@ const SRC_PAGE = path.join(ROOT, 'insights', 'index.html');
 const BUILD_DIR = path.join(ROOT, '_insights-build');
 const BODIES_DIR = path.join(BUILD_DIR, 'bodies');
 const ARTICLES_JSON = path.join(BUILD_DIR, 'articles.json');
-const INSIGHTS_DIR = path.join(ROOT, 'insights');
+const I18N_DIR = path.join(BUILD_DIR, 'i18n');
 const SITEMAP = path.join(ROOT, 'sitemap.xml');
 const SITE = 'https://frameonlab.ai';
 const NL = String.fromCharCode(10);
+
+const LANGS = [
+  {
+    code: 'pt', htmlLang: 'pt-BR', hreflang: 'pt-BR', outBase: 'insights', isDefault: true,
+    heroTitle: 'Inteligência organizacional na prática',
+    heroSub: 'Artigos, análises e perspectivas do FrameOn Lab.',
+    backFull: 'Voltar para Insights', by: 'Por',
+    indexTitle: 'Insights — FrameOn',
+    indexDesc: 'Artigos e análises do FrameOn Lab sobre inteligência organizacional, memória organizacional, governança estratégica e gestão de iniciativas.',
+    emptyMsg: 'Em breve, novos artigos.', readMore: 'Ler artigo'
+  },
+  {
+    code: 'en', htmlLang: 'en', hreflang: 'en', outBase: 'en/insights',
+    heroTitle: 'Organizational intelligence in practice',
+    heroSub: 'Articles, analysis and perspectives from FrameOn Lab.',
+    backFull: 'Back to Insights', by: 'By',
+    indexTitle: 'Insights — FrameOn',
+    indexDesc: 'Articles and analysis from FrameOn Lab on organizational intelligence, organizational memory, strategic governance and initiative management.',
+    emptyMsg: 'New articles coming soon.', readMore: 'Read article'
+  },
+  {
+    code: 'es', htmlLang: 'es', hreflang: 'es', outBase: 'es/insights',
+    heroTitle: 'Inteligencia organizacional en la práctica',
+    heroSub: 'Artículos, análisis y perspectivas de FrameOn Lab.',
+    backFull: 'Volver a Insights', by: 'Por',
+    indexTitle: 'Insights — FrameOn',
+    indexDesc: 'Artículos y análisis de FrameOn Lab sobre inteligencia organizacional, memoria organizacional, gobernanza estratégica y gestión de iniciativas.',
+    emptyMsg: 'Pronto, nuevos artículos.', readMore: 'Leer artículo'
+  }
+];
 
 function die(msg) { console.error('ERRO: ' + msg); process.exit(1); }
 function escapeHtml(s) {
@@ -48,20 +71,17 @@ function escapeHtml(s) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 1. Extrair o "mobiliario" do insights/index.html (profundidade 1)          */
+/* 1. "Mobiliario" (extraido de insights/index.html, profundidade 1)          */
 /* -------------------------------------------------------------------------- */
 function extractChrome() {
   if (!fs.existsSync(SRC_PAGE)) die('insights/index.html nao encontrado em ' + SRC_PAGE);
   const html = fs.readFileSync(SRC_PAGE, 'utf8');
 
-  // CSS principal = PRIMEIRO bloco <style>..</style> (ignora o <style> final do Soro)
   const styleStart = html.indexOf('<style>');
   const styleEnd = html.indexOf('</style>', styleStart);
   if (styleStart === -1 || styleEnd === -1) die('bloco <style> principal nao encontrado.');
-  // remove regras orfas do embed antigo (#soro-blog ...) - nao ha mais esse elemento
   const css = html.slice(styleStart + 7, styleEnd).replace(/#soro-blog[^{]*\{[^}]*\}/g, '');
 
-  // Google Analytics (gtag) do <head>: do <script async ...gtag/js...> ate o 2o </script>
   let gtag = '';
   const gStart = html.indexOf('<script async src="https://www.googletagmanager.com/gtag/js');
   if (gStart !== -1) {
@@ -70,19 +90,16 @@ function extractChrome() {
     if (secondEnd !== -1) gtag = html.slice(gStart, secondEnd + 9);
   }
 
-  // header = <nav id="main-nav"> ... ate o inicio do <main (captura nav + menu mobile + modal)
   const navStart = html.indexOf('<nav id="main-nav">');
   const mainStart = html.indexOf('<main', navStart);
   if (navStart === -1 || mainStart === -1) die('nav/main nao encontrados.');
   const header = html.slice(navStart, mainStart);
 
-  // footer
   const footerStart = html.indexOf('<footer');
   const footerEnd = html.indexOf('</footer>');
   if (footerStart === -1 || footerEnd === -1) die('footer nao encontrado.');
   const footer = html.slice(footerStart, footerEnd + 9);
 
-  // script de comportamento = primeiro <script> inline (sem src) DEPOIS do footer
   let behavior = '';
   const reScript = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
   let m;
@@ -93,15 +110,17 @@ function extractChrome() {
   return { css: css, gtag: gtag, header: header, footer: footer, behavior: behavior };
 }
 
-// Profundidade 1 (insights/) -> profundidade 2 (insights/<slug>/): soma um "../"
-function toDepth2(chromeHtml) {
-  return chromeHtml
-    .replace(/(href|src)="\.\.\//g, '$1="../../')       // ../X -> ../../X (home, empresa, i18n.js...)
-    .replace(/href="index\.html"/g, 'href="../index.html"'); // link "Insights" (self) -> volta um nivel
+// Re-aponta os caminhos do chrome (que vem em profundidade 1) para a profundidade
+// real da pagina. depth = niveis ate a raiz. isIndex = true nas paginas de indice.
+function retarget(chromeHtml, depth, isIndex) {
+  const rootPrefix = '../'.repeat(depth);
+  let out = chromeHtml.replace(/(href|src)="\.\.\//g, '$1="' + rootPrefix);
+  if (!isIndex) out = out.replace(/href="index\.html"/g, 'href="../index.html"');
+  return out;
 }
 
 /* -------------------------------------------------------------------------- */
-/* 2. CSS extra (cards do indice + corpo do artigo)                           */
+/* 2. CSS extra (cards + corpo do artigo)                                      */
 /* -------------------------------------------------------------------------- */
 const BLOG_CSS = [
   '.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px;margin-top:8px}',
@@ -145,12 +164,17 @@ const FONT_LINKS = [
 ].join(NL);
 
 /* -------------------------------------------------------------------------- */
-/* 3. Shell da pagina                                                         */
+/* 3. Shell                                                                    */
 /* -------------------------------------------------------------------------- */
 function pageShell(o) {
+  // dica de idioma p/ o i18n.js (so em paginas nao-PT): se o usuario ainda nao
+  // escolheu idioma, abre na lingua da pagina. Crawlers ignoram (e ok: o conteudo
+  // estatico ja esta no idioma certo).
+  const langHint = (o.htmlLang === 'pt-BR') ? '' :
+    '<script>try{if(!localStorage.getItem("fo_lang"))localStorage.setItem("fo_lang","' + o.htmlLang + '")}catch(e){}</script>';
   return [
     '<!DOCTYPE html>',
-    '<html lang="pt-BR">',
+    '<html lang="' + o.htmlLang + '">',
     '<head>',
     o.gtag,
     '<meta charset="UTF-8"/>',
@@ -158,8 +182,10 @@ function pageShell(o) {
     '<title>' + escapeHtml(o.title) + '</title>',
     '<meta name="description" content="' + escapeHtml(o.description || '') + '"/>',
     '<link rel="canonical" href="' + o.canonical + '"/>',
+    o.alternates || '',
     o.head || '',
     FONT_LINKS,
+    langHint,
     '<style>' + o.css + NL + BLOG_CSS + '</style>',
     '</head>',
     '<body>',
@@ -170,17 +196,14 @@ function pageShell(o) {
     '<script src="' + o.i18n + '"></script>',
     '</body>',
     '</html>'
-  ].join(NL);
+  ].filter(function (x) { return x !== ''; }).join(NL);
 }
 
-// remove um <h1>...</h1> inicial do corpo (o titulo ja vai no <header> da pagina)
 function stripLeadingH1(body) {
   return body.replace(/^\s*<h1[^>]*>[\s\S]*?<\/h1>\s*/i, '');
 }
 
-// corrige links internos herdados do embed do Soro:
-//  - /insights/?post=<slug>  (deep-link da SPA, que deixou de existir) -> /insights/<slug>/
-//  - /empresa, /plataforma... (sem .html, que dao 404 no GitHub Pages)  -> .html
+// corrige links internos herdados do embed do Soro
 function sanitizeBodyLinks(body) {
   return body
     .replace(/https?:\/\/frameonlab\.ai\/insights\/\?post=([a-z0-9-]+)\/?/gi, SITE + '/insights/$1/')
@@ -188,195 +211,230 @@ function sanitizeBodyLinks(body) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* 4. Build                                                                   */
+/* 4. Carregar metadados/corpos por idioma                                     */
+/* -------------------------------------------------------------------------- */
+function readJsonIf(p) { return fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : null; }
+
+function loadLangMeta(baseArticles, langCode) {
+  if (langCode === 'pt') return baseArticles.map(function (a) { return Object.assign({}, a); });
+  const ov = readJsonIf(path.join(I18N_DIR, langCode, 'articles.json')) || [];
+  const bySlug = {};
+  ov.forEach(function (o) { bySlug[o.slug] = o; });
+  return baseArticles.map(function (a) { return Object.assign({}, a, bySlug[a.slug] || {}); });
+}
+
+function bodyPathFor(slug, langCode) {
+  return langCode === 'pt'
+    ? path.join(BODIES_DIR, slug + '.html')
+    : path.join(I18N_DIR, langCode, 'bodies', slug + '.html');
+}
+
+// quais idiomas tem corpo para um dado slug (para hreflang)
+function langsForSlug(slug) {
+  return LANGS.filter(function (L) { return fs.existsSync(bodyPathFor(slug, L.code)); });
+}
+
+function urlFor(slug, langCode) {
+  const base = LANGS.find(function (L) { return L.code === langCode; }).outBase;
+  return SITE + '/' + base + '/' + slug + '/';
+}
+
+function alternatesFor(slug, selfLangCode) {
+  const present = langsForSlug(slug);
+  if (present.length < 2) return '';
+  const links = present.map(function (L) {
+    return '<link rel="alternate" hreflang="' + L.hreflang + '" href="' + urlFor(slug, L.code) + '"/>';
+  });
+  const def = present.find(function (L) { return L.isDefault; }) || present[0];
+  links.push('<link rel="alternate" hreflang="x-default" href="' + urlFor(slug, def.code) + '"/>');
+  return links.join(NL);
+}
+
+/* -------------------------------------------------------------------------- */
+/* 5. Build                                                                    */
 /* -------------------------------------------------------------------------- */
 function build() {
   const chrome = extractChrome();
-  const headerD1 = chrome.header, footerD1 = chrome.footer;        // indice (profundidade 1)
-  const headerD2 = toDepth2(chrome.header), footerD2 = toDepth2(chrome.footer); // artigo (profundidade 2)
-
   if (!fs.existsSync(ARTICLES_JSON)) die('_insights-build/articles.json nao encontrado.');
-  const articles = JSON.parse(fs.readFileSync(ARTICLES_JSON, 'utf8'));
+  const baseArticles = JSON.parse(fs.readFileSync(ARTICLES_JSON, 'utf8'));
 
-  const built = [];
-  const skipped = [];
+  const sitemapEntries = []; // {loc, lastmod, slug|null, isIndex}
+  const summary = [];
 
-  articles.forEach(function (a) {
-    const bodyFile = path.join(BODIES_DIR, a.slug + '.html');
-    if (!fs.existsSync(bodyFile)) { skipped.push(a.slug); return; }
+  LANGS.forEach(function (L) {
+    const depthIndex = L.isDefault ? 1 : 2;
+    const depthArticle = L.isDefault ? 2 : 3;
+    const headerIdx = retarget(chrome.header, depthIndex, true);
+    const footerIdx = retarget(chrome.footer, depthIndex, true);
+    const headerArt = retarget(chrome.header, depthArticle, false);
+    const footerArt = retarget(chrome.footer, depthArticle, false);
+    const i18nIdx = '../'.repeat(depthIndex) + 'i18n.js';
+    const i18nArt = '../'.repeat(depthArticle) + 'i18n.js';
+    const outDirBase = path.join(ROOT, L.outBase.replace('/', path.sep));
 
-    let body = fs.readFileSync(bodyFile, 'utf8').trim();
-    body = stripLeadingH1(body);
-    body = sanitizeBodyLinks(body);
-    const canonical = SITE + '/insights/' + a.slug + '/';
-    const dateMod = a.dateModified || a.isoDate;
+    const meta = loadLangMeta(baseArticles, L.code);
+    const built = [];
 
-    const ld = {
-      '@context': 'https://schema.org',
-      '@type': 'Article',
-      'headline': a.title,
-      'description': a.excerpt || '',
-      'image': a.image ? [a.image] : undefined,
-      'datePublished': a.isoDate,
-      'dateModified': dateMod,
-      'author': { '@type': 'Organization', 'name': a.author || 'FrameOn Lab', 'url': SITE },
-      'publisher': {
-        '@type': 'Organization',
-        'name': 'FrameOn',
-        'url': SITE,
-        'logo': { '@type': 'ImageObject', 'url': SITE + '/insights/' }
-      },
-      'mainEntityOfPage': { '@type': 'WebPage', '@id': canonical },
-      'inLanguage': 'pt-BR'
-    };
+    meta.forEach(function (a) {
+      const bf = bodyPathFor(a.slug, L.code);
+      if (!fs.existsSync(bf)) return; // sem traducao -> pula nesse idioma
+      let body = fs.readFileSync(bf, 'utf8').trim();
+      body = stripLeadingH1(body);
+      body = sanitizeBodyLinks(body);
 
-    const head = [
-      '<meta property="og:type" content="article"/>',
-      '<meta property="og:title" content="' + escapeHtml(a.title) + '"/>',
-      '<meta property="og:description" content="' + escapeHtml(a.excerpt || '') + '"/>',
-      '<meta property="og:url" content="' + canonical + '"/>',
-      a.image ? '<meta property="og:image" content="' + escapeHtml(a.image) + '"/>' : '',
-      '<meta name="twitter:card" content="summary_large_image"/>',
-      '<script type="application/ld+json">' + JSON.stringify(ld) + '</script>'
-    ].filter(Boolean).join(NL);
+      const canonical = urlFor(a.slug, L.code);
+      const dateMod = a.dateModified || a.isoDate;
+      const alternates = alternatesFor(a.slug, L.code);
 
-    const inner = [
-      '<main class="article-wrap">',
-      '  <a href="../" class="back-to-blog">&larr; Insights</a>',
-      '  <article>',
-      '  <header class="article-head">',
-      '    <div class="article-date">' + escapeHtml(a.dateDisplay || '') + '</div>',
-      '    <h1>' + escapeHtml(a.title) + '</h1>',
-      a.excerpt ? '    <p class="article-desc">' + escapeHtml(a.excerpt) + '</p>' : '',
-      '    <div class="article-author">Por ' + escapeHtml(a.author || 'FrameOn Lab') + '</div>',
-      '  </header>',
-      a.image ? '  <img class="article-cover" src="' + escapeHtml(a.image) + '" alt="' + escapeHtml(a.title) + '"/>' : '',
-      '  <div class="article-body">',
-      body,
-      '  </div>',
-      '  <footer class="article-foot"><a href="../" class="back-to-blog">&larr; Voltar para Insights</a></footer>',
-      '  </article>',
-      '</main>'
-    ].filter(Boolean).join(NL);
+      const ld = {
+        '@context': 'https://schema.org', '@type': 'Article',
+        'headline': a.title, 'description': a.excerpt || '',
+        'image': a.image ? [a.image] : undefined,
+        'datePublished': a.isoDate, 'dateModified': dateMod,
+        'author': { '@type': 'Organization', 'name': a.author || 'FrameOn Lab', 'url': SITE },
+        'publisher': { '@type': 'Organization', 'name': 'FrameOn', 'url': SITE, 'logo': { '@type': 'ImageObject', 'url': SITE + '/insights/' } },
+        'mainEntityOfPage': { '@type': 'WebPage', '@id': canonical },
+        'inLanguage': L.htmlLang
+      };
+      const head = [
+        '<meta property="og:type" content="article"/>',
+        '<meta property="og:title" content="' + escapeHtml(a.title) + '"/>',
+        '<meta property="og:description" content="' + escapeHtml(a.excerpt || '') + '"/>',
+        '<meta property="og:url" content="' + canonical + '"/>',
+        '<meta property="og:locale" content="' + (L.code === 'pt' ? 'pt_BR' : L.code === 'es' ? 'es_ES' : 'en_US') + '"/>',
+        a.image ? '<meta property="og:image" content="' + escapeHtml(a.image) + '"/>' : '',
+        '<meta name="twitter:card" content="summary_large_image"/>',
+        '<script type="application/ld+json">' + JSON.stringify(ld) + '</script>'
+      ].filter(Boolean).join(NL);
 
-    const page = pageShell({
-      title: a.title + ' — FrameOn',
-      description: a.excerpt || '',
-      canonical: canonical,
-      head: head,
-      css: chrome.css,
-      gtag: chrome.gtag,
-      header: headerD2,
-      footer: footerD2,
-      behavior: chrome.behavior,
-      i18n: '../../i18n.js',
-      bodyInner: inner
+      const inner = [
+        '<main class="article-wrap">',
+        '  <a href="../" class="back-to-blog">&larr; ' + escapeHtml(L.backFull.indexOf('Insights') !== -1 ? 'Insights' : 'Insights') + '</a>',
+        '  <article>',
+        '  <header class="article-head">',
+        '    <div class="article-date">' + escapeHtml(a.dateDisplay || '') + '</div>',
+        '    <h1>' + escapeHtml(a.title) + '</h1>',
+        a.excerpt ? '    <p class="article-desc">' + escapeHtml(a.excerpt) + '</p>' : '',
+        '    <div class="article-author">' + escapeHtml(L.by) + ' ' + escapeHtml(a.author || 'FrameOn Lab') + '</div>',
+        '  </header>',
+        a.image ? '  <img class="article-cover" src="' + escapeHtml(a.image) + '" alt="' + escapeHtml(a.title) + '"/>' : '',
+        '  <div class="article-body">',
+        body,
+        '  </div>',
+        '  <footer class="article-foot"><a href="../" class="back-to-blog">&larr; ' + escapeHtml(L.backFull) + '</a></footer>',
+        '  </article>',
+        '</main>'
+      ].filter(Boolean).join(NL);
+
+      const page = pageShell({
+        htmlLang: L.htmlLang, title: a.title + ' — FrameOn', description: a.excerpt || '',
+        canonical: canonical, alternates: alternates, head: head,
+        css: chrome.css, gtag: chrome.gtag, header: headerArt, footer: footerArt,
+        behavior: chrome.behavior, i18n: i18nArt, bodyInner: inner
+      });
+      const outDir = path.join(outDirBase, a.slug);
+      fs.mkdirSync(outDir, { recursive: true });
+      fs.writeFileSync(path.join(outDir, 'index.html'), page, 'utf8');
+      built.push(a);
+      sitemapEntries.push({ loc: canonical, lastmod: (dateMod || '').slice(0, 10), slug: a.slug });
     });
 
-    const outDir = path.join(INSIGHTS_DIR, a.slug);
-    if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
-    fs.writeFileSync(path.join(outDir, 'index.html'), page, 'utf8');
-    built.push(a);
-    console.log('  OK artigo: insights/' + a.slug + '/');
+    built.sort(function (x, y) { return (y.isoDate || '').localeCompare(x.isoDate || ''); });
+
+    // ---- indice do idioma ----
+    const cards = built.map(function (a) {
+      return [
+        '    <article class="post-card">',
+        '      <a class="card-link" href="' + a.slug + '/">',
+        a.image ? '        <div class="cover" style="background-image:url(&#39;' + escapeHtml(a.image) + '&#39;)"></div>' : '',
+        '        <div class="card-body">',
+        '          <span class="card-date">' + escapeHtml(a.dateDisplay || '') + '</span>',
+        '          <h2>' + escapeHtml(a.title) + '</h2>',
+        '          <p>' + escapeHtml(a.excerpt || '') + '</p>',
+        '          <span class="read-more">' + escapeHtml(L.readMore) + ' &rarr;</span>',
+        '        </div>',
+        '      </a>',
+        '    </article>'
+      ].filter(Boolean).join(NL);
+    }).join(NL);
+
+    const idxInner = [
+      '<main class="blog-wrap">',
+      '  <div class="blog-hero">',
+      '    <span class="tag">Insights</span>',
+      '    <h1 class="grad-text">' + escapeHtml(L.heroTitle) + '</h1>',
+      '    <p>' + escapeHtml(L.heroSub) + '</p>',
+      '  </div>',
+      '  <div class="blog-grid">',
+      built.length ? cards : '    <p style="color:var(--white-muted);text-align:center;grid-column:1/-1">' + escapeHtml(L.emptyMsg) + '</p>',
+      '  </div>',
+      '</main>'
+    ].join(NL);
+
+    const idxCanonical = SITE + '/' + L.outBase + '/';
+    // hreflang dos indices (todos os idiomas tem indice)
+    const idxAlt = LANGS.map(function (X) {
+      return '<link rel="alternate" hreflang="' + X.hreflang + '" href="' + SITE + '/' + X.outBase + '/"/>';
+    }).concat(['<link rel="alternate" hreflang="x-default" href="' + SITE + '/insights/"/>']).join(NL);
+
+    const idxLd = {
+      '@context': 'https://schema.org', '@type': 'Blog', 'name': 'Insights — FrameOn',
+      'url': idxCanonical, 'inLanguage': L.htmlLang,
+      'blogPost': built.map(function (a) {
+        return { '@type': 'BlogPosting', 'headline': a.title, 'url': urlFor(a.slug, L.code), 'datePublished': a.isoDate, 'image': a.image || undefined };
+      })
+    };
+
+    const indexPage = pageShell({
+      htmlLang: L.htmlLang, title: L.indexTitle, description: L.indexDesc,
+      canonical: idxCanonical, alternates: idxAlt,
+      head: '<script type="application/ld+json">' + JSON.stringify(idxLd) + '</script>',
+      css: chrome.css, gtag: chrome.gtag, header: headerIdx, footer: footerIdx,
+      behavior: chrome.behavior, i18n: i18nIdx, bodyInner: idxInner
+    });
+    fs.mkdirSync(outDirBase, { recursive: true });
+    fs.writeFileSync(path.join(outDirBase, 'index.html'), indexPage, 'utf8');
+    sitemapEntries.push({ loc: idxCanonical, lastmod: '2026-06-09', isIndex: true });
+
+    summary.push({ code: L.code, n: built.length });
+    console.log('  [' + L.code + '] ' + built.length + ' artigo(s) -> /' + L.outBase + '/');
   });
 
-  // ordena por data desc (isoDate)
-  built.sort(function (x, y) { return (y.isoDate || '').localeCompare(x.isoDate || ''); });
-
-  // ---- indice insights/index.html ----
-  const cards = built.map(function (a) {
-    return [
-      '    <article class="post-card">',
-      '      <a class="card-link" href="' + a.slug + '/">',
-      a.image ? '        <div class="cover" style="background-image:url(' + JSON.stringify(a.image) + ')"></div>' : '',
-      '        <div class="card-body">',
-      '          <span class="card-date">' + escapeHtml(a.dateDisplay || '') + '</span>',
-      '          <h2>' + escapeHtml(a.title) + '</h2>',
-      '          <p>' + escapeHtml(a.excerpt || '') + '</p>',
-      '          <span class="read-more">Ler artigo &rarr;</span>',
-      '        </div>',
-      '      </a>',
-      '    </article>'
-    ].filter(Boolean).join(NL);
-  }).join(NL);
-
-  const idxInner = [
-    '<main class="blog-wrap">',
-    '  <div class="blog-hero">',
-    '    <span class="tag">Insights</span>',
-    '    <h1 class="grad-text">Inteligência organizacional na prática</h1>',
-    '    <p>Artigos, análises e perspectivas do FrameOn Lab.</p>',
-    '  </div>',
-    '  <div class="blog-grid">',
-    built.length ? cards : '    <p style="color:var(--white-muted);text-align:center;grid-column:1/-1">Em breve, novos artigos.</p>',
-    '  </div>',
-    '</main>'
-  ].join(NL);
-
-  const idxLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Blog',
-    'name': 'Insights — FrameOn',
-    'url': SITE + '/insights/',
-    'inLanguage': 'pt-BR',
-    'blogPost': built.map(function (a) {
-      return {
-        '@type': 'BlogPosting',
-        'headline': a.title,
-        'url': SITE + '/insights/' + a.slug + '/',
-        'datePublished': a.isoDate,
-        'image': a.image || undefined
-      };
-    })
-  };
-
-  const indexPage = pageShell({
-    title: 'Insights — FrameOn',
-    description: 'Artigos e análises do FrameOn Lab sobre inteligência organizacional, memória organizacional, governança estratégica e gestão de iniciativas.',
-    canonical: SITE + '/insights/',
-    head: '<script type="application/ld+json">' + JSON.stringify(idxLd) + '</script>',
-    css: chrome.css,
-    gtag: chrome.gtag,
-    header: headerD1,
-    footer: footerD1,
-    behavior: chrome.behavior,
-    i18n: '../i18n.js',
-    bodyInner: idxInner
-  });
-  fs.writeFileSync(SRC_PAGE, indexPage, 'utf8');
-  console.log('  OK indice: insights/index.html (embed do Soro removido)');
-
-  // ---- sitemap.xml ----
-  writeSitemap(built);
-
-  console.log(NL + 'Concluido: ' + built.length + ' artigo(s) gerado(s).');
-  if (skipped.length) {
-    console.log('Pulados (faltando _insights-build/bodies/<slug>.html):');
-    skipped.forEach(function (s) { console.log('  - ' + s); });
-  }
+  writeSitemap(sitemapEntries);
+  console.log(NL + 'Concluido: ' + summary.map(function (s) { return s.code + '=' + s.n; }).join(', '));
 }
 
-function writeSitemap(built) {
-  const urls = [];
-  urls.push(url(SITE + '/', '2026-06-09', 'weekly', '1.0'));
-  urls.push(url(SITE + '/insights/', '2026-06-09', 'weekly', '0.8'));
-  built.forEach(function (a) {
-    const d = (a.dateModified || a.isoDate || '').slice(0, 10);
-    urls.push(url(SITE + '/insights/' + a.slug + '/', d, 'monthly', '0.7'));
+function writeSitemap(entries) {
+  const NS = 'http://www.sitemaps.org/schemas/sitemap/0.9';
+  const out = ['<?xml version="1.0" encoding="UTF-8"?>',
+    '<urlset xmlns="' + NS + '" xmlns:xhtml="http://www.w3.org/1999/xhtml">'];
+  // home
+  out.push(urlBlock(SITE + '/', '2026-06-09', 'weekly', '1.0', null));
+  entries.forEach(function (e) {
+    const prio = e.isIndex ? '0.8' : '0.7';
+    const freq = e.isIndex ? 'weekly' : 'monthly';
+    // alternates por artigo (hreflang no sitemap)
+    let alts = null;
+    if (e.slug) {
+      const present = langsForSlug(e.slug);
+      if (present.length > 1) {
+        alts = present.map(function (L) {
+          return '    <xhtml:link rel="alternate" hreflang="' + L.hreflang + '" href="' + urlFor(e.slug, L.code) + '"/>';
+        }).join(NL);
+      }
+    }
+    out.push(urlBlock(e.loc, e.lastmod || '2026-06-09', freq, prio, alts));
   });
-  const xml = '<?xml version="1.0" encoding="UTF-8"?>' + NL +
-    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + NL +
-    urls.join(NL) + NL + '</urlset>' + NL;
-  fs.writeFileSync(SITEMAP, xml, 'utf8');
-  console.log('  OK sitemap.xml (' + (built.length + 2) + ' URLs)');
+  out.push('</urlset>');
+  fs.writeFileSync(SITEMAP, out.join(NL) + NL, 'utf8');
+  console.log('  OK sitemap.xml (' + (entries.length + 1) + ' URLs)');
 
-  function url(loc, lastmod, freq, prio) {
-    return '  <url>' + NL +
-      '    <loc>' + loc + '</loc>' + NL +
+  function urlBlock(loc, lastmod, freq, prio, alts) {
+    return '  <url>' + NL + '    <loc>' + loc + '</loc>' + NL +
+      (alts ? alts + NL : '') +
       '    <lastmod>' + lastmod + '</lastmod>' + NL +
       '    <changefreq>' + freq + '</changefreq>' + NL +
-      '    <priority>' + prio + '</priority>' + NL +
-      '  </url>';
+      '    <priority>' + prio + '</priority>' + NL + '  </url>';
   }
 }
 
