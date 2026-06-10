@@ -13,6 +13,10 @@
 <title>Insights — FrameOn</title>
 <meta name="description" content="Artigos e análises do FrameOn Lab sobre inteligência organizacional, memória organizacional, governança estratégica e gestão de iniciativas."/>
 <link rel="canonical" href="https://frameonlab.ai/insights/"/>
+<link rel="alternate" hreflang="pt-BR" href="https://frameonlab.ai/insights/"/>
+<link rel="alternate" hreflang="en" href="https://frameonlab.ai/en/insights/"/>
+<link rel="alternate" hreflang="es" href="https://frameonlab.ai/es/insights/"/>
+<link rel="alternate" hreflang="x-default" href="https://frameonlab.ai/insights/"/>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Insights — FrameOn","url":"https://frameonlab.ai/insights/","inLanguage":"pt-BR","blogPost":[{"@type":"BlogPosting","headline":"O que é inteligência organizacional?","url":"https://frameonlab.ai/insights/o-que-e-inteligencia-organizacional/","datePublished":"2026-06-09T00:20:10.175+00:00","image":"https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/b4fcb63a-6857-4566-ac5d-00daf911ee3d.webp"},{"@type":"BlogPosting","headline":"Como reduzir perda de contexto na operação","url":"https://frameonlab.ai/insights/como-reduzir-perda-de-contexto-na-operacao/","datePublished":"2026-06-02T19:59:31.861+00:00","image":"https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/0c5c3d6e-cd9c-4572-a7e1-4ef3824c5316-1780430241024.webp"},{"@type":"BlogPosting","headline":"Memória organizacional nas empresas","url":"https://frameonlab.ai/insights/memoria-organizacional-nas-empresas/","datePublished":"2026-05-31T15:05:22.043+00:00","image":"https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/332a9d0e-bcdc-4faf-9717-a2887f4311bd-1779652171702.webp"},{"@type":"BlogPosting","headline":"Como Preservar Conhecimento Organizacional e Evitar a Perda de Contexto","url":"https://frameonlab.ai/insights/como-preservar-conhecimento-organizacional/","datePublished":"2026-05-30T14:24:01.253+00:00","image":"https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/dfdd1f6f-c333-4b28-8feb-323ccf1213c4.webp"},{"@type":"BlogPosting","headline":"Como Evitar o Retrabalho Operacional: O Custo Escondido da Perda de Contexto","url":"https://frameonlab.ai/insights/como-evitar-retrabalho-operacional/","datePublished":"2026-05-26T15:06:25.316+00:00","image":"https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/014195a3-b509-4292-8316-6e1c629efc50.webp"},{"@type":"BlogPosting","headline":"Governança de iniciativas estratégicas","url":"https://frameonlab.ai/insights/governanca-de-iniciativas-estrategicas-na-pratica/","datePublished":"2026-05-24T19:50:50.821+00:00","image":"https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/d9f02704-87d3-497b-b50a-b7308742de69.webp"},{"@type":"BlogPosting","headline":"Execução estratégica nas empresas","url":"https://frameonlab.ai/insights/execucao-estrategica-nas-empresas/","datePublished":"2026-05-23T14:47:29.715+00:00","image":"https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/c78f8acc-7e81-4a3e-ba42-4e549dca8d66.webp"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -442,6 +446,38 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 .article-body hr{border:none;border-top:1px solid var(--border-mid);margin:40px 0}
 .article-foot{margin-top:56px;padding-top:32px;border-top:1px solid var(--border-mid)}
 .back-to-blog{display:inline-flex;align-items:center;gap:8px;color:var(--white-muted);font-size:14px;text-decoration:none;margin-bottom:32px}
+.back-to-blog:hover{color:var(--cyan)}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:28px;margin-top:8px}
+.post-card{display:flex;flex-direction:column;background:var(--bg-card);border:1px solid var(--border-mid);border-radius:6px;overflow:hidden;transition:transform .25s ease,border-color .25s ease}
+.post-card:hover{transform:translateY(-4px);border-color:var(--cyan)}
+.post-card a.card-link{display:flex;flex-direction:column;height:100%;text-decoration:none;color:inherit}
+.post-card .cover{aspect-ratio:16/9;background:var(--grad-main);background-size:cover;background-position:center}
+.post-card .card-body{padding:24px;display:flex;flex-direction:column;gap:12px;flex:1}
+.post-card .card-date{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.post-card h2{font-size:20px;font-weight:600;color:var(--white-tech);line-height:1.3;letter-spacing:-.01em}
+.post-card p{color:var(--white-muted);font-size:14.5px;flex:1}
+.post-card .read-more{color:var(--teal);font-size:13px;font-weight:600}
+.article-wrap{max-width:760px;margin:0 auto;padding:140px 24px 100px}
+.article-head{margin-bottom:40px;border-bottom:1px solid var(--border-mid);padding-bottom:32px}
+.article-head .article-date{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.article-head h1{font-size:clamp(30px,4vw,46px);line-height:1.15;margin-bottom:16px}
+.article-head .article-desc{color:var(--white-dim);font-size:19px;line-height:1.6}
+.article-head .article-author{color:var(--white-muted);font-size:14px;margin-top:14px}
+.article-cover{width:100%;border-radius:8px;margin-bottom:40px;display:block}
+.article-body{color:var(--white-dim);font-size:17px;line-height:1.8}
+.article-body h2{font-size:28px;margin:48px 0 18px;color:var(--white-tech);letter-spacing:-.02em;line-height:1.25}
+.article-body h3{font-size:22px;margin:36px 0 14px;color:var(--white-tech)}
+.article-body h4{font-size:18px;margin:28px 0 12px;color:var(--white-tech)}
+.article-body p{margin-bottom:22px}
+.article-body ul,.article-body ol{margin:0 0 22px 24px}
+.article-body li{margin-bottom:10px}
+.article-body a{color:var(--cyan);text-decoration:underline;text-underline-offset:3px}
+.article-body img{max-width:100%;height:auto;border-radius:8px;margin:24px 0}
+.article-body blockquote{border-left:3px solid var(--cyan);padding:8px 20px;margin:24px 0;color:var(--white-tech);background:rgba(0,174,239,.05)}
+.article-body strong{color:var(--white-tech)}
+.article-body hr{border:none;border-top:1px solid var(--border-mid);margin:40px 0}
+.article-foot{margin-top:56px;padding-top:32px;border-top:1px solid var(--border-mid)}
+.back-to-blog{display:inline-flex;align-items:center;gap:8px;color:var(--white-muted);font-size:14px;text-decoration:none;margin-bottom:32px}
 .back-to-blog:hover{color:var(--cyan)}</style>
 </head>
 <body>
@@ -589,6 +625,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 
 
 
+
 <main class="blog-wrap">
   <div class="blog-hero">
     <span class="tag">Insights</span>
@@ -598,7 +635,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
   <div class="blog-grid">
     <article class="post-card">
       <a class="card-link" href="o-que-e-inteligencia-organizacional/">
-        <div class="cover" style="background-image:url("https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/b4fcb63a-6857-4566-ac5d-00daf911ee3d.webp")"></div>
+        <div class="cover" style="background-image:url(&#39;https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/b4fcb63a-6857-4566-ac5d-00daf911ee3d.webp&#39;)"></div>
         <div class="card-body">
           <span class="card-date">9 de junho de 2026</span>
           <h2>O que é inteligência organizacional?</h2>
@@ -609,7 +646,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
     </article>
     <article class="post-card">
       <a class="card-link" href="como-reduzir-perda-de-contexto-na-operacao/">
-        <div class="cover" style="background-image:url("https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/0c5c3d6e-cd9c-4572-a7e1-4ef3824c5316-1780430241024.webp")"></div>
+        <div class="cover" style="background-image:url(&#39;https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/0c5c3d6e-cd9c-4572-a7e1-4ef3824c5316-1780430241024.webp&#39;)"></div>
         <div class="card-body">
           <span class="card-date">2 de junho de 2026</span>
           <h2>Como reduzir perda de contexto na operação</h2>
@@ -620,7 +657,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
     </article>
     <article class="post-card">
       <a class="card-link" href="memoria-organizacional-nas-empresas/">
-        <div class="cover" style="background-image:url("https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/332a9d0e-bcdc-4faf-9717-a2887f4311bd-1779652171702.webp")"></div>
+        <div class="cover" style="background-image:url(&#39;https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/332a9d0e-bcdc-4faf-9717-a2887f4311bd-1779652171702.webp&#39;)"></div>
         <div class="card-body">
           <span class="card-date">31 de maio de 2026</span>
           <h2>Memória organizacional nas empresas</h2>
@@ -631,7 +668,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
     </article>
     <article class="post-card">
       <a class="card-link" href="como-preservar-conhecimento-organizacional/">
-        <div class="cover" style="background-image:url("https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/dfdd1f6f-c333-4b28-8feb-323ccf1213c4.webp")"></div>
+        <div class="cover" style="background-image:url(&#39;https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/dfdd1f6f-c333-4b28-8feb-323ccf1213c4.webp&#39;)"></div>
         <div class="card-body">
           <span class="card-date">30 de maio de 2026</span>
           <h2>Como Preservar Conhecimento Organizacional e Evitar a Perda de Contexto</h2>
@@ -642,7 +679,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
     </article>
     <article class="post-card">
       <a class="card-link" href="como-evitar-retrabalho-operacional/">
-        <div class="cover" style="background-image:url("https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/014195a3-b509-4292-8316-6e1c629efc50.webp")"></div>
+        <div class="cover" style="background-image:url(&#39;https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/014195a3-b509-4292-8316-6e1c629efc50.webp&#39;)"></div>
         <div class="card-body">
           <span class="card-date">26 de maio de 2026</span>
           <h2>Como Evitar o Retrabalho Operacional: O Custo Escondido da Perda de Contexto</h2>
@@ -653,7 +690,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
     </article>
     <article class="post-card">
       <a class="card-link" href="governanca-de-iniciativas-estrategicas-na-pratica/">
-        <div class="cover" style="background-image:url("https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/d9f02704-87d3-497b-b50a-b7308742de69.webp")"></div>
+        <div class="cover" style="background-image:url(&#39;https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/d9f02704-87d3-497b-b50a-b7308742de69.webp&#39;)"></div>
         <div class="card-body">
           <span class="card-date">24 de maio de 2026</span>
           <h2>Governança de iniciativas estratégicas</h2>
@@ -664,7 +701,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
     </article>
     <article class="post-card">
       <a class="card-link" href="execucao-estrategica-nas-empresas/">
-        <div class="cover" style="background-image:url("https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/c78f8acc-7e81-4a3e-ba42-4e549dca8d66.webp")"></div>
+        <div class="cover" style="background-image:url(&#39;https://afocirmbqdxnkyescnev.supabase.co/storage/v1/object/public/featured-images/8fd6be0a-226a-4b74-a70e-7fcbe6a85d93/c78f8acc-7e81-4a3e-ba42-4e549dca8d66.webp&#39;)"></div>
         <div class="card-body">
           <span class="card-date">23 de maio de 2026</span>
           <h2>Execução estratégica nas empresas</h2>
