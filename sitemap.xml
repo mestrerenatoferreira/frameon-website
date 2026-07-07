@@ -8,6 +8,9 @@
   </url>
   <url>
     <loc>https://frameonlab.ai/insights/qual-sistema-conecta-estrategia-e-operacao/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://frameonlab.ai/insights/qual-sistema-conecta-estrategia-e-operacao/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://frameonlab.ai/en/insights/qual-sistema-conecta-estrategia-e-operacao/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://frameonlab.ai/es/insights/qual-sistema-conecta-estrategia-e-operacao/"/>
     <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -91,6 +94,15 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://frameonlab.ai/en/insights/qual-sistema-conecta-estrategia-e-operacao/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://frameonlab.ai/insights/qual-sistema-conecta-estrategia-e-operacao/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://frameonlab.ai/en/insights/qual-sistema-conecta-estrategia-e-operacao/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://frameonlab.ai/es/insights/qual-sistema-conecta-estrategia-e-operacao/"/>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://frameonlab.ai/en/insights/orquestracao-entre-pessoas-e-ia/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://frameonlab.ai/insights/orquestracao-entre-pessoas-e-ia/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://frameonlab.ai/en/insights/orquestracao-entre-pessoas-e-ia/"/>
@@ -167,6 +179,15 @@
     <lastmod>2026-06-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://frameonlab.ai/es/insights/qual-sistema-conecta-estrategia-e-operacao/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://frameonlab.ai/insights/qual-sistema-conecta-estrategia-e-operacao/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://frameonlab.ai/en/insights/qual-sistema-conecta-estrategia-e-operacao/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://frameonlab.ai/es/insights/qual-sistema-conecta-estrategia-e-operacao/"/>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://frameonlab.ai/es/insights/orquestracao-entre-pessoas-e-ia/</loc>
