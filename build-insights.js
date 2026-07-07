@@ -154,7 +154,15 @@ const BLOG_CSS = [
   '.article-body hr{border:none;border-top:1px solid var(--border-mid);margin:40px 0}',
   '.article-foot{margin-top:56px;padding-top:32px;border-top:1px solid var(--border-mid)}',
   '.back-to-blog{display:inline-flex;align-items:center;gap:8px;color:var(--white-muted);font-size:14px;text-decoration:none;margin-bottom:32px}',
-  '.back-to-blog:hover{color:var(--cyan)}'
+  '.back-to-blog:hover{color:var(--cyan)}',
+  '.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:28px 0;border:1px solid var(--border-mid);border-radius:8px}',
+  '.article-body table{width:100%;border-collapse:collapse;font-size:15px;min-width:520px;margin:0}',
+  '.article-body thead th{background:var(--bg-card2);color:var(--white-tech);text-align:left;font-weight:600;letter-spacing:.01em}',
+  '.article-body th,.article-body td{padding:12px 16px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);vertical-align:top;line-height:1.5}',
+  '.article-body th:last-child,.article-body td:last-child{border-right:none}',
+  '.article-body tbody tr:last-child td{border-bottom:none}',
+  '.article-body tbody tr:nth-child(even){background:rgba(30,107,255,.04)}',
+  '.article-body td:first-child{color:var(--white-tech);font-weight:500}'
 ].join(NL);
 
 const FONT_LINKS = [
@@ -208,6 +216,13 @@ function sanitizeBodyLinks(body) {
   return body
     .replace(/https?:\/\/frameonlab\.ai\/insights\/\?post=([a-z0-9-]+)\/?/gi, SITE + '/insights/$1/')
     .replace(/(href=")https?:\/\/frameonlab\.ai\/(empresa|plataforma|privacidade|termos)(")/gi, '$1' + SITE + '/$2.html$3');
+}
+
+// tabelas responsivas: envolve cada <table> num container com scroll horizontal (bom no mobile)
+function wrapTables(body) {
+  return body.replace(/<table[\s\S]*?<\/table>/gi, function (t) {
+    return '<div class="table-wrap">' + t + '</div>';
+  });
 }
 
 /* -------------------------------------------------------------------------- */
@@ -281,6 +296,7 @@ function build() {
       let body = fs.readFileSync(bf, 'utf8').trim();
       body = stripLeadingH1(body);
       body = sanitizeBodyLinks(body);
+      body = wrapTables(body);
 
       const canonical = urlFor(a.slug, L.code);
       const dateMod = a.dateModified || a.isoDate;
@@ -296,6 +312,14 @@ function build() {
         'mainEntityOfPage': { '@type': 'WebPage', '@id': canonical },
         'inLanguage': L.htmlLang
       };
+      const breadcrumb = {
+        '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+        'itemListElement': [
+          { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': SITE + '/' },
+          { '@type': 'ListItem', 'position': 2, 'name': 'Insights', 'item': SITE + '/' + L.outBase + '/' },
+          { '@type': 'ListItem', 'position': 3, 'name': a.title, 'item': canonical }
+        ]
+      };
       const head = [
         '<meta property="og:type" content="article"/>',
         '<meta property="og:title" content="' + escapeHtml(a.title) + '"/>',
@@ -304,7 +328,8 @@ function build() {
         '<meta property="og:locale" content="' + (L.code === 'pt' ? 'pt_BR' : L.code === 'es' ? 'es_ES' : 'en_US') + '"/>',
         a.image ? '<meta property="og:image" content="' + escapeHtml(a.image) + '"/>' : '',
         '<meta name="twitter:card" content="summary_large_image"/>',
-        '<script type="application/ld+json">' + JSON.stringify(ld) + '</script>'
+        '<script type="application/ld+json">' + JSON.stringify(ld) + '</script>',
+        '<script type="application/ld+json">' + JSON.stringify(breadcrumb) + '</script>'
       ].filter(Boolean).join(NL);
 
       const inner = [
