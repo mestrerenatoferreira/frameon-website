@@ -185,46 +185,48 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 
 /* ── EMPRESA PAGE ── */
 /* Hero: fully content-driven — overrides global section{padding:110px 0} */
-.emp-hero{position:relative;display:block;overflow:hidden;padding:68px 0 0;background:var(--bg-abyss)}
+.emp-hero{position:relative;display:block;overflow:hidden;padding:56px 0 0;background:var(--bg-abyss)}
 .emp-hero-glow{position:absolute;z-index:0;pointer-events:none;width:900px;height:580px;background:radial-gradient(ellipse,rgba(30,107,255,.10) 0%,rgba(0,174,239,.04) 45%,transparent 70%);top:50%;left:55%;transform:translate(-25%,-55%)}
 .emp-hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(30,107,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(30,107,255,.025) 1px,transparent 1px);background-size:72px 72px;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 65% 40%,black 20%,transparent 70%);mask-image:radial-gradient(ellipse 70% 70% at 65% 40%,black 20%,transparent 70%)}
-.emp-hero-inner{position:relative;z-index:2;max-width:1220px;margin:0 auto;padding:20px 48px 36px}
+.emp-hero-inner{position:relative;z-index:2;max-width:1220px;margin:0 auto;padding:20px 48px 44px}
 .emp-hero .tag{margin-bottom:14px}
-.emp-hero h1{font-size:clamp(38px,4.6vw,66px);font-weight:600;line-height:1.0;letter-spacing:-.04em;color:var(--white-tech);margin-bottom:6px;max-width:620px}
-.emp-hero-lead{font-size:17px;font-weight:400;line-height:1.72;color:var(--white-muted);max-width:540px;margin-top:8px}
+.emp-hero h1{font-size:clamp(38px,4.6vw,66px);font-weight:600;line-height:1.0;letter-spacing:-.04em;color:var(--white-tech);margin-bottom:6px;max-width:560px}
+.emp-hero-lead{font-size:17px;font-weight:400;line-height:1.72;color:var(--white-muted);max-width:520px;margin-top:8px}
+.emp-hero-layout{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:start}
 
 /* ── POR QUE SECTION ── */
-.s-porque{background:linear-gradient(180deg,var(--bg-abyss) 0%,var(--bg-deep) 100%);padding:52px 0 60px}
+.s-porque{background:linear-gradient(180deg,var(--bg-abyss) 0%,var(--bg-deep) 100%);padding:40px 0 48px}
 .porque-intro{font-size:16.5px;line-height:1.80;color:var(--white-dim);max-width:720px;margin-bottom:16px}
 
-/* ── COMO RESPONDE SECTION ── */
-.s-founder{background:var(--bg-deep);padding:64px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.founder-layout{display:grid;grid-template-columns:280px 1fr;gap:56px;align-items:center}
-.founder-photo-wrap{position:relative}
+/* ── QUEM CONSTRÓI (dentro da hero) ── */
+.founder-block{margin-top:28px;padding-top:26px;border-top:1px solid var(--border)}
+.founder-block .tag{margin-bottom:12px}
+.founder-block h2{font-size:21px;font-weight:600;letter-spacing:-.02em;color:var(--white-tech);margin-bottom:4px}
+.founder-photo-wrap{position:relative;max-width:400px;margin-left:auto}
 .founder-photo-wrap::before{content:'';position:absolute;inset:-14px;background:var(--grad-main);opacity:.14;filter:blur(28px);border-radius:24px;z-index:0}
 .founder-photo{position:relative;z-index:1;display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:18px;border:1px solid var(--border-mid)}
-.founder-role{font-size:14px;font-weight:500;color:var(--cyan);margin-top:6px;margin-bottom:22px}
-.founder-bio{font-size:14.5px;line-height:1.78;color:var(--white-muted);max-width:620px}
-.founder-bio+.founder-bio{margin-top:14px}
-.founder-linkedin{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:10px 18px;border:1px solid var(--border-mid);border-radius:8px;color:var(--white-tech);font-size:13.5px;font-weight:500;text-decoration:none;transition:border-color .25s,background .25s}
+.founder-role{font-size:14px;font-weight:500;color:var(--cyan);margin-top:6px;margin-bottom:16px}
+.founder-bio{font-size:14px;line-height:1.74;color:var(--white-muted);max-width:520px}
+.founder-linkedin{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:10px 18px;border:1px solid var(--border-mid);border-radius:8px;color:var(--white-tech);font-size:13.5px;font-weight:500;text-decoration:none;transition:border-color .25s,background .25s}
 .founder-linkedin:hover{border-color:var(--cyan);background:rgba(0,174,239,.06)}
 
 /* ── CTA SECTION ── */
-.s-emp-cta{background:var(--bg-abyss);border-top:1px solid var(--border);text-align:center;padding:64px 0}
+.s-emp-cta{background:var(--bg-abyss);border-top:1px solid var(--border);text-align:center;padding:48px 0}
 .emp-cta-inner{max-width:580px;margin:0 auto}
 .emp-cta-inner h2{font-size:clamp(20px,2.3vw,32px);margin-bottom:12px}
 .emp-cta-inner p{color:var(--white-muted);font-size:14.5px;line-height:1.72;margin-bottom:28px}
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-  .founder-layout{grid-template-columns:1fr;gap:32px}
-  .founder-photo-wrap{max-width:240px}
-  .emp-hero-inner{padding:24px 24px 40px}
+  .emp-hero-layout{grid-template-columns:1fr;gap:32px}
+  .founder-photo-wrap{max-width:260px;margin-left:0}
+  .emp-hero-inner{padding:24px 24px 36px}
   .container{padding:0 24px}
 }
 @media(max-width:600px){
-  .s-porque,.s-founder,.s-emp-cta{padding:48px 0}
+  .s-porque,.s-emp-cta{padding:36px 0}
   .emp-hero h1{font-size:clamp(32px,8vw,52px)}
+  .founder-photo-wrap{max-width:200px}
 }
 
 </style>
@@ -383,15 +385,33 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 </div>
 
 
-<!-- HERO -->
+<!-- HERO / QUEM CONSTRÓI O FRAMEON -->
 <section class="emp-hero">
   <div class="emp-hero-grid"></div>
   <div class="emp-hero-glow"></div>
   <div class="emp-hero-inner">
-    <div class="fade-up">
-      <div class="tag" data-i18n="emp_tag">Empresa</div>
-      <h1 data-i18n-html="emp_hero_h1">FrameOn <span class="grad-text">Lab.</span></h1>
-      <p class="emp-hero-lead" data-i18n="emp_hero_lead">A empresa por trás da plataforma de gestão agêntica de projetos que conecta pessoas, agentes de IA, decisões e contexto.</p>
+    <div class="emp-hero-layout">
+      <div class="fade-up">
+        <div class="tag" data-i18n="emp_tag">Empresa</div>
+        <h1 data-i18n-html="emp_hero_h1">FrameOn <span class="grad-text">Lab.</span></h1>
+        <p class="emp-hero-lead" data-i18n="emp_hero_lead">A empresa por trás da plataforma de gestão agêntica de projetos que conecta pessoas, agentes de IA, decisões e contexto.</p>
+        <div class="founder-block">
+          <div class="tag" data-i18n="founder_tag">Quem constrói o FrameOn</div>
+          <h2 data-i18n="founder_name">João Lanzarotto</h2>
+          <div class="founder-role" data-i18n="founder_role">Co-founder &amp; CTO da FrameOn Lab</div>
+          <p class="founder-bio" data-i18n="founder_bio1">João Lanzarotto é cofundador, CTO e arquiteto principal da FrameOn Lab. Lidera a arquitetura da plataforma, integrando IA generativa, modelos preditivos e agentes inteligentes aos processos de negócio — transformando contexto organizacional em decisões mais rápidas, com mais governança e capacidade de execução.</p>
+          <a href="https://www.linkedin.com/in/joaolanzarotto/" target="_blank" rel="noopener" class="founder-linkedin" data-track="linkedin_click" data-loc="empresa">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            <span data-i18n="founder_linkedin">Perfil no LinkedIn</span>
+          </a>
+        </div>
+      </div>
+      <div class="founder-photo-wrap fade-up d2">
+        <picture>
+          <source srcset="img/joao-lanzarotto.webp" type="image/webp">
+          <img src="img/joao-lanzarotto.jpg" alt="João Lanzarotto" class="founder-photo" width="560" height="560" loading="lazy">
+        </picture>
+      </div>
     </div>
   </div>
 </section>
@@ -404,31 +424,6 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
       <h2 data-i18n="emp_pq_h2">Nasce de uma lacuna real: pessoas e agentes de IA ainda trabalham sobre contextos diferentes.</h2>
       <p class="porque-intro" data-i18n="emp_pq_intro">A FrameOn Lab nasceu para resolver um problema real: à medida que mais empresas passam a usar inteligência artificial na execução de projetos, cresce o risco de decisões e contexto se perderem entre pessoas, times e ferramentas.</p>
       <p class="porque-intro" data-i18n="emp_pq_intro2" style="margin-top:16px;margin-bottom:0">O FrameOn existe para que pessoas e agentes de IA trabalhem sobre a mesma memória organizacional — com decisões rastreáveis, riscos visíveis e governança contínua ao longo de cada projeto.</p>
-    </div>
-  </div>
-</section>
-
-<!-- QUEM CONSTRÓI O FRAMEON -->
-<section class="s-founder">
-  <div class="container">
-    <div class="founder-layout">
-      <div class="founder-photo-wrap fade-up">
-        <picture>
-          <source srcset="img/joao-lanzarotto.webp" type="image/webp">
-          <img src="img/joao-lanzarotto.jpg" alt="João Lanzarotto" class="founder-photo" width="560" height="560" loading="lazy">
-        </picture>
-      </div>
-      <div class="founder-content fade-up d2">
-        <div class="tag" data-i18n="founder_tag">Quem constrói o FrameOn</div>
-        <h2 data-i18n="founder_name">João Lanzarotto</h2>
-        <div class="founder-role" data-i18n="founder_role">Co-founder &amp; CTO da FrameOn Lab</div>
-        <p class="founder-bio" data-i18n="founder_bio1">João Lanzarotto é cofundador, CTO e arquiteto principal da FrameOn Lab. Lidera a arquitetura e a evolução da plataforma FrameOn, conectando projetos, decisões, contexto e memória organizacional em uma única camada de gestão agêntica de projetos.</p>
-        <p class="founder-bio" data-i18n="founder_bio2">Com experiência em arquitetura de sistemas, inteligência artificial e automação corporativa, desenvolve soluções que integram IA generativa, modelos preditivos e agentes inteligentes diretamente aos processos de negócio — transformando contexto organizacional em inteligência acionável e fortalecendo governança, gestão de riscos e capacidade de execução.</p>
-        <a href="https://www.linkedin.com/in/joaolanzarotto/" target="_blank" rel="noopener" class="founder-linkedin" data-track="linkedin_click" data-loc="empresa">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-          <span data-i18n="founder_linkedin">Perfil no LinkedIn</span>
-        </a>
-      </div>
     </div>
   </div>
 </section>
