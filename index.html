@@ -258,13 +258,59 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 /* ── START (Comece por um projeto real) ── */
 .s-start{background:var(--bg-deep)}
 
-.hero-metrics{display:flex;margin-top:36px;padding-top:22px;border-top:1px solid var(--border)}
-.hero-metric{flex:1}
-.hero-metric+.hero-metric{padding-left:32px;border-left:1px solid var(--border)}
-.hero-metric-val{font-size:20px;font-weight:600;letter-spacing:-.04em;color:var(--white-tech);margin-bottom:5px}
-.hero-metric-lbl{font-size:11.5px;color:var(--white-muted)}
-.hero-visual{position:relative;height:500px;display:flex;align-items:flex-start;justify-content:center;padding-top:20px}
-#arch-canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-mockup{position:relative;width:100%}
+.hero-mockup-panel{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(30,107,255,.2);background:linear-gradient(160deg,rgba(9,24,41,.92),rgba(13,32,64,.88));box-shadow:0 30px 70px rgba(0,0,0,.4)}
+.hero-mockup-panel::before{content:'';position:absolute;top:-90px;right:-70px;width:260px;height:260px;background:radial-gradient(circle,rgba(0,174,239,.10),transparent 70%);pointer-events:none}
+.hm-topbar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border);background:rgba(4,11,20,.35);flex-wrap:wrap}
+.hm-topbar-title{font-size:13px;font-weight:500;color:var(--white-tech)}
+.hm-topbar-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.hm-status-pill{font-size:10px;font-weight:600;letter-spacing:.04em;color:var(--cyan);background:rgba(0,174,239,.1);border:1px solid rgba(0,174,239,.25);padding:4px 10px;border-radius:100px;white-space:nowrap}
+.hm-progress-ring{position:relative;width:34px;height:34px;border-radius:50%;background:conic-gradient(var(--cyan) 0turn .72turn,rgba(255,255,255,.09) .72turn 1turn);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hm-progress-ring span{width:26px;height:26px;border-radius:50%;background:#0B1F3B;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--white-tech)}
+.hm-body{position:relative;display:flex}
+.hm-sidenav{width:118px;flex-shrink:0;padding:18px 12px;display:flex;flex-direction:column;gap:4px;border-right:1px solid var(--border)}
+.hm-nav-item{font-size:11px;color:var(--white-muted);padding:8px 10px;border-radius:6px}
+.hm-nav-item.active{color:var(--white-tech);background:rgba(30,107,255,.12)}
+.hm-main{flex:1;min-width:0;padding:20px 22px;display:flex;flex-direction:column;gap:16px}
+.hm-agents{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.hm-agent-card{padding:12px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.015);display:flex;flex-direction:column;gap:8px}
+.hm-agent-head{display:flex;align-items:center;gap:7px}
+.hm-agent-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.hm-agent-dot.d1{background:var(--teal)}
+.hm-agent-dot.d2{background:#1E6BFF}
+.hm-agent-dot.d3{background:var(--cyan)}
+.hm-agent-name{font-size:10.5px;font-weight:500;color:var(--white-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hm-agent-text{font-size:10px;color:var(--white-muted);line-height:1.45}
+.hm-status-tag{display:inline-flex;align-items:center;font-size:8px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;padding:2.5px 7px;border-radius:100px;width:fit-content}
+.hm-status-tag.tag-done{color:var(--teal);background:rgba(0,203,169,.12)}
+.hm-status-tag.tag-decision{color:#5B9FFF;background:rgba(91,159,255,.14)}
+.hm-status-tag.tag-sync{color:var(--cyan);background:rgba(0,174,239,.12)}
+.hm-lower{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hm-decision,.hm-context{padding:13px 14px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.02)}
+.hm-block-title{font-size:10.5px;font-weight:600;color:var(--white-tech);margin-bottom:6px}
+.hm-block-text{font-size:10.5px;color:var(--white-muted);line-height:1.5;margin-bottom:10px}
+.hm-decision-actions{display:flex;gap:8px}
+.hm-btn-ghost{font-size:9.5px;font-weight:500;padding:5px 12px;border-radius:100px;border:1px solid var(--border);color:var(--white-muted)}
+.hm-btn-ghost.approve{color:var(--cyan);border-color:rgba(0,174,239,.35)}
+.hm-context-items{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.hm-context-items span{font-size:9px;color:var(--white-dim);background:rgba(255,255,255,.05);padding:3px 8px;border-radius:100px}
+.hm-context-msg{font-size:10px;color:var(--white-muted);line-height:1.5}
+.hm-activity{display:flex;align-items:center;gap:6px;padding-top:2px;flex-wrap:wrap}
+.hm-activity-item{display:flex;align-items:center;gap:6px;font-size:9.5px;color:var(--white-muted);white-space:nowrap}
+.hm-activity-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18);flex-shrink:0}
+.hm-activity-dot.done{background:var(--teal)}
+.hm-activity-dot.active{background:var(--cyan);animation:pulse-dot 1.8s ease-in-out infinite}
+.hm-activity-line{flex:1;height:1px;background:var(--border);min-width:10px}
+@media(max-width:640px){
+  .hm-sidenav{display:none}
+  .hm-agents{grid-template-columns:1fr}
+  .hm-lower{grid-template-columns:1fr}
+  .hm-topbar{padding:14px 16px}
+  .hm-main{padding:16px 18px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-mockup-panel *,.hero-mockup-panel{animation:none!important;transition:none!important}
+}
 /* SECTIONS */
 .s-complexity{background:linear-gradient(180deg,var(--bg-abyss) 0%,var(--bg-deep) 100%)}
 .complexity-layout{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center}
@@ -389,7 +435,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 .btn-cta::after{content:'';position:absolute;inset:0;border-radius:4px;background:var(--grad-main);filter:blur(16px);opacity:0;z-index:-1;transition:opacity .3s}
 .btn-cta:hover{opacity:.9;transform:translateY(-2px)}.btn-cta:hover::after{opacity:.5}
 @media(max-width:1100px){
-  .hero-content{grid-template-columns:1fr;gap:56px}.hero-visual{display:none}
+  .hero-content{grid-template-columns:1fr;gap:56px}
   .complexity-layout,.whatis-layout,.governance-layout,.benefits-layout,.forwho-layout,.impl-layout{grid-template-columns:1fr;gap:56px}
   .arch-grid{grid-template-columns:1fr 1fr}
 }
@@ -401,7 +447,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
   .btn-grad,.btn-outline,.btn-cta{width:100%;justify-content:center}
   .cta-inner{padding:0 24px}
 }
-@media(max-width:480px){.hero-metrics{flex-direction:column;gap:24px}.hero-metric{padding:0!important;border:none!important}}
+
 
 </style>
 </head>
@@ -567,21 +613,83 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
   <div class="hero-content">
     <div>
       <div class="hero-eyebrow"><span class="hero-dot"></span><span data-i18n="hero_eyebrow">GESTÃO AGÊNTICA DE PROJETOS</span></div>
-      <h1 class="hero-headline" data-i18n-html="hero_headline">Projetos conduzidos por pessoas. Potencializados por <span class="grad-text">agentes de inteligência artificial</span>.</h1>
-      <p class="hero-subhead" data-i18n="hero_subhead">O FrameOn conecta projetos, decisões e contexto para que pessoas e agentes de inteligência artificial trabalhem continuamente sobre a mesma memória organizacional.</p>
+      <h1 class="hero-headline" data-i18n-html="hero_headline">Pessoas e agentes de IA trabalhando juntos em cada <span class="grad-text">projeto</span>.</h1>
+      <p class="hero-subhead" data-i18n="hero_subhead">O FrameOn conecta projetos, decisões e contexto para que equipes e agentes de inteligência artificial executem o trabalho continuamente sobre a mesma memória organizacional.</p>
       <p class="hero-sub" data-i18n="hero_sub">O FrameOn conecta estratégia, pessoas e iniciativas em uma camada contínua de inteligência organizacional orientada por memória organizacional, dados e inteligência artificial.</p>
       <div class="hero-ctas">
-        <a href="https://app.frameonlab.com/signup" class="btn-grad" data-i18n="hero_cta1" data-track="signup_cta_clicked" data-loc="hero">Começar grátis</a>
-        <a href="#como-funciona" class="btn-outline" data-i18n="hero_cta2" data-track="how_it_works_clicked" data-loc="hero">Ver como funciona</a>
+        <a href="https://app.frameonlab.com/signup" class="btn-grad" data-i18n="hero_cta1" data-track="signup_cta_clicked" data-loc="hero">Experimentar o FrameOn</a>
+        <a href="#" onclick="openModal();return false;" class="btn-outline" data-i18n="hero_cta2" data-track="implementation_cta_clicked" data-loc="hero">Agendar demonstração</a>
       </div>
-      <p class="hero-microcopy" data-i18n="hero_microcopy">Sem cartão de crédito. Crie sua empresa e comece pelo primeiro projeto.</p>
-      <div class="hero-metrics">
-        <div class="hero-metric"><div class="hero-metric-val" data-i18n="hero_m1_val">Enterprise</div><div class="hero-metric-lbl" data-i18n="hero_m1_lbl">Posicionamento estratégico</div></div>
-        <div class="hero-metric"><div class="hero-metric-val" data-i18n="hero_m2_val">IA + Humano</div><div class="hero-metric-lbl" data-i18n="hero_m2_lbl">Governança integrada</div></div>
-        <div class="hero-metric"><div class="hero-metric-val" data-i18n="hero_m3_val">Contínuo</div><div class="hero-metric-lbl" data-i18n="hero_m3_lbl">Memória organizacional</div></div>
+      <p class="hero-microcopy" data-i18n="hero_microcopy">Comece com um projeto real da sua empresa.</p>
+    </div>
+    <div class="hero-mockup fade-up" aria-hidden="true">
+      <div class="hero-mockup-panel">
+        <div class="hm-topbar">
+          <div class="hm-topbar-title" data-i18n="hm_topbar_title">Expansão para novos mercados</div>
+          <div class="hm-topbar-right">
+            <span class="hm-status-pill" data-i18n="hm_status_running">Em execução</span>
+            <div class="hm-progress-ring"><span>72%</span></div>
+          </div>
+        </div>
+        <div class="hm-body">
+          <div class="hm-sidenav">
+            <div class="hm-nav-item active" data-i18n="hm_nav1">Visão geral</div>
+            <div class="hm-nav-item" data-i18n="hm_nav2">Projetos</div>
+            <div class="hm-nav-item" data-i18n="hm_nav3">Decisões</div>
+            <div class="hm-nav-item" data-i18n="hm_nav4">Agentes</div>
+            <div class="hm-nav-item" data-i18n="hm_nav5">Memória</div>
+          </div>
+          <div class="hm-main">
+            <div class="hm-agents">
+              <div class="hm-agent-card">
+                <div class="hm-agent-head"><span class="hm-agent-dot d1"></span><span class="hm-agent-name">Delivery Agent</span></div>
+                <div class="hm-agent-text" data-i18n="hm_agent1_text">Reorganizou o plano de execução</div>
+                <span class="hm-status-tag tag-done" data-i18n="hm_agent1_status">Concluído</span>
+              </div>
+              <div class="hm-agent-card">
+                <div class="hm-agent-head"><span class="hm-agent-dot d2"></span><span class="hm-agent-name">Risk Agent</span></div>
+                <div class="hm-agent-text" data-i18n="hm_agent2_text">Identificou dependência regulatória</div>
+                <span class="hm-status-tag tag-decision" data-i18n="hm_agent2_status">Requer decisão</span>
+              </div>
+              <div class="hm-agent-card">
+                <div class="hm-agent-head"><span class="hm-agent-dot d3"></span><span class="hm-agent-name">Knowledge Agent</span></div>
+                <div class="hm-agent-text" data-i18n="hm_agent3_text">Atualizou o contexto do projeto</div>
+                <span class="hm-status-tag tag-sync" data-i18n="hm_agent3_status">Sincronizado</span>
+              </div>
+            </div>
+            <div class="hm-lower">
+              <div class="hm-decision">
+                <div class="hm-block-title" data-i18n="hm_decision_title">Próxima decisão</div>
+                <div class="hm-block-text" data-i18n="hm_decision_text">Validar o parceiro responsável pela implantação local.</div>
+                <div class="hm-decision-actions">
+                  <span class="hm-btn-ghost approve" data-i18n="hm_btn_approve">Aprovar</span>
+                  <span class="hm-btn-ghost" data-i18n="hm_btn_review">Revisar</span>
+                </div>
+              </div>
+              <div class="hm-context">
+                <div class="hm-block-title" data-i18n="hm_context_title">Memória do projeto</div>
+                <div class="hm-context-items">
+                  <span data-i18n="hm_context_item1">Reuniões</span>
+                  <span data-i18n="hm_context_item2">Decisões</span>
+                  <span data-i18n="hm_context_item3">Documentos</span>
+                  <span data-i18n="hm_context_item4">Indicadores</span>
+                </div>
+                <div class="hm-context-msg" data-i18n="hm_context_msg">Pessoas e agentes trabalham sobre o mesmo contexto.</div>
+              </div>
+            </div>
+            <div class="hm-activity">
+              <div class="hm-activity-item"><span class="hm-activity-dot done"></span><span data-i18n="hm_activity1">Plano atualizado</span></div>
+              <span class="hm-activity-line"></span>
+              <div class="hm-activity-item"><span class="hm-activity-dot done"></span><span data-i18n="hm_activity2">Risco identificado</span></div>
+              <span class="hm-activity-line"></span>
+              <div class="hm-activity-item"><span class="hm-activity-dot active"></span><span data-i18n="hm_activity3">Decisão solicitada</span></div>
+              <span class="hm-activity-line"></span>
+              <div class="hm-activity-item"><span class="hm-activity-dot"></span><span data-i18n="hm_activity4">Contexto sincronizado</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="hero-visual"><canvas id="arch-canvas"></canvas></div>
   </div>
 </section>
 

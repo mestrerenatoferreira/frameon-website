@@ -55,14 +55,25 @@ pt: {
   modal_err_generic:'Não foi possível enviar. Tente novamente ou entre em contato por contato@frameonlab.ai',
   /* HERO */
   hero_eyebrow:'GESTÃO AGÊNTICA DE PROJETOS',
-  hero_headline:'Projetos conduzidos por pessoas. Potencializados por <span class="grad-text">agentes de inteligência artificial</span>.',
-  hero_subhead:'O FrameOn conecta projetos, decisões e contexto para que pessoas e agentes de inteligência artificial trabalhem continuamente sobre a mesma memória organizacional.',
+  hero_headline:'Pessoas e agentes de IA trabalhando juntos em cada <span class="grad-text">projeto</span>.',
+  hero_subhead:'O FrameOn conecta projetos, decisões e contexto para que equipes e agentes de inteligência artificial executem o trabalho continuamente sobre a mesma memória organizacional.',
   hero_sub:'O FrameOn cria visibilidade contínua da execução, dos riscos e das responsabilidades da operação.',
-  hero_cta1:'Começar grátis', hero_cta2:'Ver como funciona',
-  hero_microcopy:'Sem cartão de crédito. Crie sua empresa e comece pelo primeiro projeto.',
-  hero_m1_val:'Contexto persistente', hero_m1_lbl:'Decisões e execução conectadas',
-  hero_m2_val:'Execução orientada', hero_m2_lbl:'Menos cobrança manual',
-  hero_m3_val:'Memória organizacional', hero_m3_lbl:'Conhecimento contínuo da operação',
+  hero_cta1:'Experimentar o FrameOn', hero_cta2:'Agendar demonstração',
+  hero_microcopy:'Comece com um projeto real da sua empresa.',
+  /* HERO MOCKUP */
+  hm_topbar_title:'Expansão para novos mercados',
+  hm_status_running:'Em execução',
+  hm_nav1:'Visão geral', hm_nav2:'Projetos', hm_nav3:'Decisões', hm_nav4:'Agentes', hm_nav5:'Memória',
+  hm_agent1_text:'Reorganizou o plano de execução', hm_agent1_status:'Concluído',
+  hm_agent2_text:'Identificou dependência regulatória', hm_agent2_status:'Requer decisão',
+  hm_agent3_text:'Atualizou o contexto do projeto', hm_agent3_status:'Sincronizado',
+  hm_decision_title:'Próxima decisão',
+  hm_decision_text:'Validar o parceiro responsável pela implantação local.',
+  hm_btn_approve:'Aprovar', hm_btn_review:'Revisar',
+  hm_context_title:'Memória do projeto',
+  hm_context_item1:'Reuniões', hm_context_item2:'Decisões', hm_context_item3:'Documentos', hm_context_item4:'Indicadores',
+  hm_context_msg:'Pessoas e agentes trabalham sobre o mesmo contexto.',
+  hm_activity1:'Plano atualizado', hm_activity2:'Risco identificado', hm_activity3:'Decisão solicitada', hm_activity4:'Contexto sincronizado',
   /* COMPLEXITY */
   cmplx_tag:'A nova complexidade estratégica',
   cmplx_h2:'A atuação das organizações tornou-se mais complexa do que nunca.',
@@ -321,14 +332,25 @@ en: {
   modal_err_email:'Please enter a valid corporate email.',
   modal_err_generic:'Could not send. Please try again or contact us at contato@frameonlab.ai',
   hero_eyebrow:'AGENTIC PROJECT MANAGEMENT',
-  hero_headline:'Projects led by people. Powered by <span class="grad-text">AI agents</span>.',
-  hero_subhead:'FrameOn connects projects, decisions, and context so people and AI agents can work continuously on the same organizational memory.',
+  hero_headline:'People and AI agents working together on every <span class="grad-text">project</span>.',
+  hero_subhead:'FrameOn connects projects, decisions, and context so teams and AI agents can execute work continuously on the same organizational memory.',
   hero_sub:'FrameOn connects strategy, people, and initiatives in a continuous layer of organizational intelligence driven by organizational memory, data, and artificial intelligence.',
-  hero_cta1:'Start for free', hero_cta2:'See how it works',
-  hero_microcopy:'No credit card required. Create your company and start with your first project.',
-  hero_m1_val:'Enterprise', hero_m1_lbl:'Strategic positioning',
-  hero_m2_val:'AI + Human', hero_m2_lbl:'Integrated governance',
-  hero_m3_val:'Continuous', hero_m3_lbl:'Organizational memory',
+  hero_cta1:'Try FrameOn', hero_cta2:'Book a demo',
+  hero_microcopy:'Start with a real project from your company.',
+  /* HERO MOCKUP */
+  hm_topbar_title:'Expansion into new markets',
+  hm_status_running:'In progress',
+  hm_nav1:'Overview', hm_nav2:'Projects', hm_nav3:'Decisions', hm_nav4:'Agents', hm_nav5:'Memory',
+  hm_agent1_text:'Reorganized the execution plan', hm_agent1_status:'Completed',
+  hm_agent2_text:'Identified a regulatory dependency', hm_agent2_status:'Needs a decision',
+  hm_agent3_text:'Updated the project context', hm_agent3_status:'Synced',
+  hm_decision_title:'Next decision',
+  hm_decision_text:'Validate the partner responsible for the local rollout.',
+  hm_btn_approve:'Approve', hm_btn_review:'Review',
+  hm_context_title:'Project memory',
+  hm_context_item1:'Meetings', hm_context_item2:'Decisions', hm_context_item3:'Documents', hm_context_item4:'Metrics',
+  hm_context_msg:'People and agents work on the same context.',
+  hm_activity1:'Plan updated', hm_activity2:'Risk identified', hm_activity3:'Decision requested', hm_activity4:'Context synced',
   cmplx_tag:'The new strategic complexity',
   cmplx_h2:'Organizational performance has become more complex than ever.',
   cmplx_lead:'Teams operate simultaneously with people, data, multiple systems, and artificial intelligence. Strategic initiatives emerge continuously while organizational knowledge disperses across areas and tools.',
@@ -576,14 +598,25 @@ es: {
   modal_err_email:'Por favor, ingrese un email corporativo válido.',
   modal_err_generic:'No se pudo enviar. Intente nuevamente o contáctenos en contato@frameonlab.ai',
   hero_eyebrow:'GESTIÓN AGÉNTICA DE PROYECTOS',
-  hero_headline:'Proyectos liderados por personas. Potenciados por <span class="grad-text">agentes de inteligencia artificial</span>.',
-  hero_subhead:'FrameOn conecta proyectos, decisiones y contexto para que personas y agentes de inteligencia artificial trabajen continuamente sobre la misma memoria organizacional.',
+  hero_headline:'Personas y agentes de IA trabajando juntos en cada <span class="grad-text">proyecto</span>.',
+  hero_subhead:'FrameOn conecta proyectos, decisiones y contexto para que los equipos y los agentes de inteligencia artificial ejecuten el trabajo continuamente sobre la misma memoria organizacional.',
   hero_sub:'FrameOn conecta estrategia, personas e iniciativas en una capa continua de inteligencia organizacional orientada por memoria organizacional, datos e inteligencia artificial.',
-  hero_cta1:'Empezar gratis', hero_cta2:'Ver cómo funciona',
-  hero_microcopy:'Sin tarjeta de crédito. Crea tu empresa y empieza por el primer proyecto.',
-  hero_m1_val:'Enterprise', hero_m1_lbl:'Posicionamiento estratégico',
-  hero_m2_val:'IA + Humano', hero_m2_lbl:'Gobernanza integrada',
-  hero_m3_val:'Continuo', hero_m3_lbl:'Memoria organizacional',
+  hero_cta1:'Probar FrameOn', hero_cta2:'Agendar una demo',
+  hero_microcopy:'Empieza con un proyecto real de tu empresa.',
+  /* HERO MOCKUP */
+  hm_topbar_title:'Expansión a nuevos mercados',
+  hm_status_running:'En curso',
+  hm_nav1:'Visión general', hm_nav2:'Proyectos', hm_nav3:'Decisiones', hm_nav4:'Agentes', hm_nav5:'Memoria',
+  hm_agent1_text:'Reorganizó el plan de ejecución', hm_agent1_status:'Completado',
+  hm_agent2_text:'Identificó una dependencia regulatoria', hm_agent2_status:'Requiere decisión',
+  hm_agent3_text:'Actualizó el contexto del proyecto', hm_agent3_status:'Sincronizado',
+  hm_decision_title:'Próxima decisión',
+  hm_decision_text:'Validar el socio responsable de la implementación local.',
+  hm_btn_approve:'Aprobar', hm_btn_review:'Revisar',
+  hm_context_title:'Memoria del proyecto',
+  hm_context_item1:'Reuniones', hm_context_item2:'Decisiones', hm_context_item3:'Documentos', hm_context_item4:'Indicadores',
+  hm_context_msg:'Personas y agentes trabajan sobre el mismo contexto.',
+  hm_activity1:'Plan actualizado', hm_activity2:'Riesgo identificado', hm_activity3:'Decisión solicitada', hm_activity4:'Contexto sincronizado',
   cmplx_tag:'La nueva complejidad estratégica',
   cmplx_h2:'La actuación de las organizaciones se ha vuelto más compleja que nunca.',
   cmplx_lead:'Los equipos actúan simultáneamente con personas, datos, múltiples sistemas e inteligencias artificiales. Las iniciativas estratégicas surgen continuamente mientras el conocimiento organizacional se dispersa entre áreas y herramientas.',
@@ -879,16 +912,7 @@ document.addEventListener('click',function(e){
    Substitui todos os blocos de ajuste anteriores.
    ============================================================ */
 ;(function(){
-  /* 1) 4o item "Gestao de riscos" (de riscos embaixo) */
-  function add(){
-    var row=document.querySelector('.hero-metrics');
-    if(!row||row.querySelector('[data-extra="riscos"]'))return;
-    var d=document.createElement('div'); d.className='hero-metric'; d.setAttribute('data-extra','riscos');
-    var v=document.createElement('div'); v.className='hero-metric-val'; v.innerHTML='Gestão<br>de riscos';
-    d.appendChild(v); row.appendChild(d);
-  }
-  if(document.readyState!=='loading'){add();} else {document.addEventListener('DOMContentLoaded',add);}
-  /* 2) CSS */
+  /* CSS */
   var s=document.createElement('style'); s.setAttribute('data-frameon-overrides','1');
   s.textContent=`
 /* legibilidade: aumento de fonte */
@@ -908,19 +932,13 @@ document.addEventListener('click',function(e){
 .check-item label,.radio-item label{font-size:13.5px!important}
 /* hero: composicao e ritmo */
 .hero-sub{display:none!important}
-.hero-metric-lbl{display:none!important}
-.hero-metric-val{margin-bottom:0!important}
 .hero-headline{line-height:1.06!important;margin-bottom:26px!important}
 .hero-subhead{margin-bottom:44px!important}
-.hero-metrics{margin-top:80px!important;padding-top:44px!important}
 @media(min-width:1101px){
   .hero{align-items:flex-start!important}
-  .hero-content{max-width:1320px!important;grid-template-columns:1.3fr .9fr!important;gap:80px!important;padding-top:104px!important;padding-bottom:88px!important}
-  .hero-headline{font-size:clamp(36px,4vw,52px)!important;max-width:720px!important}
-  .hero-subhead{max-width:600px!important}
-  .hero-metrics{max-width:none!important}
-  .hero-metric+.hero-metric{padding-left:16px!important}
-  .hero-metric-val{max-width:150px!important}
+  .hero-content{max-width:1320px!important;grid-template-columns:9fr 11fr!important;gap:64px!important;padding-top:104px!important;padding-bottom:88px!important}
+  .hero-headline{font-size:clamp(34px,3.6vw,48px)!important;max-width:560px!important}
+  .hero-subhead{max-width:480px!important}
 }
 `;
   document.head.appendChild(s);
