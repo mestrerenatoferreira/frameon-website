@@ -6,7 +6,7 @@ const T = {
 pt: {
   /* NAV */
   nav_platform:'Plataforma', nav_howworks:'Como funciona', nav_forwhom:'Para quem é',
-  nav_impl:'Implantação', nav_company:'Empresa', nav_blog:'Insights', nav_login:'Entrar', nav_cta:'Começar grátis',
+  nav_impl:'Implantação', nav_company:'Empresa', nav_blog:'Insights', nav_login:'Login', nav_cta:'Começar grátis',
   /* FOOTER */
   footer_tagline:'Infraestrutura de inteligência organizacional para a governança da atuação estratégica das organizações.',
   footer_company:'Uma empresa FrameOn Lab',
@@ -950,8 +950,8 @@ document.addEventListener('click',function(e){
 .check-item label,.radio-item label{font-size:13.5px!important}
 /* hero: composicao e ritmo */
 .hero-sub{display:none!important}
-.hero-headline{line-height:1.06!important;margin-bottom:26px!important}
-.hero-subhead{margin-bottom:44px!important}
+.hero-headline{line-height:1.06!important;margin-bottom:30px!important}
+.hero-subhead{margin-bottom:70px!important}
 @media(min-width:1101px){
   .hero{align-items:flex-start!important}
   .hero-content{max-width:1360px!important;grid-template-columns:38fr 62fr!important;gap:56px!important;padding-top:104px!important;padding-bottom:88px!important}
