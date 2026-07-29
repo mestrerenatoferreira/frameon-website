@@ -81,7 +81,7 @@ pt: {
   demo_lead:'Centralize projetos, decisões, contexto e acompanhamento em um ambiente preparado para o trabalho conjunto entre pessoas e agentes de inteligência artificial.',
   demo_cta:'Criar minha conta',
   demo_placeholder_title:'Prévia da plataforma',
-  demo_placeholder_sub:'Uma captura real do FrameOn em uso será adicionada aqui em breve.',
+  demo_placeholder_sub:'Representação conceitual da plataforma — a captura real será adicionada aqui em breve.',
   /* COMECE POR UM PROJETO REAL (novo) */
   start_tag:'Como começar',
   start_h2:'Comece por um projeto real',
@@ -345,7 +345,7 @@ en: {
   demo_lead:'Centralize projects, decisions, context, and tracking in one environment built for people and AI agents to work together.',
   demo_cta:'Create my account',
   demo_placeholder_title:'Platform preview',
-  demo_placeholder_sub:'A real screenshot of FrameOn in use will be added here soon.',
+  demo_placeholder_sub:'Conceptual representation of the platform — a real screenshot will be added here soon.',
   /* START WITH A REAL PROJECT (new) */
   start_tag:'Getting started',
   start_h2:'Start with one real project',
@@ -600,7 +600,7 @@ es: {
   demo_lead:'Centraliza proyectos, decisiones, contexto y seguimiento en un entorno preparado para el trabajo conjunto entre personas y agentes de inteligencia artificial.',
   demo_cta:'Crear mi cuenta',
   demo_placeholder_title:'Vista previa de la plataforma',
-  demo_placeholder_sub:'Pronto añadiremos aquí una captura real del FrameOn en uso.',
+  demo_placeholder_sub:'Representación conceptual de la plataforma — la captura real se añadirá aquí próximamente.',
   /* EMPIEZA POR UN PROYECTO REAL (nuevo) */
   start_tag:'Cómo empezar',
   start_h2:'Empieza por un proyecto real',
