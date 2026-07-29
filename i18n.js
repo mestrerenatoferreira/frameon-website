@@ -6,7 +6,7 @@ const T = {
 pt: {
   /* NAV */
   nav_platform:'Plataforma', nav_forwhom:'Para quem é',
-  nav_company:'Empresa', nav_blog:'Insights', nav_login:'Login', nav_cta:'Agendar diagnóstico',
+  nav_company:'Empresa', nav_blog:'Insights', nav_login:'Login', nav_cta:'Começar grátis',
   /* FOOTER */
   footer_tagline:'FrameOn é uma plataforma de gestão agêntica de projetos que conecta pessoas, agentes de IA, decisões e contexto.',
   footer_company:'Uma empresa FrameOn Lab',
@@ -246,7 +246,7 @@ pt: {
 /* ─────────────────────────── ENGLISH ─────────────────────────────────── */
 en: {
   nav_platform:'Platform', nav_forwhom:"Who it's for",
-  nav_company:'Company', nav_blog:'Insights', nav_login:'Sign in', nav_cta:'Schedule assessment',
+  nav_company:'Company', nav_blog:'Insights', nav_login:'Sign in', nav_cta:'Start for free',
   footer_tagline:'FrameOn is an agentic project management platform that connects people, AI agents, decisions, and context.',
   footer_company:'A FrameOn Lab company',
   footer_col_platform:'Platform', footer_link_whatis:'What is FrameOn',
@@ -472,7 +472,7 @@ en: {
 /* ─────────────────────────── SPANISH ─────────────────────────────────── */
 es: {
   nav_platform:'Plataforma', nav_forwhom:'Para quién es',
-  nav_company:'Empresa', nav_blog:'Insights', nav_login:'Iniciar sesión', nav_cta:'Agendar diagnóstico',
+  nav_company:'Empresa', nav_blog:'Insights', nav_login:'Iniciar sesión', nav_cta:'Empezar gratis',
   footer_tagline:'FrameOn es una plataforma de gestión agéntica de proyectos que conecta personas, agentes de IA, decisiones y contexto.',
   footer_company:'Una empresa FrameOn Lab',
   footer_col_platform:'Plataforma', footer_link_whatis:'Qué es FrameOn',
