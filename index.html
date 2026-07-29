@@ -11,7 +11,25 @@
 </script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>FrameOn — Infraestrutura de Inteligência Organizacional</title>
+<title>FrameOn | Gestão Agêntica de Projetos</title>
+<meta name="description" content="O FrameOn conecta projetos, decisões e contexto para que pessoas e agentes de inteligência artificial trabalhem sobre a mesma memória organizacional."/>
+<script>
+/* Corrige title/description ANTES do primeiro paint se o idioma salvo nao for PT,
+   evitando qualquer flash do titulo padrao em portugues. O fallback inicial acima
+   (PT) e o que motores de busca e compartilhamentos sem JS sempre veem. */
+(function(){
+  try{
+    var lang=localStorage.getItem('fo_lang');
+    if(lang==='en'||lang==='es'){
+      var t={en:'FrameOn | Agentic Project Management',es:'FrameOn | Gestión Agéntica de Proyectos'};
+      var d={en:'FrameOn connects projects, decisions, and context so people and AI agents work on the same organizational memory.',es:'FrameOn conecta proyectos, decisiones y contexto para que personas y agentes de inteligencia artificial trabajen sobre la misma memoria organizacional.'};
+      document.title=t[lang];
+      var m=document.querySelector('meta[name="description"]');
+      if(m) m.setAttribute('content', d[lang]);
+    }
+  }catch(e){}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -166,13 +184,143 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 .hero-subhead{font-size:clamp(19px,2vw,26px);font-weight:400;line-height:1.3;letter-spacing:-.02em;color:var(--white-dim);margin-bottom:22px;max-width:600px}
 .hero-sub{font-size:16px;font-weight:400;line-height:1.72;color:var(--white-muted);margin-bottom:28px;max-width:580px}
 .hero-ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.hero-metrics{display:flex;margin-top:36px;padding-top:22px;border-top:1px solid var(--border)}
-.hero-metric{flex:1}
-.hero-metric+.hero-metric{padding-left:32px;border-left:1px solid var(--border)}
-.hero-metric-val{font-size:20px;font-weight:600;letter-spacing:-.04em;color:var(--white-tech);margin-bottom:5px}
-.hero-metric-lbl{font-size:11.5px;color:var(--white-muted)}
-.hero-visual{position:relative;height:500px;display:flex;align-items:flex-start;justify-content:center;padding-top:20px}
-#arch-canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-microcopy{font-size:12.5px;color:var(--white-muted);margin-top:16px}
+.hero-benefits{display:flex;flex-wrap:nowrap;gap:14px;margin-top:28px}
+.hero-benefit{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--white-muted);white-space:nowrap}
+.hero-benefit-icon{display:flex;align-items:center;justify-content:center;color:var(--cyan);flex-shrink:0}
+.hero-benefit-icon svg{width:12px;height:12px;display:block}
+/* ── DEMO (Veja o FrameOn em acao) ── */
+.s-demo{background:var(--bg-deep)}
+.demo-visual{display:flex;flex-direction:column;gap:16px}
+.concept-wrap{position:relative}
+.demo-frame-badge{position:absolute;top:-11px;right:20px;font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);background:#0B1F3B;border:1px solid rgba(0,174,239,.35);padding:4px 10px;border-radius:100px;z-index:3;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.demo-visual-caption{font-size:12px;color:var(--white-muted);text-align:center;max-width:440px;margin:0 auto;line-height:1.6}
+
+/* ── Concept mockup: fictional SaaS product illustration ── */
+.concept-panel{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(30,107,255,.2);background:linear-gradient(160deg,rgba(9,24,41,.92),rgba(13,32,64,.88));box-shadow:0 30px 70px rgba(0,0,0,.4)}
+.concept-panel::before{content:'';position:absolute;top:-100px;right:-70px;width:260px;height:260px;background:radial-gradient(circle,rgba(0,174,239,.10),transparent 70%);pointer-events:none}
+.concept-topbar{position:relative;display:flex;align-items:center;gap:6px;padding:14px 18px;border-bottom:1px solid var(--border);background:rgba(4,11,20,.35)}
+.concept-dot{width:7px;height:7px;border-radius:50%;background:#2A4060}
+.concept-search{margin-left:12px;height:8px;width:100px;border-radius:4px;background:rgba(255,255,255,.06)}
+.concept-avatar{margin-left:auto;width:20px;height:20px;border-radius:50%;background:var(--grad-main);opacity:.85}
+.concept-body{position:relative;display:flex;min-height:400px}
+.concept-sidebar{width:86px;flex-shrink:0;padding:18px 12px;display:flex;flex-direction:column;gap:16px;border-right:1px solid var(--border)}
+.concept-sidebar-label{font-size:8.5px;font-weight:700;letter-spacing:.12em;color:var(--white-muted);text-transform:uppercase}
+.concept-proj{display:flex;align-items:center;gap:7px}
+.concept-proj-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.concept-proj-dot.c1{background:var(--cyan)}
+.concept-proj-dot.c2{background:var(--teal)}
+.concept-proj-dot.c3{background:#5B9FFF}
+.concept-proj-bar{flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden}
+.concept-proj-bar span{display:block;height:100%;border-radius:3px;background:var(--grad-main)}
+.concept-main{flex:1;padding:20px 22px 22px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.concept-flow{display:flex;align-items:center;gap:10px;height:24px}
+.concept-people{display:flex;flex-shrink:0}
+.concept-people span{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#1E6BFF,#00AEEF);border:2px solid #0D2040;margin-left:-8px}
+.concept-people span:first-child{margin-left:0}
+.concept-flow-line{flex:1;height:1px;background:repeating-linear-gradient(90deg,rgba(0,174,239,.45) 0 6px,transparent 6px 12px);position:relative;overflow:hidden}
+.concept-flow-line::after{content:'';position:absolute;top:-1.5px;left:-10px;width:10px;height:4px;border-radius:2px;background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:flow-move 2.6s linear infinite}
+@keyframes flow-move{0%{left:-10px}100%{left:100%}}
+.concept-flow-hub{width:8px;height:8px;border-radius:50%;background:var(--grad-main);flex-shrink:0;box-shadow:0 0 10px rgba(30,107,255,.7)}
+.concept-project{padding:16px;border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,.02)}
+.concept-project-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
+.concept-project-title{height:9px;width:56%;border-radius:4px;background:rgba(255,255,255,.15)}
+.concept-timeline{position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 3px}
+.concept-timeline::before{content:'';position:absolute;left:6px;right:6px;top:50%;height:1px;background:var(--border);transform:translateY(-50%)}
+.concept-tl-node{position:relative;width:11px;height:11px;border-radius:50%;background:var(--bg-card);border:1.5px solid rgba(255,255,255,.16)}
+.concept-tl-node.done{background:var(--grad-main);border-color:transparent}
+.concept-tl-node.active{background:var(--bg-abyss);border-color:var(--cyan);box-shadow:0 0 0 4px rgba(0,174,239,.15)}
+.concept-tl-node.active::after{content:'';position:absolute;inset:2.5px;border-radius:50%;background:var(--cyan);animation:pulse-dot 1.8s ease-in-out infinite}
+.concept-agents{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.concept-agent{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:9px;border:1px solid var(--border);background:rgba(255,255,255,.015);transition:border-color .2s}
+.concept-agent:hover{border-color:rgba(30,107,255,.3)}
+.concept-agent-icon{width:26px;height:26px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.concept-agent-icon.a1{background:rgba(0,174,239,.12);border:1px solid rgba(0,174,239,.3)}
+.concept-agent-icon.a2{background:rgba(0,203,169,.12);border:1px solid rgba(0,203,169,.3)}
+.concept-agent-icon.a3{background:rgba(30,107,255,.12);border:1px solid rgba(30,107,255,.3)}
+.concept-agent-icon.a4{background:rgba(91,159,255,.12);border:1px solid rgba(91,159,255,.3)}
+.concept-agent-icon span{width:7px;height:7px;border-radius:2px}
+.concept-agent-icon.a1 span{background:var(--cyan)}
+.concept-agent-icon.a2 span{background:var(--teal)}
+.concept-agent-icon.a3 span{background:#1E6BFF}
+.concept-agent-icon.a4 span{background:#5B9FFF}
+.concept-agent-info{min-width:0;display:flex;flex-direction:column;gap:5px}
+.concept-agent-name{font-size:10.5px;font-weight:500;color:var(--white-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.concept-tag{display:inline-flex;align-items:center;font-size:8px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2.5px 7px;border-radius:100px;width:fit-content}
+.concept-tag.t-agent{color:var(--cyan);background:rgba(0,174,239,.12)}
+.concept-tag.t-decision{color:#5B9FFF;background:rgba(91,159,255,.14)}
+.concept-tag.t-context{color:var(--teal);background:rgba(0,203,169,.12)}
+.concept-tag.t-completed{color:var(--teal);background:rgba(0,203,169,.12)}
+.concept-tag.t-review{color:var(--white-dim);background:rgba(255,255,255,.08)}
+.concept-metrics{display:flex;align-items:center;gap:18px;padding-top:2px}
+.concept-donut{width:44px;height:44px;border-radius:50%;background:conic-gradient(var(--cyan) 0turn .72turn,rgba(255,255,255,.08) .72turn 1turn);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.concept-donut::before{content:'';width:30px;height:30px;border-radius:50%;background:#0B1F3B}
+.concept-sparkline{display:flex;align-items:flex-end;gap:3px;height:30px;flex:1}
+.concept-sparkline span{flex:1;border-radius:2px 2px 0 0;background:linear-gradient(180deg,var(--cyan),rgba(0,174,239,.15))}
+@media(max-width:768px){.concept-sidebar{display:none}.concept-agents{grid-template-columns:1fr}}
+@media(max-width:768px){.demo-frame-nav{display:none}}
+/* ── START (Comece por um projeto real) ── */
+.s-start{background:var(--bg-deep)}
+
+.hero-mockup{position:relative;width:100%}
+.hero-mockup-panel{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(30,107,255,.2);background:linear-gradient(160deg,rgba(9,24,41,.92),rgba(13,32,64,.88));box-shadow:0 30px 70px rgba(0,0,0,.4)}
+.hero-mockup-panel::before{content:'';position:absolute;top:-90px;right:-70px;width:260px;height:260px;background:radial-gradient(circle,rgba(0,174,239,.10),transparent 70%);pointer-events:none}
+.hm-topbar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border);background:rgba(4,11,20,.35);flex-wrap:wrap}
+.hm-topbar-title{font-size:13px;font-weight:500;color:var(--white-tech)}
+.hm-topbar-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.hm-status-pill{font-size:10px;font-weight:600;letter-spacing:.04em;color:var(--cyan);background:rgba(0,174,239,.1);border:1px solid rgba(0,174,239,.25);padding:4px 10px;border-radius:100px;white-space:nowrap}
+.hm-progress-ring{position:relative;width:34px;height:34px;border-radius:50%;background:conic-gradient(var(--cyan) 0turn .72turn,rgba(255,255,255,.09) .72turn 1turn);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hm-progress-ring span{width:26px;height:26px;border-radius:50%;background:#0B1F3B;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--white-tech)}
+.hm-body{position:relative;display:flex}
+.hm-sidenav{width:118px;flex-shrink:0;padding:18px 12px;display:flex;flex-direction:column;gap:4px;border-right:1px solid var(--border)}
+.hm-nav-item{font-size:11px;color:var(--white-muted);padding:8px 10px;border-radius:6px}
+.hm-nav-item.active{color:var(--white-tech);background:rgba(30,107,255,.12)}
+.hm-main{flex:1;min-width:0;padding:22px 24px;display:flex;gap:22px}
+.hm-timeline{flex:1.35;min-width:0;display:flex;flex-direction:column}
+.hm-tl-row{display:flex;gap:12px}
+.hm-tl-rail{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:28px}
+.hm-tl-avatar{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#fff;flex-shrink:0;border:1px solid rgba(255,255,255,.14)}
+.hm-tl-avatar.person{background:rgba(255,255,255,.08);color:var(--white-tech)}
+.hm-tl-avatar.a-strategy{background:#1E6BFF}
+.hm-tl-avatar.a-delivery{background:var(--teal)}
+.hm-tl-avatar.a-knowledge{background:var(--cyan)}
+.hm-tl-avatar.a-risk{background:#FF6B6B}
+.hm-tl-line{width:2px;flex:1;min-height:16px;background:rgba(255,255,255,.16);margin:4px 0;border-radius:2px}
+.hm-tl-row:last-child .hm-tl-line{display:none}
+.hm-tl-content{flex:1;min-width:0;padding-bottom:16px}
+.hm-tl-name{font-size:11px;font-weight:600;color:var(--white-tech);margin-bottom:2px}
+.hm-tl-text{font-size:10.5px;color:var(--white-muted);line-height:1.4;margin-bottom:4px}
+.hm-tl-time{font-size:9px;color:var(--white-dim)}
+.hm-tl-status{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.hm-tl-status.done{color:var(--teal);background:rgba(0,203,169,.12)}
+.hm-tl-status.progress{color:var(--cyan);background:rgba(0,174,239,.12)}
+.hm-tl-status.alert{color:#FF6B6B;background:rgba(255,107,107,.12)}
+.hm-panels{flex:1;min-width:0;display:flex;flex-direction:column;gap:12px}
+.hm-decision,.hm-context,.hm-health{padding:14px 15px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.02)}
+.hm-block-title{font-size:10.5px;font-weight:600;color:var(--white-tech);margin-bottom:7px}
+.hm-block-text{font-size:10.5px;color:var(--white-muted);line-height:1.5;margin-bottom:11px}
+.hm-decision-actions{display:flex;gap:8px}
+.hm-btn-ghost{font-size:9.5px;font-weight:500;padding:5px 12px;border-radius:100px;border:1px solid var(--border);color:var(--white-muted)}
+.hm-btn-ghost.approve{color:var(--cyan);border-color:rgba(0,174,239,.35)}
+.hm-context-items{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px}
+.hm-context-items span{display:inline-flex;align-items:center;gap:5px;font-size:9px;color:var(--white-dim);background:rgba(255,255,255,.05);padding:3px 9px 3px 8px;border-radius:100px}
+.hm-context-items span b{color:var(--cyan);font-weight:600}
+.hm-context-msg{font-size:10px;color:var(--white-muted);line-height:1.5}
+.hm-health-rows{display:flex;flex-direction:column;gap:8px}
+.hm-health-row{display:flex;align-items:center;gap:8px;font-size:10px}
+.hm-health-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.hm-health-dot.ok{background:var(--teal)}
+.hm-health-dot.warn{background:#FF6B6B}
+.hm-health-label{color:var(--white-muted);flex-shrink:0}
+.hm-health-val{color:var(--white-tech);margin-left:auto;text-align:right}
+@media(max-width:640px){
+  .hm-sidenav{display:none}
+  .hm-main{flex-direction:column;padding:16px 18px;gap:20px}
+  .hm-topbar{padding:14px 16px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-mockup-panel *,.hero-mockup-panel{animation:none!important;transition:none!important}
+}
 /* SECTIONS */
 .s-complexity{background:linear-gradient(180deg,var(--bg-abyss) 0%,var(--bg-deep) 100%)}
 .complexity-layout{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center}
@@ -281,6 +429,10 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 .model-row-title{font-size:14px;font-weight:500;color:var(--white-tech);margin-bottom:3px}
 .model-row-text{font-size:12.5px;color:var(--white-muted);line-height:1.65}
 .model-note{margin-top:28px;padding:16px 18px;background:rgba(0,174,239,.05);border-radius:6px;border:1px solid rgba(0,174,239,.12);font-size:12.5px;color:var(--white-muted);display:flex;gap:10px;align-items:flex-start;line-height:1.65}
+.impl-step-cta{display:inline-block;margin-top:10px;font-size:13px;font-weight:500;color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,174,239,.35)}
+.impl-step-cta:hover{color:var(--white-tech)}
+.model-diag-link{display:inline-block;margin-top:16px;font-size:13px;color:var(--white-muted);text-decoration:underline;text-decoration-color:rgba(255,255,255,.2)}
+.model-diag-link:hover{color:var(--white-tech)}
 .s-cta{background:var(--bg-abyss);padding:140px 0;position:relative;overflow:hidden}
 .cta-glow{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(30,107,255,.08),transparent 65%),radial-gradient(ellipse 40% 40% at 60% 60%,rgba(0,203,169,.05),transparent 65%)}
 .cta-grid{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(30,107,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(30,107,255,.022) 1px,transparent 1px);background-size:64px 64px}
@@ -288,11 +440,12 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 .cta-inner h2{font-size:clamp(30px,4vw,48px);margin-bottom:22px}
 .cta-inner .lead{margin-bottom:48px;max-width:580px;margin-left:auto;margin-right:auto}
 .cta-actions{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.cta-microcopy{font-size:12.5px;color:var(--white-muted);margin-top:20px}
 .btn-cta{display:inline-flex;align-items:center;gap:10px;background:var(--grad-main);color:#fff;font-size:15px;font-weight:500;padding:16px 34px;border-radius:4px;text-decoration:none;transition:opacity .2s,transform .15s;position:relative;border:none;cursor:pointer;font-family:inherit}
 .btn-cta::after{content:'';position:absolute;inset:0;border-radius:4px;background:var(--grad-main);filter:blur(16px);opacity:0;z-index:-1;transition:opacity .3s}
 .btn-cta:hover{opacity:.9;transform:translateY(-2px)}.btn-cta:hover::after{opacity:.5}
 @media(max-width:1100px){
-  .hero-content{grid-template-columns:1fr;gap:56px}.hero-visual{display:none}
+  .hero-content{grid-template-columns:1fr;gap:56px}
   .complexity-layout,.whatis-layout,.governance-layout,.benefits-layout,.forwho-layout,.impl-layout{grid-template-columns:1fr;gap:56px}
   .arch-grid{grid-template-columns:1fr 1fr}
 }
@@ -303,12 +456,13 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
   .hero-ctas,.cta-actions{flex-direction:column;width:100%}
   .btn-grad,.btn-outline,.btn-cta{width:100%;justify-content:center}
   .cta-inner{padding:0 24px}
+  .hero-benefits{flex-wrap:wrap;gap:8px 18px}
 }
-@media(max-width:480px){.hero-metrics{flex-direction:column;gap:24px}.hero-metric{padding:0!important;border:none!important}}
+
 
 </style>
 </head>
-<body>
+<body data-seo-home>
 <!-- Netlify form detection anchor — never displayed to users -->
 <form name="diagnostico" data-netlify="true" hidden>
   <input type="hidden" name="form-name" value="diagnostico"/>
@@ -340,8 +494,8 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
       <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
       <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
     </div>
-      <a href="https://app.frameonlab.com/login" class="nav-login" target="_blank" data-i18n="nav_login">Login</a>
-      <a href="#" class="btn-nav" onclick="openModal();return false;" data-i18n="nav_cta">Agendar diagnóstico</a>
+      <a href="https://app.frameonlab.com/login" class="nav-login" data-i18n="nav_login" data-track="login_clicked" data-loc="header">Entrar</a>
+      <a href="https://app.frameonlab.com/signup" class="btn-nav" data-i18n="nav_cta" data-track="signup_cta_clicked" data-loc="header">Começar grátis</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -362,8 +516,8 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
     <li><a href="empresa.html" data-i18n="nav_company">Empresa</a></li><li><a href="insights/index.html" data-i18n="nav_blog">Insights</a></li>
   </ul>
   <div class="mob-ctas">
-    <a href="https://app.frameonlab.com/login" class="btn-outline" target="_blank" data-i18n="nav_login">Login</a>
-    <a href="#" class="btn-grad" onclick="openModal();return false;" data-i18n="nav_cta">Agendar diagnóstico</a>
+    <a href="https://app.frameonlab.com/login" class="btn-outline" data-i18n="nav_login" data-track="login_clicked" data-loc="header">Entrar</a>
+    <a href="https://app.frameonlab.com/signup" class="btn-grad" data-i18n="nav_cta" data-track="signup_cta_clicked" data-loc="header">Começar grátis</a>
   </div>
 </div>
 <div class="modal-overlay" id="diag-modal">
@@ -469,20 +623,231 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
   <div class="hero-grid-bg"></div><div class="hero-glow-1"></div><div class="hero-glow-2"></div>
   <div class="hero-content">
     <div>
-      <h1 class="hero-headline" data-i18n-html="hero_headline">A plataforma de <span class="grad-text">Gestão Agêntica</span> de Projetos.</h1>
-      <p class="hero-subhead" data-i18n="hero_subhead">Uma nova forma de orquestrar projetos com agentes de IA, memória organizacional e contexto contínuo.</p>
+      <div class="hero-eyebrow"><span class="hero-dot"></span><span data-i18n="hero_eyebrow">GESTÃO AGÊNTICA DE PROJETOS</span></div>
+      <h1 class="hero-headline" data-i18n-html="hero_headline">A IA faz parte da execução dos seus <span class="grad-text">projetos</span>.</h1>
+      <p class="hero-subhead" data-i18n="hero_subhead">Pessoas e agentes de IA trabalham sobre o mesmo contexto para executar projetos com mais velocidade e governança.</p>
       <p class="hero-sub" data-i18n="hero_sub">O FrameOn conecta estratégia, pessoas e iniciativas em uma camada contínua de inteligência organizacional orientada por memória organizacional, dados e inteligência artificial.</p>
       <div class="hero-ctas">
-        <button class="btn-grad" onclick="openModal()" data-i18n="hero_cta1">Agendar diagnóstico</button>
-        <a href="plataforma.html" class="btn-outline" data-i18n="hero_cta2">Conhecer a plataforma</a>
+        <a href="https://app.frameonlab.com/signup" class="btn-grad" data-i18n="hero_cta1" data-track="signup_cta_clicked" data-loc="hero">Começar grátis</a>
+        <a href="#" onclick="openModal();return false;" class="btn-outline" data-i18n="hero_cta2" data-track="implementation_cta_clicked" data-loc="hero">Agendar diagnóstico</a>
       </div>
-      <div class="hero-metrics">
-        <div class="hero-metric"><div class="hero-metric-val" data-i18n="hero_m1_val">Enterprise</div><div class="hero-metric-lbl" data-i18n="hero_m1_lbl">Posicionamento estratégico</div></div>
-        <div class="hero-metric"><div class="hero-metric-val" data-i18n="hero_m2_val">IA + Humano</div><div class="hero-metric-lbl" data-i18n="hero_m2_lbl">Governança integrada</div></div>
-        <div class="hero-metric"><div class="hero-metric-val" data-i18n="hero_m3_val">Contínuo</div><div class="hero-metric-lbl" data-i18n="hero_m3_lbl">Memória organizacional</div></div>
+      <div class="hero-benefits">
+        <div class="hero-benefit"><span class="hero-benefit-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="5.5" cy="4.5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 12c.5-2.8 2.3-4 4-4s3.5 1.2 4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="10.3" cy="5.3" r="1.6" stroke="currentColor" stroke-width="1.1" opacity=".55"/></svg></span><span data-i18n="hero_b1">Pessoas</span></div>
+        <div class="hero-benefit"><span class="hero-benefit-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="4.3" height="4.3" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="8.2" y="1.5" width="4.3" height="4.3" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="1.5" y="8.2" width="4.3" height="4.3" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="8.2" y="8.2" width="4.3" height="4.3" rx="1" stroke="currentColor" stroke-width="1.3"/></svg></span><span data-i18n="hero_b2">IA integrada</span></div>
+        <div class="hero-benefit"><span class="hero-benefit-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4h10M2 7h7M2 10h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span><span data-i18n="hero_b3">Memória compartilhada</span></div>
+        <div class="hero-benefit"><span class="hero-benefit-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.3l4.5 1.6v3.4c0 3-1.9 5-4.5 5.7-2.6-.7-4.5-2.7-4.5-5.7V2.9L7 1.3z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></span><span data-i18n="hero_b4">Governança</span></div>
       </div>
     </div>
-    <div class="hero-visual"><canvas id="arch-canvas"></canvas></div>
+    <div class="hero-mockup fade-up" aria-hidden="true">
+      <div class="hero-mockup-panel">
+        <div class="hm-topbar">
+          <div class="hm-topbar-title" data-i18n="hm_topbar_title">Implantação ERP — Portugal</div>
+          <div class="hm-topbar-right">
+            <span class="hm-status-pill" data-i18n="hm_status_running">Em execução</span>
+            <div class="hm-progress-ring"><span>72%</span></div>
+          </div>
+        </div>
+        <div class="hm-body">
+          <div class="hm-sidenav">
+            <div class="hm-nav-item active" data-i18n="hm_nav1">Visão geral</div>
+            <div class="hm-nav-item" data-i18n="hm_nav2">Projetos</div>
+            <div class="hm-nav-item" data-i18n="hm_nav3">Decisões</div>
+            <div class="hm-nav-item" data-i18n="hm_nav4">Agentes</div>
+            <div class="hm-nav-item" data-i18n="hm_nav5">Memória</div>
+          </div>
+          <div class="hm-main">
+            <div class="hm-timeline">
+            <div class="hm-tl-row">
+              <div class="hm-tl-rail">
+                <div class="hm-tl-avatar person">CL</div>
+                <div class="hm-tl-line"></div>
+              </div>
+              <div class="hm-tl-content">
+                <div class="hm-tl-name">Carlos Lima</div>
+                <div class="hm-tl-text" data-i18n="hm_tl1_text">aprovou orçamento</div>
+                <div class="hm-tl-time">09:41</div>
+              </div>
+              <div class="hm-tl-status done"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1.5 7l3.5 3.5 7.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div class="hm-tl-row">
+              <div class="hm-tl-rail">
+                <div class="hm-tl-avatar a-strategy"></div>
+                <div class="hm-tl-line"></div>
+              </div>
+              <div class="hm-tl-content">
+                <div class="hm-tl-name">Strategy Agent</div>
+                <div class="hm-tl-text" data-i18n="hm_tl2_text">Atualizou objetivos do projeto</div>
+                <div class="hm-tl-time">09:42</div>
+              </div>
+              <div class="hm-tl-status done"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1.5 7l3.5 3.5 7.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div class="hm-tl-row">
+              <div class="hm-tl-rail">
+                <div class="hm-tl-avatar a-delivery"></div>
+                <div class="hm-tl-line"></div>
+              </div>
+              <div class="hm-tl-content">
+                <div class="hm-tl-name">Delivery Agent</div>
+                <div class="hm-tl-text" data-i18n="hm_tl3_text">Replanejou cronograma automaticamente</div>
+                <div class="hm-tl-time">09:43</div>
+              </div>
+              <div class="hm-tl-status done"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1.5 7l3.5 3.5 7.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div class="hm-tl-row">
+              <div class="hm-tl-rail">
+                <div class="hm-tl-avatar person">MC</div>
+                <div class="hm-tl-line"></div>
+              </div>
+              <div class="hm-tl-content">
+                <div class="hm-tl-name">Marina Costa</div>
+                <div class="hm-tl-text" data-i18n="hm_tl4_text">recebeu nova atividade</div>
+                <div class="hm-tl-time">09:44</div>
+              </div>
+              <div class="hm-tl-status progress"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div class="hm-tl-row">
+              <div class="hm-tl-rail">
+                <div class="hm-tl-avatar a-knowledge"></div>
+                <div class="hm-tl-line"></div>
+              </div>
+              <div class="hm-tl-content">
+                <div class="hm-tl-name">Knowledge Agent</div>
+                <div class="hm-tl-text" data-i18n="hm_tl5_text">Atualizou o contexto compartilhado</div>
+                <div class="hm-tl-time">09:45</div>
+              </div>
+              <div class="hm-tl-status done"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1.5 7l3.5 3.5 7.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div class="hm-tl-row">
+              <div class="hm-tl-rail">
+                <div class="hm-tl-avatar a-risk"></div>
+                <div class="hm-tl-line"></div>
+              </div>
+              <div class="hm-tl-content">
+                <div class="hm-tl-name">Risk Agent</div>
+                <div class="hm-tl-text" data-i18n="hm_tl6_text">Identificou dependência regulatória</div>
+                <div class="hm-tl-time">09:46</div>
+              </div>
+              <div class="hm-tl-status alert"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.3" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v4M8 10.5h.01" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+            </div>
+            </div>
+            <div class="hm-panels">
+              <div class="hm-decision">
+                <div class="hm-block-title" data-i18n="hm_decision_title">Próxima decisão</div>
+                <div class="hm-block-text" data-i18n="hm_decision_text">Aprovar contratação do parceiro local.</div>
+                <div class="hm-decision-actions">
+                  <span class="hm-btn-ghost approve" data-i18n="hm_btn_approve">Aprovar</span>
+                  <span class="hm-btn-ghost" data-i18n="hm_btn_review">Revisar</span>
+                </div>
+              </div>
+              <div class="hm-context">
+                <div class="hm-block-title" data-i18n="hm_context_title">Memória do projeto</div>
+                <div class="hm-context-items">
+                  <span><span data-i18n="hm_context_item1">Reuniões</span><b>12</b></span>
+                  <span><span data-i18n="hm_context_item2">Decisões</span><b>7</b></span>
+                  <span><span data-i18n="hm_context_item3">Documentos</span><b>24</b></span>
+                  <span><span data-i18n="hm_context_item4">Indicadores</span><b>8</b></span>
+                </div>
+                <div class="hm-context-msg" data-i18n="hm_context_msg">Pessoas e agentes trabalham sobre o mesmo contexto.</div>
+              </div>
+              <div class="hm-health">
+                <div class="hm-block-title" data-i18n="hm_health_title">Saúde do projeto</div>
+                <div class="hm-health-rows">
+                  <div class="hm-health-row"><span class="hm-health-dot ok"></span><span class="hm-health-label" data-i18n="hm_health_1_label">Prazo</span><span class="hm-health-val" data-i18n="hm_health_1_val">Em dia</span></div>
+                  <div class="hm-health-row"><span class="hm-health-dot ok"></span><span class="hm-health-label" data-i18n="hm_health_2_label">Orçamento</span><span class="hm-health-val" data-i18n="hm_health_2_val">Dentro do previsto</span></div>
+                  <div class="hm-health-row"><span class="hm-health-dot warn"></span><span class="hm-health-label" data-i18n="hm_health_3_label">Riscos</span><span class="hm-health-val" data-i18n="hm_health_3_val">1 em aberto</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s-demo" id="como-funciona">
+  <div class="container">
+    <div class="whatis-layout">
+      <div class="fade-up">
+        <div class="tag" data-i18n="demo_tag">Como funciona</div>
+        <h2 data-i18n="demo_h2">Veja o FrameOn em ação</h2>
+        <p class="lead" style="margin-top:20px" data-i18n="demo_lead">Centralize projetos, decisões, contexto e acompanhamento em um ambiente preparado para o trabalho conjunto entre pessoas e agentes de inteligência artificial.</p>
+        <div style="margin-top:44px">
+          <a href="https://app.frameonlab.com/signup" class="btn-grad" style="font-size:14px" data-i18n="demo_cta" data-track="signup_cta_clicked" data-loc="product_demo">Criar minha conta</a>
+        </div>
+      </div>
+      <div class="demo-visual fade-up d2">
+        <div class="concept-wrap">
+        <div class="demo-frame-badge" data-i18n="demo_placeholder_title">Conceito ilustrativo</div>
+        <div class="concept-panel">
+          <div class="concept-topbar">
+            <span class="concept-dot"></span><span class="concept-dot"></span><span class="concept-dot"></span>
+            <div class="concept-search"></div>
+            <div class="concept-avatar"></div>
+          </div>
+          <div class="concept-body">
+            <div class="concept-sidebar">
+              <div class="concept-sidebar-label">Projetos</div>
+              <div class="concept-proj"><span class="concept-proj-dot c1"></span><div class="concept-proj-bar"><span style="width:74%"></span></div></div>
+              <div class="concept-proj"><span class="concept-proj-dot c2"></span><div class="concept-proj-bar"><span style="width:42%"></span></div></div>
+              <div class="concept-proj"><span class="concept-proj-dot c3"></span><div class="concept-proj-bar"><span style="width:88%"></span></div></div>
+            </div>
+            <div class="concept-main">
+              <div class="concept-flow">
+                <div class="concept-people"><span></span><span></span></div>
+                <div class="concept-flow-line"></div>
+                <div class="concept-flow-hub"></div>
+                <div class="concept-flow-line"></div>
+              </div>
+              <div class="concept-project">
+                <div class="concept-project-head">
+                  <div class="concept-project-title"></div>
+                  <span class="concept-tag t-decision">Decision</span>
+                </div>
+                <div class="concept-timeline">
+                  <div class="concept-tl-node done"></div>
+                  <div class="concept-tl-node done"></div>
+                  <div class="concept-tl-node active"></div>
+                  <div class="concept-tl-node"></div>
+                  <div class="concept-tl-node"></div>
+                </div>
+              </div>
+              <div class="concept-agents">
+                <div class="concept-agent"><div class="concept-agent-icon a1"><span></span></div><div class="concept-agent-info"><div class="concept-agent-name">Requirements Agent</div><span class="concept-tag t-agent">AI Agent</span></div></div>
+                <div class="concept-agent"><div class="concept-agent-icon a2"><span></span></div><div class="concept-agent-info"><div class="concept-agent-name">Delivery Agent</div><span class="concept-tag t-completed">Completed</span></div></div>
+                <div class="concept-agent"><div class="concept-agent-icon a3"><span></span></div><div class="concept-agent-info"><div class="concept-agent-name">Risk Agent</div><span class="concept-tag t-review">Review</span></div></div>
+                <div class="concept-agent"><div class="concept-agent-icon a4"><span></span></div><div class="concept-agent-info"><div class="concept-agent-name">Knowledge Agent</div><span class="concept-tag t-context">Context Updated</span></div></div>
+              </div>
+              <div class="concept-metrics">
+                <div class="concept-donut"></div>
+                <div class="concept-sparkline"><span style="height:38%"></span><span style="height:52%"></span><span style="height:44%"></span><span style="height:68%"></span><span style="height:92%"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="demo-visual-caption" data-i18n="demo_placeholder_sub">Ilustração conceitual da colaboração entre pessoas e agentes de IA — não representa a interface real do produto.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s-start" id="comece-projeto-real">
+  <div class="container">
+    <div class="section-header centered fade-up" style="max-width:700px;margin:0 auto 56px;text-align:center">
+      <div class="grad-line centered"></div>
+      <div class="tag" style="margin:0 auto 24px" data-i18n="start_tag">Como começar</div>
+      <h2 data-i18n="start_h2">Comece por um projeto real</h2>
+      <p class="lead" data-i18n="start_lead">Não é necessário transformar toda a organização de uma vez. Crie sua empresa, escolha um projeto e comece a construir uma memória de execução desde o primeiro dia.</p>
+    </div>
+    <div class="arch-grid">
+      <div class="arch-card fade-up"><div class="arch-card-num">01</div><div class="arch-card-title" data-i18n="start_s1_title">Crie sua empresa</div><div class="arch-card-text" data-i18n="start_s1_text">Configure seu ambiente gratuitamente em poucos minutos.</div></div>
+      <div class="arch-card fade-up d1"><div class="arch-card-num">02</div><div class="arch-card-title" data-i18n="start_s2_title">Adicione o primeiro projeto</div><div class="arch-card-text" data-i18n="start_s2_text">Registre objetivo, responsáveis, contexto, decisões e próximos passos.</div></div>
+      <div class="arch-card fade-up d2"><div class="arch-card-num">03</div><div class="arch-card-title" data-i18n="start_s3_title">Trabalhe com inteligência contextual</div><div class="arch-card-text" data-i18n="start_s3_text">Use a memória do projeto para acompanhar riscos, recuperar decisões e orientar a execução.</div></div>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="https://app.frameonlab.com/signup" class="btn-grad" data-i18n="start_cta" data-track="signup_cta_clicked" data-loc="first_project">Criar meu primeiro projeto</a>
+    </div>
   </div>
 </section>
 
@@ -516,7 +881,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
   </div>
 </section>
 
-<section class="s-whatis" id="como-funciona">
+<section class="s-whatis" id="o-que-e-frameon">
   <div class="container">
     <div class="whatis-layout">
       <div class="platform-arch fade-up">
@@ -650,22 +1015,21 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
       <div class="fade-up">
         <div class="tag" data-i18n="impl_tag">Implantação</div>
         <h2 data-i18n-html="impl_h2">Ativação estruturada e orientada por <span class="grad-text">maturidade estratégica.</span></h2>
-        <p class="lead" style="margin-top:16px" data-i18n="impl_lead">A adoção do FrameOn ocorre por meio de um processo estratégico e consultivo — não por autoatendimento.</p>
+        <p class="lead" style="margin-top:16px" data-i18n="impl_lead">Escolha o caminho que faz sentido para o momento da sua organização.</p>
         <div class="impl-steps">
-          <div class="impl-step fade-up"><div class="impl-left"><div class="impl-circle">01</div><div class="impl-line"></div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s1_title">Diagnóstico organizacional</div><div class="impl-step-text" data-i18n="impl_s1_text">Avaliação da maturidade operacional, mapeamento das iniciativas estratégicas em curso e identificação dos pontos críticos de estruturação.</div></div></div>
-          <div class="impl-step fade-up d1"><div class="impl-left"><div class="impl-circle">02</div><div class="impl-line"></div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s2_title">Ativação estratégica inicial</div><div class="impl-step-text" data-i18n="impl_s2_text">Configuração da plataforma com o contexto organizacional: iniciativas, governança operacional, memória inicial e integração com sistemas existentes.</div></div></div>
-          <div class="impl-step fade-up d2"><div class="impl-left"><div class="impl-circle">03</div><div class="impl-line"></div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s3_title">Atuação contínua e evolução</div><div class="impl-step-text" data-i18n="impl_s3_text">A plataforma passa a operar como infraestrutura viva — acumulando memória, expandindo inteligência contextual e evoluindo com a organização.</div></div></div>
-          <div class="impl-step fade-up d3"><div class="impl-left"><div class="impl-circle">04</div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s4_title">Expansão proporcional à escala</div><div class="impl-step-text" data-i18n="impl_s4_text">O nível de inteligência operacional ativado cresce com a organização — garantindo relevância estratégica em cada estágio de maturidade.</div></div></div>
+          <div class="impl-step fade-up"><div class="impl-left"><div class="impl-circle">01</div><div class="impl-line"></div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s1_title">Comece gratuitamente</div><div class="impl-step-text" data-i18n="impl_s1_text">Crie sua empresa, organize o primeiro projeto e conheça a plataforma sem cartão de crédito.</div><a href="https://app.frameonlab.com/signup" class="impl-step-cta" data-i18n="impl_s1_cta" data-track="signup_cta_clicked" data-loc="adoption">Começar grátis</a></div></div>
+          <div class="impl-step fade-up d1"><div class="impl-left"><div class="impl-circle">02</div><div class="impl-line"></div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s2_title">Estruture a adoção na organização</div><div class="impl-step-text" data-i18n="impl_s2_text">Para empresas que precisam configurar governança, importar iniciativas, integrar sistemas, preparar agentes e expandir o uso entre áreas.</div><a href="#" class="impl-step-cta" onclick="openModal();return false;" data-i18n="impl_s2_cta" data-track="implementation_cta_clicked" data-loc="adoption">Falar sobre implantação</a></div></div>
+          <div class="impl-step fade-up d2"><div class="impl-left"><div class="impl-circle">03</div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s3_title">Amplie conforme a operação evolui</div><div class="impl-step-text" data-i18n="impl_s3_text">Leve o FrameOn para novos projetos, equipes e agentes à medida que a organização desenvolve sua forma de trabalho.</div></div></div>
         </div>
       </div>
       <div class="fade-up d2">
         <div class="model-card">
-          <div class="model-card-title" data-i18n="impl_model_title">Modelo de contratação</div>
-          <div class="model-card-sub" data-i18n="impl_model_sub">O FrameOn é contratado como uma camada estratégica da atuação empresarial — não como software por usuário.</div>
-          <div class="model-row"><div class="model-dot"></div><div><div class="model-row-title" data-i18n="impl_m1_title">Ativação inicial estruturada</div><div class="model-row-text" data-i18n="impl_m1_text">Setup estratégico que configura a plataforma com o contexto, governança e iniciativas da sua organização.</div></div></div>
-          <div class="model-row"><div class="model-dot"></div><div><div class="model-row-title" data-i18n="impl_m2_title">Infraestrutura em assinatura mensal</div><div class="model-row-text" data-i18n="impl_m2_text">Acesso contínuo à plataforma como infraestrutura estratégica da atuação organizacional.</div></div></div>
-          <div class="model-row"><div class="model-dot"></div><div><div class="model-row-title" data-i18n="impl_m3_title">Evolução proporcional à escala</div><div class="model-row-text" data-i18n="impl_m3_text">A inteligência operacional ativada cresce com a organização, mantendo relevância estratégica em cada estágio.</div></div></div>
-          <div class="model-note"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;color:var(--cyan);margin-top:1px"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 7.5v4M8 5.5h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span data-i18n="impl_note">O FrameOn não opera com planos por usuário, preços públicos ou autoatendimento. A contratação ocorre por processo consultivo, dimensionado pela escala e complexidade de cada organização.</span></div>
+          <div class="model-card-title" data-i18n="impl_model_title">Um modelo que acompanha a evolução da organização</div>
+          <div class="model-card-sub" data-i18n="impl_model_sub">Comece gratuitamente com um ambiente inicial do FrameOn. Para implantações corporativas, integrações, maior capacidade de inteligência artificial e recursos avançados de governança, oferecemos uma configuração dimensionada conforme a operação.</div>
+          <div class="model-row"><div class="model-dot"></div><div><div class="model-row-title" data-i18n="impl_m1_title">Começar gratuitamente</div><div class="model-row-text" data-i18n="impl_m1_text">Para conhecer a plataforma e iniciar o primeiro projeto.</div></div></div>
+          <div class="model-row"><div class="model-dot"></div><div><div class="model-row-title" data-i18n="impl_m2_title">Implantação organizacional</div><div class="model-row-text" data-i18n="impl_m2_text">Para empresas que precisam de configuração assistida, governança, integrações e expansão entre áreas.</div></div></div>
+          <div class="model-note"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;color:var(--cyan);margin-top:1px"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 7.5v4M8 5.5h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span data-i18n="impl_note">Sem tabela de preços pública — a configuração é dimensionada conforme a operação.</span></div>
+          <a href="#" class="model-diag-link" onclick="openModal();return false;" data-i18n="impl_diag_link" data-track="implementation_cta_clicked" data-loc="adoption">Solicitar diagnóstico</a>
         </div>
       </div>
     </div>
@@ -675,13 +1039,14 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 <section class="s-cta" id="diagnostico">
   <div class="cta-glow"></div><div class="cta-grid"></div>
   <div class="cta-inner">
-    <div class="tag" style="margin:0 auto 28px" data-i18n="cta_tag">Próximo passo</div>
-    <h2 data-i18n-html="cta_h2">Estruture a atuação estratégica da sua organização na <span class="grad-text">nova era organizacional.</span></h2>
-    <p class="lead" data-i18n="cta_lead">Descubra como o FrameOn pode organizar a complexidade e ampliar a capacidade de realização da sua organização. Comece com um diagnóstico consultivo.</p>
+    <div class="tag" style="margin:0 auto 28px" data-i18n="cta_tag">Comece agora</div>
+    <h2 data-i18n-html="cta_h2">Comece a construir a memória do seu primeiro <span class="grad-text">projeto</span>.</h2>
+    <p class="lead" data-i18n="cta_lead">Crie sua empresa gratuitamente e reúna projetos, decisões e contexto em um ambiente preparado para pessoas e agentes de inteligência artificial.</p>
     <div class="cta-actions">
-      <button class="btn-cta" onclick="openModal()" data-i18n="cta_btn1">Agendar diagnóstico</button>
-      <a href="plataforma.html" class="btn-outline" data-i18n="cta_btn2">Conhecer a plataforma</a>
+      <a href="https://app.frameonlab.com/signup" class="btn-cta" data-i18n="cta_btn1" data-track="signup_cta_clicked" data-loc="final_cta">Começar grátis</a>
+      <a href="#" class="btn-outline" onclick="openModal();return false;" data-i18n="cta_btn2" data-track="implementation_cta_clicked" data-loc="final_cta">Falar sobre implantação</a>
     </div>
+    <p class="cta-microcopy" data-i18n="cta_microcopy">Sem cartão de crédito.</p>
   </div>
 </section>
 
@@ -701,6 +1066,8 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
           <li><a href="index.html#arquitetura" data-i18n="footer_link_arch">Arquitetura conceitual</a></li>
           <li><a href="index.html#implantacao" data-i18n="footer_link_impl">Implantação</a></li>
           <li><a href="index.html#implantacao" data-i18n="footer_link_pricing">Modelo de contratação</a></li>
+          <li><a href="https://app.frameonlab.com/login" data-i18n="footer_link_login" data-track="login_clicked" data-loc="footer">Entrar na plataforma</a></li>
+          <li><a href="https://app.frameonlab.com/signup" data-i18n="footer_link_signup" data-track="signup_cta_clicked" data-loc="footer">Criar conta grátis</a></li>
         </ul>
       </div>
       <div>
