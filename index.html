@@ -295,15 +295,23 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 .hm-tl-status.progress{color:var(--cyan);background:rgba(0,174,239,.12)}
 .hm-tl-status.alert{color:#FF6B6B;background:rgba(255,107,107,.12)}
 .hm-panels{flex:1;min-width:0;display:flex;flex-direction:column;gap:12px}
-.hm-decision,.hm-context{padding:14px 15px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.02)}
+.hm-decision,.hm-context,.hm-health{padding:14px 15px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.02)}
 .hm-block-title{font-size:10.5px;font-weight:600;color:var(--white-tech);margin-bottom:7px}
 .hm-block-text{font-size:10.5px;color:var(--white-muted);line-height:1.5;margin-bottom:11px}
 .hm-decision-actions{display:flex;gap:8px}
 .hm-btn-ghost{font-size:9.5px;font-weight:500;padding:5px 12px;border-radius:100px;border:1px solid var(--border);color:var(--white-muted)}
 .hm-btn-ghost.approve{color:var(--cyan);border-color:rgba(0,174,239,.35)}
 .hm-context-items{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px}
-.hm-context-items span{font-size:9px;color:var(--white-dim);background:rgba(255,255,255,.05);padding:3px 8px;border-radius:100px}
+.hm-context-items span{display:inline-flex;align-items:center;gap:5px;font-size:9px;color:var(--white-dim);background:rgba(255,255,255,.05);padding:3px 9px 3px 8px;border-radius:100px}
+.hm-context-items span b{color:var(--cyan);font-weight:600}
 .hm-context-msg{font-size:10px;color:var(--white-muted);line-height:1.5}
+.hm-health-rows{display:flex;flex-direction:column;gap:8px}
+.hm-health-row{display:flex;align-items:center;gap:8px;font-size:10px}
+.hm-health-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.hm-health-dot.ok{background:var(--teal)}
+.hm-health-dot.warn{background:#FF6B6B}
+.hm-health-label{color:var(--white-muted);flex-shrink:0}
+.hm-health-val{color:var(--white-tech);margin-left:auto;text-align:right}
 @media(max-width:640px){
   .hm-sidenav{display:none}
   .hm-main{flex-direction:column;padding:16px 18px;gap:20px}
@@ -732,12 +740,20 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
               <div class="hm-context">
                 <div class="hm-block-title" data-i18n="hm_context_title">Memória do projeto</div>
                 <div class="hm-context-items">
-                  <span data-i18n="hm_context_item1">Reuniões</span>
-                  <span data-i18n="hm_context_item2">Decisões</span>
-                  <span data-i18n="hm_context_item3">Documentos</span>
-                  <span data-i18n="hm_context_item4">Indicadores</span>
+                  <span><span data-i18n="hm_context_item1">Reuniões</span><b>12</b></span>
+                  <span><span data-i18n="hm_context_item2">Decisões</span><b>7</b></span>
+                  <span><span data-i18n="hm_context_item3">Documentos</span><b>24</b></span>
+                  <span><span data-i18n="hm_context_item4">Indicadores</span><b>8</b></span>
                 </div>
                 <div class="hm-context-msg" data-i18n="hm_context_msg">Pessoas e agentes trabalham sobre o mesmo contexto.</div>
+              </div>
+              <div class="hm-health">
+                <div class="hm-block-title" data-i18n="hm_health_title">Saúde do projeto</div>
+                <div class="hm-health-rows">
+                  <div class="hm-health-row"><span class="hm-health-dot ok"></span><span class="hm-health-label" data-i18n="hm_health_1_label">Prazo</span><span class="hm-health-val" data-i18n="hm_health_1_val">Em dia</span></div>
+                  <div class="hm-health-row"><span class="hm-health-dot ok"></span><span class="hm-health-label" data-i18n="hm_health_2_label">Orçamento</span><span class="hm-health-val" data-i18n="hm_health_2_val">Dentro do previsto</span></div>
+                  <div class="hm-health-row"><span class="hm-health-dot warn"></span><span class="hm-health-label" data-i18n="hm_health_3_label">Riscos</span><span class="hm-health-val" data-i18n="hm_health_3_val">1 em aberto</span></div>
+                </div>
               </div>
             </div>
           </div>
