@@ -6,7 +6,7 @@ const T = {
 pt: {
   /* NAV */
   nav_platform:'Plataforma', nav_forwhom:'Para quem é',
-  nav_company:'Empresa', nav_blog:'Insights', nav_login:'Login', nav_cta:'Começar grátis',
+  nav_company:'Quem somos', nav_blog:'Insights', nav_login:'Login', nav_cta:'Começar grátis',
   /* FOOTER */
   footer_tagline:'FrameOn é uma plataforma de gestão agêntica de projetos que conecta pessoas, agentes de IA, decisões e contexto.',
   footer_company:'Uma empresa FrameOn Lab',
@@ -223,7 +223,6 @@ pt: {
   terms_updated:'Última atualização: janeiro de 2025',
   legal_notice:'',
   /* EMPRESA PAGE */
-  emp_tag:'Empresa',
   emp_hero_h1:'FrameOn <span class="grad-text">Lab.</span>',
   quemsomos_label:'Quem somos',
   quemsomos_p1:'A FrameOn Lab desenvolve tecnologias para coordenar projetos em organizações onde pessoas e agentes de inteligência artificial passam a trabalhar continuamente sobre o mesmo contexto.',
@@ -243,7 +242,7 @@ pt: {
 /* ─────────────────────────── ENGLISH ─────────────────────────────────── */
 en: {
   nav_platform:'Platform', nav_forwhom:"Who it's for",
-  nav_company:'Company', nav_blog:'Insights', nav_login:'Sign in', nav_cta:'Start for free',
+  nav_company:'Who we are', nav_blog:'Insights', nav_login:'Sign in', nav_cta:'Start for free',
   footer_tagline:'FrameOn is an agentic project management platform that connects people, AI agents, decisions, and context.',
   footer_company:'A FrameOn Lab company',
   footer_col_platform:'Platform', footer_link_whatis:'Platform',
@@ -446,7 +445,6 @@ en: {
   terms_updated:'Last updated: January 2025',
   legal_notice:'ℹ️ This is an informational translation. The legally binding version of this document is the Portuguese original.',
   /* EMPRESA PAGE */
-  emp_tag:'Company',
   emp_hero_h1:'FrameOn <span class="grad-text">Lab.</span>',
   quemsomos_label:'Who we are',
   quemsomos_p1:'FrameOn Lab builds technology to coordinate projects in organizations where people and AI agents work continuously over the same context.',
@@ -466,7 +464,7 @@ en: {
 /* ─────────────────────────── SPANISH ─────────────────────────────────── */
 es: {
   nav_platform:'Plataforma', nav_forwhom:'Para quién es',
-  nav_company:'Empresa', nav_blog:'Insights', nav_login:'Iniciar sesión', nav_cta:'Empezar gratis',
+  nav_company:'Quiénes somos', nav_blog:'Insights', nav_login:'Iniciar sesión', nav_cta:'Empezar gratis',
   footer_tagline:'FrameOn es una plataforma de gestión agéntica de proyectos que conecta personas, agentes de IA, decisiones y contexto.',
   footer_company:'Una empresa FrameOn Lab',
   footer_col_platform:'Plataforma', footer_link_whatis:'Plataforma',
@@ -669,7 +667,6 @@ es: {
   terms_updated:'Última actualización: enero de 2025',
   legal_notice:'ℹ️ Esta es una traducción informativa. El documento legalmente vinculante es la versión en Portugués.',
   /* EMPRESA PAGE */
-  emp_tag:'Empresa',
   emp_hero_h1:'FrameOn <span class="grad-text">Lab.</span>',
   quemsomos_label:'Quiénes somos',
   quemsomos_p1:'FrameOn Lab desarrolla tecnologías para coordinar proyectos en organizaciones donde personas y agentes de inteligencia artificial pasan a trabajar continuamente sobre el mismo contexto.',

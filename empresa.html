@@ -34,6 +34,9 @@ body{background:var(--bg-abyss);color:var(--white-tech);font-family:var(--font);
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg-abyss)}::-webkit-scrollbar-thumb{background:#1A3560;border-radius:3px}
 .grad-text{background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .tag{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);background:rgba(0,174,239,.07);border:1px solid rgba(0,174,239,.2);padding:6px 14px;border-radius:2px;margin-bottom:28px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(0,174,239,.22);padding:7px 16px;border-radius:100px;margin-bottom:40px;background:rgba(0,174,239,.06)}
+.hero-dot{width:5px;height:5px;border-radius:50%;background:var(--grad-main);flex-shrink:0;animation:pulse-dot 2.5s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
 .tag::before{content:'';width:4px;height:4px;background:var(--grad-main);border-radius:50%;flex-shrink:0}
 h1,h2{font-weight:600;letter-spacing:-.03em;line-height:1.12;color:var(--white-tech)}
 h2{font-size:clamp(28px,3.2vw,44px);margin-bottom:22px}
@@ -185,18 +188,15 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 
 /* ── EMPRESA PAGE ── */
 /* Hero: fully content-driven — overrides global section{padding:110px 0} */
-.emp-hero{position:relative;display:block;overflow:hidden;padding:70px 0 90px;background:var(--bg-abyss)}
+.emp-hero{position:relative;display:block;overflow:hidden;padding:172px 0 90px;background:var(--bg-abyss)}
 .emp-hero-glow{position:absolute;z-index:0;pointer-events:none;width:900px;height:580px;background:radial-gradient(ellipse,rgba(30,107,255,.10) 0%,rgba(0,174,239,.04) 45%,transparent 70%);top:50%;left:55%;transform:translate(-25%,-55%)}
 .emp-hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(30,107,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(30,107,255,.025) 1px,transparent 1px);background-size:72px 72px;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 65% 40%,black 20%,transparent 70%);mask-image:radial-gradient(ellipse 70% 70% at 65% 40%,black 20%,transparent 70%)}
 .emp-hero-inner{position:relative;z-index:2;max-width:1220px;margin:0 auto;padding:0 48px}
-.emp-hero h1{font-size:clamp(44px,4.2vw,66px);font-weight:600;line-height:1.03;letter-spacing:-.04em;color:var(--white-tech);margin-bottom:34px;max-width:560px}
+.emp-hero .hero-eyebrow{margin-bottom:26px}
+.emp-hero h1{font-size:clamp(44px,4.2vw,66px);font-weight:600;line-height:1.03;letter-spacing:-.04em;color:var(--white-tech);margin-bottom:38px;max-width:560px}
 .emp-hero-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:80px;align-items:start}
 .emp-left-col{padding-top:0}
-
-/* ── Títulos editoriais das duas colunas (EMPRESA / QUEM SOMOS) ── */
-.section-title{font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
-.emp-left-col > .section-title{margin-bottom:20px}
-.founder-col > .section-title{margin-bottom:32px}
+.founder-col{padding-top:59px}
 
 /* ── QUEM SOMOS (coluna esquerda) ── */
 .quemsomos-text{font-size:18px;line-height:1.7;color:rgba(190,205,222,.78);max-width:600px;margin-bottom:22px}
@@ -228,8 +228,9 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
   .founder-photo-wrap{width:200px;height:200px}
 }
 @media(max-width:900px){
-  .emp-hero{padding:96px 0 64px}
+  .emp-hero{padding:132px 0 64px}
   .emp-hero-layout{grid-template-columns:1fr;gap:48px}
+  .founder-col{padding-top:0}
   .founder-row{flex-direction:column;align-items:center;gap:20px}
   .founder-photo-wrap{width:200px;height:200px}
   .founder-text{text-align:left;width:100%}
@@ -269,7 +270,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
     <ul class="nav-links">
       <li><a href="index.html#plataforma" data-i18n="nav_platform">Plataforma</a></li>
       <li><a href="index.html#para-quem" data-i18n="nav_forwhom">Para quem é</a></li>
-      <li><a href="empresa.html" data-i18n="nav_company">Empresa</a></li><li><a href="insights/index.html" data-i18n="nav_blog">Insights</a></li>
+      <li><a href="empresa.html" data-i18n="nav_company">Quem somos</a></li><li><a href="insights/index.html" data-i18n="nav_blog">Insights</a></li>
     </ul>
     <div class="nav-actions">
       <div class="lang-switch">
@@ -294,7 +295,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
   <ul>
     <li><a href="index.html#plataforma" data-i18n="nav_platform">Plataforma</a></li>
     <li><a href="index.html#para-quem" data-i18n="nav_forwhom">Para quem é</a></li>
-    <li><a href="empresa.html" data-i18n="nav_company">Empresa</a></li><li><a href="insights/index.html" data-i18n="nav_blog">Insights</a></li>
+    <li><a href="empresa.html" data-i18n="nav_company">Quem somos</a></li><li><a href="insights/index.html" data-i18n="nav_blog">Insights</a></li>
   </ul>
   <div class="mob-ctas">
     <a href="https://app.frameonlab.com/login" class="btn-outline" data-i18n="nav_login" data-track="login_clicked" data-loc="header">Login</a>
@@ -407,14 +408,13 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
   <div class="emp-hero-inner">
     <div class="emp-hero-layout">
       <div class="fade-up emp-left-col">
-        <div class="section-title" data-i18n="emp_tag">Empresa</div>
+        <div class="hero-eyebrow"><span class="hero-dot"></span><span data-i18n="quemsomos_label">Quem somos</span></div>
         <h1 data-i18n-html="emp_hero_h1">FrameOn <span class="grad-text">Lab.</span></h1>
         <p class="quemsomos-text" data-i18n="quemsomos_p1">A FrameOn Lab desenvolve tecnologias para coordenar projetos em organizações onde pessoas e agentes de inteligência artificial passam a trabalhar continuamente sobre o mesmo contexto.</p>
         <p class="quemsomos-text" data-i18n="quemsomos_p2">Criamos o FrameOn porque acreditamos que a próxima geração de plataformas corporativas não será definida apenas por automação, mas pela capacidade de preservar memória organizacional, conectar decisões e fortalecer a governança em ambientes cada vez mais complexos.</p>
         <p class="quemsomos-text" data-i18n="quemsomos_p3">Nossa missão é transformar contexto organizacional em capacidade contínua de realização, permitindo que pessoas e agentes de IA trabalhem de forma coordenada, segura e alinhada aos objetivos da organização.</p>
       </div>
       <div class="founder-col fade-up d2">
-        <div class="section-title" data-i18n="quemsomos_label">Quem somos</div>
         <div class="founder-row">
           <div class="founder-photo-wrap">
             <picture>
