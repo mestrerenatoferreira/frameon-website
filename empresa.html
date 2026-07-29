@@ -185,28 +185,31 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 
 /* ── EMPRESA PAGE ── */
 /* Hero: fully content-driven — overrides global section{padding:110px 0} */
-.emp-hero{position:relative;display:block;overflow:hidden;padding:64px 0 88px;background:var(--bg-abyss)}
+.emp-hero{position:relative;display:block;overflow:hidden;padding:70px 0 90px;background:var(--bg-abyss)}
 .emp-hero-glow{position:absolute;z-index:0;pointer-events:none;width:900px;height:580px;background:radial-gradient(ellipse,rgba(30,107,255,.10) 0%,rgba(0,174,239,.04) 45%,transparent 70%);top:50%;left:55%;transform:translate(-25%,-55%)}
 .emp-hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(30,107,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(30,107,255,.025) 1px,transparent 1px);background-size:72px 72px;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 65% 40%,black 20%,transparent 70%);mask-image:radial-gradient(ellipse 70% 70% at 65% 40%,black 20%,transparent 70%)}
-.emp-hero-inner{position:relative;z-index:2;max-width:1220px;margin:0 auto;padding:20px 48px 0}
-.emp-hero .tag{margin-bottom:14px}
+.emp-hero-inner{position:relative;z-index:2;max-width:1220px;margin:0 auto;padding:0 48px}
+.emp-hero .tag{margin-bottom:18px}
 .emp-hero h1{font-size:clamp(38px,4.6vw,66px);font-weight:600;line-height:1.0;letter-spacing:-.04em;color:var(--white-tech);margin-bottom:0;max-width:560px}
-.emp-hero-layout{display:grid;grid-template-columns:3fr 2fr;gap:68px;align-items:start}
+.emp-hero-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(380px,0.85fr);column-gap:88px;align-items:start}
+.emp-left-col{padding-top:48px}
 
-/* ── QUEM SOMOS (coluna esquerda, ~60%) ── */
-.quemsomos-label{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-top:42px;margin-bottom:20px}
-.quemsomos-text{font-size:17px;line-height:1.85;color:var(--white-muted);max-width:600px;margin-bottom:20px}
+/* ── QUEM SOMOS (coluna esquerda) ── */
+.quemsomos-label{font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-top:34px;margin-bottom:20px}
+.quemsomos-text{font-size:18px;line-height:1.72;color:rgba(190,205,222,.78);max-width:650px;margin-bottom:22px}
 .quemsomos-text:last-child{margin-bottom:0}
 
-/* ── JOÃO LANZAROTTO (coluna direita, ~40%) ── */
+/* ── JOÃO LANZAROTTO (coluna direita) ── */
 .founder-col{padding-top:0}
 .founder-photo-wrap{position:relative;width:240px;height:240px;margin:0 auto 24px}
 .founder-photo-wrap::before{content:'';position:absolute;inset:-8px;border-radius:50%;background:radial-gradient(circle,rgba(0,174,239,.25) 0%,transparent 70%);filter:blur(6px);z-index:0}
 .founder-photo{position:relative;z-index:1;display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;border:1px solid rgba(0,174,239,.35);box-shadow:0 0 32px rgba(0,174,239,.12)}
-.founder-col h2{font-size:19px;font-weight:600;letter-spacing:-.02em;color:var(--white-tech);margin-bottom:3px;text-align:left}
-.founder-role{font-size:14px;font-weight:500;color:var(--cyan);margin-bottom:20px;text-align:left}
-.founder-bio{font-size:15px;line-height:1.8;color:var(--white-muted);max-width:380px;margin:0 0 14px;text-align:left}
-.founder-linkedin{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:9px 16px;border:1px solid var(--border-mid);border-radius:8px;color:var(--white-tech);font-size:13px;font-weight:500;text-decoration:none;transition:border-color .25s,background .25s}
+.founder-text{width:100%;max-width:430px;margin-left:auto;margin-right:auto;text-align:left}
+.founder-text h2{font-size:22px;line-height:1.2;font-weight:700;letter-spacing:-.02em;color:var(--white-tech);margin-bottom:6px}
+.founder-role{font-size:16px;line-height:1.4;font-weight:600;color:var(--cyan);margin-bottom:24px}
+.founder-bio{font-size:17px;line-height:1.65;color:rgba(190,205,222,.78);margin:0 0 18px}
+.founder-bio:last-of-type{margin-bottom:0}
+.founder-linkedin{display:inline-flex;align-items:center;gap:8px;margin-top:24px;padding:8px 16px;border:1px solid var(--border-mid);border-radius:8px;color:var(--white-tech);font-size:13px;font-weight:500;text-decoration:none;transition:border-color .25s,background .25s}
 .founder-linkedin:hover{border-color:var(--cyan);background:rgba(0,174,239,.06)}
 
 /* ── CTA SECTION ── */
@@ -216,17 +219,23 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 .emp-cta-inner p{color:var(--white-muted);font-size:14.5px;line-height:1.72;margin-bottom:28px}
 
 /* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  .emp-hero-layout{column-gap:56px}
+  .emp-left-col{padding-top:32px}
+}
 @media(max-width:900px){
-  .emp-hero{padding-bottom:64px}
+  .emp-hero{padding:56px 0 64px}
   .emp-hero-layout{grid-template-columns:1fr;gap:48px}
-  .founder-col{padding-top:8px;border-top:1px solid var(--border)}
-  .emp-hero-inner{padding:24px 24px 0}
+  .emp-left-col{padding-top:0}
+  .emp-hero-inner{padding:0 24px}
   .container{padding:0 24px}
 }
 @media(max-width:600px){
   .s-emp-cta{padding:36px 0}
   .emp-hero h1{font-size:clamp(32px,8vw,52px)}
   .founder-photo-wrap{width:180px;height:180px}
+  .quemsomos-text{font-size:17px}
+  .founder-bio{font-size:16px}
 }
 
 </style>
@@ -391,7 +400,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
   <div class="emp-hero-glow"></div>
   <div class="emp-hero-inner">
     <div class="emp-hero-layout">
-      <div class="fade-up">
+      <div class="fade-up emp-left-col">
         <div class="tag" data-i18n="emp_tag">Empresa</div>
         <h1 data-i18n-html="emp_hero_h1">FrameOn <span class="grad-text">Lab.</span></h1>
         <div class="quemsomos-label" data-i18n="quemsomos_label">Quem somos</div>
@@ -406,14 +415,16 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
             <img src="img/joao-lanzarotto-circle.jpg" alt="João Lanzarotto" class="founder-photo" width="240" height="240" loading="lazy">
           </picture>
         </div>
-        <h2 data-i18n="founder_name">João Lanzarotto</h2>
-        <div class="founder-role" data-i18n="founder_role">Co-founder &amp; CTO</div>
-        <p class="founder-bio" data-i18n="founder_bio1">João Lanzarotto é cofundador e CTO da FrameOn Lab, atuando como arquiteto principal da plataforma. Lidera a arquitetura e a evolução do FrameOn, conectando projetos, decisões, contexto e memória organizacional em uma única camada de gestão agêntica.</p>
-        <p class="founder-bio" data-i18n="founder_bio2">Com experiência em arquitetura de sistemas, inteligência artificial e automação corporativa, integra IA generativa e agentes inteligentes aos processos de negócio — transformando contexto organizacional em governança, execução e resultado.</p>
-        <a href="https://www.linkedin.com/in/joaolanzarotto/" target="_blank" rel="noopener" class="founder-linkedin" data-track="linkedin_click" data-loc="empresa">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-          <span data-i18n="founder_linkedin">Perfil no LinkedIn</span>
-        </a>
+        <div class="founder-text">
+          <h2 data-i18n="founder_name">João Lanzarotto</h2>
+          <div class="founder-role" data-i18n="founder_role">Co-founder &amp; CTO</div>
+          <p class="founder-bio" data-i18n="founder_bio1">João Lanzarotto é cofundador e CTO da FrameOn Lab, atuando como arquiteto principal da plataforma. Lidera a arquitetura e a evolução do FrameOn, conectando projetos, decisões, contexto e memória organizacional em uma única camada de gestão agêntica.</p>
+          <p class="founder-bio" data-i18n="founder_bio2">Com experiência em arquitetura de sistemas, inteligência artificial e automação corporativa, integra IA generativa e agentes inteligentes aos processos de negócio — transformando contexto organizacional em governança, execução e resultado.</p>
+          <a href="https://www.linkedin.com/in/joaolanzarotto/" target="_blank" rel="noopener" class="founder-linkedin" data-track="linkedin_click" data-loc="empresa">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            <span data-i18n="founder_linkedin">Perfil no LinkedIn</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
