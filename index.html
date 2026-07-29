@@ -11,7 +11,8 @@
 </script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>FrameOn — Infraestrutura de Inteligência Organizacional</title>
+<title>FrameOn | Gestão Agêntica de Projetos</title>
+<meta name="description" content="O FrameOn conecta projetos, decisões e contexto para que pessoas e agentes de inteligência artificial trabalhem sobre a mesma memória organizacional."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -166,6 +167,15 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 .hero-subhead{font-size:clamp(19px,2vw,26px);font-weight:400;line-height:1.3;letter-spacing:-.02em;color:var(--white-dim);margin-bottom:22px;max-width:600px}
 .hero-sub{font-size:16px;font-weight:400;line-height:1.72;color:var(--white-muted);margin-bottom:28px;max-width:580px}
 .hero-ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.hero-microcopy{font-size:12.5px;color:var(--white-muted);margin-top:16px}
+/* ── DEMO (Veja o FrameOn em acao) ── */
+.s-demo{background:var(--bg-deep)}
+.demo-placeholder{height:380px;border:1px dashed rgba(0,174,239,.3);border-radius:12px;background:rgba(13,30,56,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:32px}
+.demo-placeholder-title{font-size:15px;font-weight:500;color:var(--white-tech)}
+.demo-placeholder-sub{font-size:13px;color:var(--white-muted);max-width:280px;line-height:1.6}
+/* ── START (Comece por um projeto real) ── */
+.s-start{background:var(--bg-deep)}
+
 .hero-metrics{display:flex;margin-top:36px;padding-top:22px;border-top:1px solid var(--border)}
 .hero-metric{flex:1}
 .hero-metric+.hero-metric{padding-left:32px;border-left:1px solid var(--border)}
@@ -281,6 +291,10 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 .model-row-title{font-size:14px;font-weight:500;color:var(--white-tech);margin-bottom:3px}
 .model-row-text{font-size:12.5px;color:var(--white-muted);line-height:1.65}
 .model-note{margin-top:28px;padding:16px 18px;background:rgba(0,174,239,.05);border-radius:6px;border:1px solid rgba(0,174,239,.12);font-size:12.5px;color:var(--white-muted);display:flex;gap:10px;align-items:flex-start;line-height:1.65}
+.impl-step-cta{display:inline-block;margin-top:10px;font-size:13px;font-weight:500;color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,174,239,.35)}
+.impl-step-cta:hover{color:var(--white-tech)}
+.model-diag-link{display:inline-block;margin-top:16px;font-size:13px;color:var(--white-muted);text-decoration:underline;text-decoration-color:rgba(255,255,255,.2)}
+.model-diag-link:hover{color:var(--white-tech)}
 .s-cta{background:var(--bg-abyss);padding:140px 0;position:relative;overflow:hidden}
 .cta-glow{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(30,107,255,.08),transparent 65%),radial-gradient(ellipse 40% 40% at 60% 60%,rgba(0,203,169,.05),transparent 65%)}
 .cta-grid{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(30,107,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(30,107,255,.022) 1px,transparent 1px);background-size:64px 64px}
@@ -288,6 +302,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 .cta-inner h2{font-size:clamp(30px,4vw,48px);margin-bottom:22px}
 .cta-inner .lead{margin-bottom:48px;max-width:580px;margin-left:auto;margin-right:auto}
 .cta-actions{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.cta-microcopy{font-size:12.5px;color:var(--white-muted);margin-top:20px}
 .btn-cta{display:inline-flex;align-items:center;gap:10px;background:var(--grad-main);color:#fff;font-size:15px;font-weight:500;padding:16px 34px;border-radius:4px;text-decoration:none;transition:opacity .2s,transform .15s;position:relative;border:none;cursor:pointer;font-family:inherit}
 .btn-cta::after{content:'';position:absolute;inset:0;border-radius:4px;background:var(--grad-main);filter:blur(16px);opacity:0;z-index:-1;transition:opacity .3s}
 .btn-cta:hover{opacity:.9;transform:translateY(-2px)}.btn-cta:hover::after{opacity:.5}
@@ -308,7 +323,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 
 </style>
 </head>
-<body>
+<body data-seo-home>
 <!-- Netlify form detection anchor — never displayed to users -->
 <form name="diagnostico" data-netlify="true" hidden>
   <input type="hidden" name="form-name" value="diagnostico"/>
@@ -340,8 +355,8 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
       <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
       <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
     </div>
-      <a href="https://app.frameonlab.com/login" class="nav-login" target="_blank" data-i18n="nav_login">Login</a>
-      <a href="#" class="btn-nav" onclick="openModal();return false;" data-i18n="nav_cta">Agendar diagnóstico</a>
+      <a href="https://app.frameonlab.com/login" class="nav-login" data-i18n="nav_login" data-track="login_clicked" data-loc="header">Entrar</a>
+      <a href="https://app.frameonlab.com/signup" class="btn-nav" data-i18n="nav_cta" data-track="signup_cta_clicked" data-loc="header">Começar grátis</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -362,8 +377,8 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
     <li><a href="empresa.html" data-i18n="nav_company">Empresa</a></li><li><a href="insights/index.html" data-i18n="nav_blog">Insights</a></li>
   </ul>
   <div class="mob-ctas">
-    <a href="https://app.frameonlab.com/login" class="btn-outline" target="_blank" data-i18n="nav_login">Login</a>
-    <a href="#" class="btn-grad" onclick="openModal();return false;" data-i18n="nav_cta">Agendar diagnóstico</a>
+    <a href="https://app.frameonlab.com/login" class="btn-outline" data-i18n="nav_login" data-track="login_clicked" data-loc="header">Entrar</a>
+    <a href="https://app.frameonlab.com/signup" class="btn-grad" data-i18n="nav_cta" data-track="signup_cta_clicked" data-loc="header">Começar grátis</a>
   </div>
 </div>
 <div class="modal-overlay" id="diag-modal">
@@ -469,13 +484,15 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
   <div class="hero-grid-bg"></div><div class="hero-glow-1"></div><div class="hero-glow-2"></div>
   <div class="hero-content">
     <div>
-      <h1 class="hero-headline" data-i18n-html="hero_headline">A plataforma de <span class="grad-text">Gestão Agêntica</span> de Projetos.</h1>
-      <p class="hero-subhead" data-i18n="hero_subhead">Uma nova forma de orquestrar projetos com agentes de IA, memória organizacional e contexto contínuo.</p>
+      <div class="hero-eyebrow"><span class="hero-dot"></span><span data-i18n="hero_eyebrow">GESTÃO AGÊNTICA DE PROJETOS</span></div>
+      <h1 class="hero-headline" data-i18n-html="hero_headline">Projetos conduzidos por pessoas. Potencializados por <span class="grad-text">agentes de inteligência artificial</span>.</h1>
+      <p class="hero-subhead" data-i18n="hero_subhead">O FrameOn conecta projetos, decisões e contexto para que pessoas e agentes de inteligência artificial trabalhem continuamente sobre a mesma memória organizacional.</p>
       <p class="hero-sub" data-i18n="hero_sub">O FrameOn conecta estratégia, pessoas e iniciativas em uma camada contínua de inteligência organizacional orientada por memória organizacional, dados e inteligência artificial.</p>
       <div class="hero-ctas">
-        <button class="btn-grad" onclick="openModal()" data-i18n="hero_cta1">Agendar diagnóstico</button>
-        <a href="plataforma.html" class="btn-outline" data-i18n="hero_cta2">Conhecer a plataforma</a>
+        <a href="https://app.frameonlab.com/signup" class="btn-grad" data-i18n="hero_cta1" data-track="signup_cta_clicked" data-loc="hero">Começar grátis</a>
+        <a href="#como-funciona" class="btn-outline" data-i18n="hero_cta2" data-track="how_it_works_clicked" data-loc="hero">Ver como funciona</a>
       </div>
+      <p class="hero-microcopy" data-i18n="hero_microcopy">Sem cartão de crédito. Crie sua empresa e comece pelo primeiro projeto.</p>
       <div class="hero-metrics">
         <div class="hero-metric"><div class="hero-metric-val" data-i18n="hero_m1_val">Enterprise</div><div class="hero-metric-lbl" data-i18n="hero_m1_lbl">Posicionamento estratégico</div></div>
         <div class="hero-metric"><div class="hero-metric-val" data-i18n="hero_m2_val">IA + Humano</div><div class="hero-metric-lbl" data-i18n="hero_m2_lbl">Governança integrada</div></div>
@@ -483,6 +500,45 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
       </div>
     </div>
     <div class="hero-visual"><canvas id="arch-canvas"></canvas></div>
+  </div>
+</section>
+
+<section class="s-demo" id="como-funciona">
+  <div class="container">
+    <div class="whatis-layout">
+      <div class="fade-up">
+        <div class="tag" data-i18n="demo_tag">Como funciona</div>
+        <h2 data-i18n="demo_h2">Veja o FrameOn em ação</h2>
+        <p class="lead" style="margin-top:20px" data-i18n="demo_lead">Centralize projetos, decisões, contexto e acompanhamento em um ambiente preparado para o trabalho conjunto entre pessoas e agentes de inteligência artificial.</p>
+        <div style="margin-top:44px">
+          <a href="https://app.frameonlab.com/signup" class="btn-grad" style="font-size:14px" data-i18n="demo_cta" data-track="signup_cta_clicked" data-loc="product_demo">Criar minha conta</a>
+        </div>
+      </div>
+      <div class="demo-placeholder fade-up d2">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="4" y="4" width="32" height="32" rx="6" stroke="#00AEEF" stroke-width="1.4" stroke-dasharray="3 3"/><path d="M14 26l5-6 4 4 7-9" stroke="#00AEEF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="demo-placeholder-title" data-i18n="demo_placeholder_title">Prévia da plataforma</div>
+        <div class="demo-placeholder-sub" data-i18n="demo_placeholder_sub">Uma captura real do FrameOn em uso será adicionada aqui em breve.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s-start" id="comece-projeto-real">
+  <div class="container">
+    <div class="section-header centered fade-up" style="max-width:700px;margin:0 auto 56px;text-align:center">
+      <div class="grad-line centered"></div>
+      <div class="tag" style="margin:0 auto 24px" data-i18n="start_tag">Como começar</div>
+      <h2 data-i18n="start_h2">Comece por um projeto real</h2>
+      <p class="lead" data-i18n="start_lead">Não é necessário transformar toda a organização de uma vez. Crie sua empresa, escolha um projeto e comece a construir uma memória de execução desde o primeiro dia.</p>
+    </div>
+    <div class="arch-grid">
+      <div class="arch-card fade-up"><div class="arch-card-num">01</div><div class="arch-card-title" data-i18n="start_s1_title">Crie sua empresa</div><div class="arch-card-text" data-i18n="start_s1_text">Configure seu ambiente gratuitamente em poucos minutos.</div></div>
+      <div class="arch-card fade-up d1"><div class="arch-card-num">02</div><div class="arch-card-title" data-i18n="start_s2_title">Adicione o primeiro projeto</div><div class="arch-card-text" data-i18n="start_s2_text">Registre objetivo, responsáveis, contexto, decisões e próximos passos.</div></div>
+      <div class="arch-card fade-up d2"><div class="arch-card-num">03</div><div class="arch-card-title" data-i18n="start_s3_title">Trabalhe com inteligência contextual</div><div class="arch-card-text" data-i18n="start_s3_text">Use a memória do projeto para acompanhar riscos, recuperar decisões e orientar a execução.</div></div>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="https://app.frameonlab.com/signup" class="btn-grad" data-i18n="start_cta" data-track="signup_cta_clicked" data-loc="first_project">Criar meu primeiro projeto</a>
+    </div>
   </div>
 </section>
 
@@ -516,7 +572,7 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
   </div>
 </section>
 
-<section class="s-whatis" id="como-funciona">
+<section class="s-whatis" id="o-que-e-frameon">
   <div class="container">
     <div class="whatis-layout">
       <div class="platform-arch fade-up">
@@ -650,22 +706,21 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
       <div class="fade-up">
         <div class="tag" data-i18n="impl_tag">Implantação</div>
         <h2 data-i18n-html="impl_h2">Ativação estruturada e orientada por <span class="grad-text">maturidade estratégica.</span></h2>
-        <p class="lead" style="margin-top:16px" data-i18n="impl_lead">A adoção do FrameOn ocorre por meio de um processo estratégico e consultivo — não por autoatendimento.</p>
+        <p class="lead" style="margin-top:16px" data-i18n="impl_lead">Escolha o caminho que faz sentido para o momento da sua organização.</p>
         <div class="impl-steps">
-          <div class="impl-step fade-up"><div class="impl-left"><div class="impl-circle">01</div><div class="impl-line"></div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s1_title">Diagnóstico organizacional</div><div class="impl-step-text" data-i18n="impl_s1_text">Avaliação da maturidade operacional, mapeamento das iniciativas estratégicas em curso e identificação dos pontos críticos de estruturação.</div></div></div>
-          <div class="impl-step fade-up d1"><div class="impl-left"><div class="impl-circle">02</div><div class="impl-line"></div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s2_title">Ativação estratégica inicial</div><div class="impl-step-text" data-i18n="impl_s2_text">Configuração da plataforma com o contexto organizacional: iniciativas, governança operacional, memória inicial e integração com sistemas existentes.</div></div></div>
-          <div class="impl-step fade-up d2"><div class="impl-left"><div class="impl-circle">03</div><div class="impl-line"></div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s3_title">Atuação contínua e evolução</div><div class="impl-step-text" data-i18n="impl_s3_text">A plataforma passa a operar como infraestrutura viva — acumulando memória, expandindo inteligência contextual e evoluindo com a organização.</div></div></div>
-          <div class="impl-step fade-up d3"><div class="impl-left"><div class="impl-circle">04</div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s4_title">Expansão proporcional à escala</div><div class="impl-step-text" data-i18n="impl_s4_text">O nível de inteligência operacional ativado cresce com a organização — garantindo relevância estratégica em cada estágio de maturidade.</div></div></div>
+          <div class="impl-step fade-up"><div class="impl-left"><div class="impl-circle">01</div><div class="impl-line"></div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s1_title">Comece gratuitamente</div><div class="impl-step-text" data-i18n="impl_s1_text">Crie sua empresa, organize o primeiro projeto e conheça a plataforma sem cartão de crédito.</div><a href="https://app.frameonlab.com/signup" class="impl-step-cta" data-i18n="impl_s1_cta" data-track="signup_cta_clicked" data-loc="adoption">Começar grátis</a></div></div>
+          <div class="impl-step fade-up d1"><div class="impl-left"><div class="impl-circle">02</div><div class="impl-line"></div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s2_title">Estruture a adoção na organização</div><div class="impl-step-text" data-i18n="impl_s2_text">Para empresas que precisam configurar governança, importar iniciativas, integrar sistemas, preparar agentes e expandir o uso entre áreas.</div><a href="#" class="impl-step-cta" onclick="openModal();return false;" data-i18n="impl_s2_cta" data-track="implementation_cta_clicked" data-loc="adoption">Falar sobre implantação</a></div></div>
+          <div class="impl-step fade-up d2"><div class="impl-left"><div class="impl-circle">03</div></div><div class="impl-body"><div class="impl-step-title" data-i18n="impl_s3_title">Amplie conforme a operação evolui</div><div class="impl-step-text" data-i18n="impl_s3_text">Leve o FrameOn para novos projetos, equipes e agentes à medida que a organização desenvolve sua forma de trabalho.</div></div></div>
         </div>
       </div>
       <div class="fade-up d2">
         <div class="model-card">
-          <div class="model-card-title" data-i18n="impl_model_title">Modelo de contratação</div>
-          <div class="model-card-sub" data-i18n="impl_model_sub">O FrameOn é contratado como uma camada estratégica da atuação empresarial — não como software por usuário.</div>
-          <div class="model-row"><div class="model-dot"></div><div><div class="model-row-title" data-i18n="impl_m1_title">Ativação inicial estruturada</div><div class="model-row-text" data-i18n="impl_m1_text">Setup estratégico que configura a plataforma com o contexto, governança e iniciativas da sua organização.</div></div></div>
-          <div class="model-row"><div class="model-dot"></div><div><div class="model-row-title" data-i18n="impl_m2_title">Infraestrutura em assinatura mensal</div><div class="model-row-text" data-i18n="impl_m2_text">Acesso contínuo à plataforma como infraestrutura estratégica da atuação organizacional.</div></div></div>
-          <div class="model-row"><div class="model-dot"></div><div><div class="model-row-title" data-i18n="impl_m3_title">Evolução proporcional à escala</div><div class="model-row-text" data-i18n="impl_m3_text">A inteligência operacional ativada cresce com a organização, mantendo relevância estratégica em cada estágio.</div></div></div>
-          <div class="model-note"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;color:var(--cyan);margin-top:1px"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 7.5v4M8 5.5h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span data-i18n="impl_note">O FrameOn não opera com planos por usuário, preços públicos ou autoatendimento. A contratação ocorre por processo consultivo, dimensionado pela escala e complexidade de cada organização.</span></div>
+          <div class="model-card-title" data-i18n="impl_model_title">Um modelo que acompanha a evolução da organização</div>
+          <div class="model-card-sub" data-i18n="impl_model_sub">Comece gratuitamente com um ambiente inicial do FrameOn. Para implantações corporativas, integrações, maior capacidade de inteligência artificial e recursos avançados de governança, oferecemos uma configuração dimensionada conforme a operação.</div>
+          <div class="model-row"><div class="model-dot"></div><div><div class="model-row-title" data-i18n="impl_m1_title">Começar gratuitamente</div><div class="model-row-text" data-i18n="impl_m1_text">Para conhecer a plataforma e iniciar o primeiro projeto.</div></div></div>
+          <div class="model-row"><div class="model-dot"></div><div><div class="model-row-title" data-i18n="impl_m2_title">Implantação organizacional</div><div class="model-row-text" data-i18n="impl_m2_text">Para empresas que precisam de configuração assistida, governança, integrações e expansão entre áreas.</div></div></div>
+          <div class="model-note"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0;color:var(--cyan);margin-top:1px"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 7.5v4M8 5.5h.01" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg><span data-i18n="impl_note">Sem tabela de preços pública — a configuração é dimensionada conforme a operação.</span></div>
+          <a href="#" class="model-diag-link" onclick="openModal();return false;" data-i18n="impl_diag_link" data-track="implementation_cta_clicked" data-loc="adoption">Solicitar diagnóstico</a>
         </div>
       </div>
     </div>
@@ -675,13 +730,14 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 <section class="s-cta" id="diagnostico">
   <div class="cta-glow"></div><div class="cta-grid"></div>
   <div class="cta-inner">
-    <div class="tag" style="margin:0 auto 28px" data-i18n="cta_tag">Próximo passo</div>
-    <h2 data-i18n-html="cta_h2">Estruture a atuação estratégica da sua organização na <span class="grad-text">nova era organizacional.</span></h2>
-    <p class="lead" data-i18n="cta_lead">Descubra como o FrameOn pode organizar a complexidade e ampliar a capacidade de realização da sua organização. Comece com um diagnóstico consultivo.</p>
+    <div class="tag" style="margin:0 auto 28px" data-i18n="cta_tag">Comece agora</div>
+    <h2 data-i18n-html="cta_h2">Comece a construir a memória do seu primeiro <span class="grad-text">projeto</span>.</h2>
+    <p class="lead" data-i18n="cta_lead">Crie sua empresa gratuitamente e reúna projetos, decisões e contexto em um ambiente preparado para pessoas e agentes de inteligência artificial.</p>
     <div class="cta-actions">
-      <button class="btn-cta" onclick="openModal()" data-i18n="cta_btn1">Agendar diagnóstico</button>
-      <a href="plataforma.html" class="btn-outline" data-i18n="cta_btn2">Conhecer a plataforma</a>
+      <a href="https://app.frameonlab.com/signup" class="btn-cta" data-i18n="cta_btn1" data-track="signup_cta_clicked" data-loc="final_cta">Começar grátis</a>
+      <a href="#" class="btn-outline" onclick="openModal();return false;" data-i18n="cta_btn2" data-track="implementation_cta_clicked" data-loc="final_cta">Falar sobre implantação</a>
     </div>
+    <p class="cta-microcopy" data-i18n="cta_microcopy">Sem cartão de crédito.</p>
   </div>
 </section>
 
@@ -701,6 +757,8 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
           <li><a href="index.html#arquitetura" data-i18n="footer_link_arch">Arquitetura conceitual</a></li>
           <li><a href="index.html#implantacao" data-i18n="footer_link_impl">Implantação</a></li>
           <li><a href="index.html#implantacao" data-i18n="footer_link_pricing">Modelo de contratação</a></li>
+          <li><a href="https://app.frameonlab.com/login" data-i18n="footer_link_login" data-track="login_clicked" data-loc="footer">Entrar na plataforma</a></li>
+          <li><a href="https://app.frameonlab.com/signup" data-i18n="footer_link_signup" data-track="signup_cta_clicked" data-loc="footer">Criar conta grátis</a></li>
         </ul>
       </div>
       <div>
