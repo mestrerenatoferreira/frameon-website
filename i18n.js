@@ -58,7 +58,7 @@ pt: {
   hero_headline:'A IA faz parte da execução dos seus <span class="grad-text">projetos</span>.',
   hero_subhead:'Pessoas e agentes de IA trabalham sobre o mesmo contexto para executar projetos com mais velocidade e governança.',
   hero_sub:'O FrameOn cria visibilidade contínua da execução, dos riscos e das responsabilidades da operação.',
-  hero_cta1:'Criar meu primeiro projeto', hero_cta2:'Agendar demonstração',
+  hero_cta1:'Começar grátis', hero_cta2:'Agendar diagnóstico',
   hero_b1:'Pessoas', hero_b2:'IA integrada', hero_b3:'Memória compartilhada', hero_b4:'Governança',
   /* HERO MOCKUP */
   hm_topbar_title:'Implantação ERP — Portugal',
@@ -341,7 +341,7 @@ en: {
   hero_headline:'AI is now part of how your <span class="grad-text">projects</span> run.',
   hero_subhead:'People and AI agents work on the same context to run projects faster, with more governance.',
   hero_sub:'FrameOn connects strategy, people, and initiatives in a continuous layer of organizational intelligence driven by organizational memory, data, and artificial intelligence.',
-  hero_cta1:'Create my first project', hero_cta2:'Book a demo',
+  hero_cta1:'Start for free', hero_cta2:'Schedule assessment',
   hero_b1:'People', hero_b2:'Integrated AI', hero_b3:'Shared memory', hero_b4:'Governance',
   /* HERO MOCKUP */
   hm_topbar_title:'ERP Rollout — Portugal',
@@ -613,7 +613,7 @@ es: {
   hero_headline:'La IA forma parte de la ejecución de tus <span class="grad-text">proyectos</span>.',
   hero_subhead:'Personas y agentes de IA trabajan sobre el mismo contexto para ejecutar proyectos con más velocidad y gobernanza.',
   hero_sub:'FrameOn conecta estrategia, personas e iniciativas en una capa continua de inteligencia organizacional orientada por memoria organizacional, datos e inteligencia artificial.',
-  hero_cta1:'Crear mi primer proyecto', hero_cta2:'Agendar una demo',
+  hero_cta1:'Empezar gratis', hero_cta2:'Agendar diagnóstico',
   hero_b1:'Personas', hero_b2:'IA integrada', hero_b3:'Memoria compartida', hero_b4:'Gobernanza',
   /* HERO MOCKUP */
   hm_topbar_title:'Implementación ERP — Portugal',
