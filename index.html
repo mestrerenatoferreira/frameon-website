@@ -188,23 +188,72 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 /* ── DEMO (Veja o FrameOn em acao) ── */
 .s-demo{background:var(--bg-deep)}
 .demo-visual{display:flex;flex-direction:column;gap:16px}
-.demo-frame{position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(30,107,255,.22);background:linear-gradient(135deg,#091829,#0D2040);box-shadow:0 24px 60px rgba(0,0,0,.35)}
-.demo-frame-badge{position:absolute;top:14px;right:14px;font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);background:rgba(0,174,239,.1);border:1px solid rgba(0,174,239,.25);padding:4px 10px;border-radius:100px;z-index:2}
-.demo-frame-bar{display:flex;align-items:center;gap:6px;padding:14px 16px;border-bottom:1px solid var(--border);background:rgba(4,11,20,.4)}
-.demo-dot{width:7px;height:7px;border-radius:50%;background:#2A4060}
-.demo-frame-url{margin-left:10px;height:8px;width:120px;border-radius:4px;background:rgba(255,255,255,.06)}
-.demo-frame-body{display:flex;min-height:320px}
-.demo-frame-nav{width:64px;padding:20px 10px;display:flex;flex-direction:column;gap:12px;border-right:1px solid var(--border)}
-.demo-nav-item{height:8px;border-radius:4px;background:rgba(255,255,255,.07)}
-.demo-nav-item.active{background:var(--grad-main)}
-.demo-frame-content{flex:1;padding:24px;display:flex;flex-direction:column;gap:16px}
-.demo-content-row{height:10px;width:55%;border-radius:4px;background:rgba(255,255,255,.09)}
-.demo-card{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:8px}
-.demo-card-line{height:7px;border-radius:4px;background:rgba(255,255,255,.09)}
-.demo-card-line.w70{width:70%}.demo-card-line.w60{width:60%}.demo-card-line.w50{width:50%}.demo-card-line.w40{width:40%}.demo-card-line.w30{width:30%}
-.demo-card-agent{flex-direction:row;align-items:center;gap:10px;border-color:rgba(0,174,239,.3);background:rgba(0,174,239,.05)}
-.demo-agent-dot{width:16px;height:16px;border-radius:50%;background:var(--grad-main);flex-shrink:0;box-shadow:0 0 12px rgba(30,107,255,.6)}
-.demo-visual-caption{font-size:12px;color:var(--white-muted);text-align:center}
+.concept-wrap{position:relative}
+.demo-frame-badge{position:absolute;top:-11px;right:20px;font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);background:#0B1F3B;border:1px solid rgba(0,174,239,.35);padding:4px 10px;border-radius:100px;z-index:3;box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.demo-visual-caption{font-size:12px;color:var(--white-muted);text-align:center;max-width:440px;margin:0 auto;line-height:1.6}
+
+/* ── Concept mockup: fictional SaaS product illustration ── */
+.concept-panel{position:relative;border-radius:16px;overflow:hidden;border:1px solid rgba(30,107,255,.2);background:linear-gradient(160deg,rgba(9,24,41,.92),rgba(13,32,64,.88));box-shadow:0 30px 70px rgba(0,0,0,.4)}
+.concept-panel::before{content:'';position:absolute;top:-100px;right:-70px;width:260px;height:260px;background:radial-gradient(circle,rgba(0,174,239,.10),transparent 70%);pointer-events:none}
+.concept-topbar{position:relative;display:flex;align-items:center;gap:6px;padding:14px 18px;border-bottom:1px solid var(--border);background:rgba(4,11,20,.35)}
+.concept-dot{width:7px;height:7px;border-radius:50%;background:#2A4060}
+.concept-search{margin-left:12px;height:8px;width:100px;border-radius:4px;background:rgba(255,255,255,.06)}
+.concept-avatar{margin-left:auto;width:20px;height:20px;border-radius:50%;background:var(--grad-main);opacity:.85}
+.concept-body{position:relative;display:flex;min-height:400px}
+.concept-sidebar{width:86px;flex-shrink:0;padding:18px 12px;display:flex;flex-direction:column;gap:16px;border-right:1px solid var(--border)}
+.concept-sidebar-label{font-size:8.5px;font-weight:700;letter-spacing:.12em;color:var(--white-muted);text-transform:uppercase}
+.concept-proj{display:flex;align-items:center;gap:7px}
+.concept-proj-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.concept-proj-dot.c1{background:var(--cyan)}
+.concept-proj-dot.c2{background:var(--teal)}
+.concept-proj-dot.c3{background:#5B9FFF}
+.concept-proj-bar{flex:1;height:5px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden}
+.concept-proj-bar span{display:block;height:100%;border-radius:3px;background:var(--grad-main)}
+.concept-main{flex:1;padding:20px 22px 22px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.concept-flow{display:flex;align-items:center;gap:10px;height:24px}
+.concept-people{display:flex;flex-shrink:0}
+.concept-people span{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#1E6BFF,#00AEEF);border:2px solid #0D2040;margin-left:-8px}
+.concept-people span:first-child{margin-left:0}
+.concept-flow-line{flex:1;height:1px;background:repeating-linear-gradient(90deg,rgba(0,174,239,.45) 0 6px,transparent 6px 12px);position:relative;overflow:hidden}
+.concept-flow-line::after{content:'';position:absolute;top:-1.5px;left:-10px;width:10px;height:4px;border-radius:2px;background:var(--cyan);box-shadow:0 0 8px var(--cyan);animation:flow-move 2.6s linear infinite}
+@keyframes flow-move{0%{left:-10px}100%{left:100%}}
+.concept-flow-hub{width:8px;height:8px;border-radius:50%;background:var(--grad-main);flex-shrink:0;box-shadow:0 0 10px rgba(30,107,255,.7)}
+.concept-project{padding:16px;border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,.02)}
+.concept-project-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
+.concept-project-title{height:9px;width:56%;border-radius:4px;background:rgba(255,255,255,.15)}
+.concept-timeline{position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 3px}
+.concept-timeline::before{content:'';position:absolute;left:6px;right:6px;top:50%;height:1px;background:var(--border);transform:translateY(-50%)}
+.concept-tl-node{position:relative;width:11px;height:11px;border-radius:50%;background:var(--bg-card);border:1.5px solid rgba(255,255,255,.16)}
+.concept-tl-node.done{background:var(--grad-main);border-color:transparent}
+.concept-tl-node.active{background:var(--bg-abyss);border-color:var(--cyan);box-shadow:0 0 0 4px rgba(0,174,239,.15)}
+.concept-tl-node.active::after{content:'';position:absolute;inset:2.5px;border-radius:50%;background:var(--cyan);animation:pulse-dot 1.8s ease-in-out infinite}
+.concept-agents{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.concept-agent{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:9px;border:1px solid var(--border);background:rgba(255,255,255,.015);transition:border-color .2s}
+.concept-agent:hover{border-color:rgba(30,107,255,.3)}
+.concept-agent-icon{width:26px;height:26px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.concept-agent-icon.a1{background:rgba(0,174,239,.12);border:1px solid rgba(0,174,239,.3)}
+.concept-agent-icon.a2{background:rgba(0,203,169,.12);border:1px solid rgba(0,203,169,.3)}
+.concept-agent-icon.a3{background:rgba(30,107,255,.12);border:1px solid rgba(30,107,255,.3)}
+.concept-agent-icon.a4{background:rgba(91,159,255,.12);border:1px solid rgba(91,159,255,.3)}
+.concept-agent-icon span{width:7px;height:7px;border-radius:2px}
+.concept-agent-icon.a1 span{background:var(--cyan)}
+.concept-agent-icon.a2 span{background:var(--teal)}
+.concept-agent-icon.a3 span{background:#1E6BFF}
+.concept-agent-icon.a4 span{background:#5B9FFF}
+.concept-agent-info{min-width:0;display:flex;flex-direction:column;gap:5px}
+.concept-agent-name{font-size:10.5px;font-weight:500;color:var(--white-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.concept-tag{display:inline-flex;align-items:center;font-size:8px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2.5px 7px;border-radius:100px;width:fit-content}
+.concept-tag.t-agent{color:var(--cyan);background:rgba(0,174,239,.12)}
+.concept-tag.t-decision{color:#5B9FFF;background:rgba(91,159,255,.14)}
+.concept-tag.t-context{color:var(--teal);background:rgba(0,203,169,.12)}
+.concept-tag.t-completed{color:var(--teal);background:rgba(0,203,169,.12)}
+.concept-tag.t-review{color:var(--white-dim);background:rgba(255,255,255,.08)}
+.concept-metrics{display:flex;align-items:center;gap:18px;padding-top:2px}
+.concept-donut{width:44px;height:44px;border-radius:50%;background:conic-gradient(var(--cyan) 0turn .72turn,rgba(255,255,255,.08) .72turn 1turn);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.concept-donut::before{content:'';width:30px;height:30px;border-radius:50%;background:#0B1F3B}
+.concept-sparkline{display:flex;align-items:flex-end;gap:3px;height:30px;flex:1}
+.concept-sparkline span{flex:1;border-radius:2px 2px 0 0;background:linear-gradient(180deg,var(--cyan),rgba(0,174,239,.15))}
+@media(max-width:768px){.concept-sidebar{display:none}.concept-agents{grid-template-columns:1fr}}
 @media(max-width:768px){.demo-frame-nav{display:none}}
 /* ── START (Comece por um projeto real) ── */
 .s-start{background:var(--bg-deep)}
@@ -548,28 +597,56 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
         </div>
       </div>
       <div class="demo-visual fade-up d2">
-        <div class="demo-frame">
-          <div class="demo-frame-badge" data-i18n="demo_placeholder_title">Prévia da plataforma</div>
-          <div class="demo-frame-bar">
-            <span class="demo-dot"></span><span class="demo-dot"></span><span class="demo-dot"></span>
-            <div class="demo-frame-url"></div>
+        <div class="concept-wrap">
+        <div class="demo-frame-badge" data-i18n="demo_placeholder_title">Conceito ilustrativo</div>
+        <div class="concept-panel">
+          <div class="concept-topbar">
+            <span class="concept-dot"></span><span class="concept-dot"></span><span class="concept-dot"></span>
+            <div class="concept-search"></div>
+            <div class="concept-avatar"></div>
           </div>
-          <div class="demo-frame-body">
-            <div class="demo-frame-nav">
-              <div class="demo-nav-item active"></div>
-              <div class="demo-nav-item"></div>
-              <div class="demo-nav-item"></div>
-              <div class="demo-nav-item"></div>
+          <div class="concept-body">
+            <div class="concept-sidebar">
+              <div class="concept-sidebar-label">Projetos</div>
+              <div class="concept-proj"><span class="concept-proj-dot c1"></span><div class="concept-proj-bar"><span style="width:74%"></span></div></div>
+              <div class="concept-proj"><span class="concept-proj-dot c2"></span><div class="concept-proj-bar"><span style="width:42%"></span></div></div>
+              <div class="concept-proj"><span class="concept-proj-dot c3"></span><div class="concept-proj-bar"><span style="width:88%"></span></div></div>
             </div>
-            <div class="demo-frame-content">
-              <div class="demo-content-row"></div>
-              <div class="demo-card"><div class="demo-card-line w70"></div><div class="demo-card-line w40"></div></div>
-              <div class="demo-card"><div class="demo-card-line w60"></div><div class="demo-card-line w30"></div></div>
-              <div class="demo-card demo-card-agent"><div class="demo-agent-dot"></div><div class="demo-card-line w50"></div></div>
+            <div class="concept-main">
+              <div class="concept-flow">
+                <div class="concept-people"><span></span><span></span></div>
+                <div class="concept-flow-line"></div>
+                <div class="concept-flow-hub"></div>
+                <div class="concept-flow-line"></div>
+              </div>
+              <div class="concept-project">
+                <div class="concept-project-head">
+                  <div class="concept-project-title"></div>
+                  <span class="concept-tag t-decision">Decision</span>
+                </div>
+                <div class="concept-timeline">
+                  <div class="concept-tl-node done"></div>
+                  <div class="concept-tl-node done"></div>
+                  <div class="concept-tl-node active"></div>
+                  <div class="concept-tl-node"></div>
+                  <div class="concept-tl-node"></div>
+                </div>
+              </div>
+              <div class="concept-agents">
+                <div class="concept-agent"><div class="concept-agent-icon a1"><span></span></div><div class="concept-agent-info"><div class="concept-agent-name">Requirements Agent</div><span class="concept-tag t-agent">AI Agent</span></div></div>
+                <div class="concept-agent"><div class="concept-agent-icon a2"><span></span></div><div class="concept-agent-info"><div class="concept-agent-name">Delivery Agent</div><span class="concept-tag t-completed">Completed</span></div></div>
+                <div class="concept-agent"><div class="concept-agent-icon a3"><span></span></div><div class="concept-agent-info"><div class="concept-agent-name">Risk Agent</div><span class="concept-tag t-review">Review</span></div></div>
+                <div class="concept-agent"><div class="concept-agent-icon a4"><span></span></div><div class="concept-agent-info"><div class="concept-agent-name">Knowledge Agent</div><span class="concept-tag t-context">Context Updated</span></div></div>
+              </div>
+              <div class="concept-metrics">
+                <div class="concept-donut"></div>
+                <div class="concept-sparkline"><span style="height:38%"></span><span style="height:52%"></span><span style="height:44%"></span><span style="height:68%"></span><span style="height:92%"></span></div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="demo-visual-caption" data-i18n="demo_placeholder_sub">Representação conceitual da plataforma — a captura real será adicionada aqui em breve.</div>
+        </div>
+        <div class="demo-visual-caption" data-i18n="demo_placeholder_sub">Ilustração conceitual da colaboração entre pessoas e agentes de IA — não representa a interface real do produto.</div>
       </div>
     </div>
   </div>

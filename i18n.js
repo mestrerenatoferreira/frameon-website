@@ -80,8 +80,8 @@ pt: {
   demo_h2:'Veja o FrameOn em ação',
   demo_lead:'Centralize projetos, decisões, contexto e acompanhamento em um ambiente preparado para o trabalho conjunto entre pessoas e agentes de inteligência artificial.',
   demo_cta:'Criar minha conta',
-  demo_placeholder_title:'Prévia da plataforma',
-  demo_placeholder_sub:'Representação conceitual da plataforma — a captura real será adicionada aqui em breve.',
+  demo_placeholder_title:'Conceito ilustrativo',
+  demo_placeholder_sub:'Ilustração conceitual da colaboração entre pessoas e agentes de IA — não representa a interface real do produto.',
   /* COMECE POR UM PROJETO REAL (novo) */
   start_tag:'Como começar',
   start_h2:'Comece por um projeto real',
@@ -344,8 +344,8 @@ en: {
   demo_h2:'See FrameOn in action',
   demo_lead:'Centralize projects, decisions, context, and tracking in one environment built for people and AI agents to work together.',
   demo_cta:'Create my account',
-  demo_placeholder_title:'Platform preview',
-  demo_placeholder_sub:'Conceptual representation of the platform — a real screenshot will be added here soon.',
+  demo_placeholder_title:'Concept illustration',
+  demo_placeholder_sub:'A conceptual illustration of people and AI agents collaborating — not a representation of the actual product interface.',
   /* START WITH A REAL PROJECT (new) */
   start_tag:'Getting started',
   start_h2:'Start with one real project',
@@ -599,8 +599,8 @@ es: {
   demo_h2:'Ve FrameOn en acción',
   demo_lead:'Centraliza proyectos, decisiones, contexto y seguimiento en un entorno preparado para el trabajo conjunto entre personas y agentes de inteligencia artificial.',
   demo_cta:'Crear mi cuenta',
-  demo_placeholder_title:'Vista previa de la plataforma',
-  demo_placeholder_sub:'Representación conceptual de la plataforma — la captura real se añadirá aquí próximamente.',
+  demo_placeholder_title:'Ilustración conceptual',
+  demo_placeholder_sub:'Una ilustración conceptual de la colaboración entre personas y agentes de IA — no representa la interfaz real del producto.',
   /* EMPIEZA POR UN PROYECTO REAL (nuevo) */
   start_tag:'Cómo empezar',
   start_h2:'Empieza por un proyecto real',
