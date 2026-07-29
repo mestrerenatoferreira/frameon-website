@@ -185,6 +185,9 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 .hero-sub{font-size:16px;font-weight:400;line-height:1.72;color:var(--white-muted);margin-bottom:28px;max-width:580px}
 .hero-ctas{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .hero-microcopy{font-size:12.5px;color:var(--white-muted);margin-top:16px}
+.hero-benefits{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:28px}
+.hero-benefit{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--white-muted)}
+.hero-benefit-icon{display:flex;align-items:center;justify-content:center;color:var(--cyan);flex-shrink:0}
 /* ── DEMO (Veja o FrameOn em acao) ── */
 .s-demo{background:var(--bg-deep)}
 .demo-visual{display:flex;flex-direction:column;gap:16px}
@@ -271,42 +274,40 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
 .hm-sidenav{width:118px;flex-shrink:0;padding:18px 12px;display:flex;flex-direction:column;gap:4px;border-right:1px solid var(--border)}
 .hm-nav-item{font-size:11px;color:var(--white-muted);padding:8px 10px;border-radius:6px}
 .hm-nav-item.active{color:var(--white-tech);background:rgba(30,107,255,.12)}
-.hm-main{flex:1;min-width:0;padding:20px 22px;display:flex;flex-direction:column;gap:16px}
-.hm-agents{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.hm-agent-card{padding:12px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.015);display:flex;flex-direction:column;gap:8px}
-.hm-agent-head{display:flex;align-items:center;gap:7px}
-.hm-agent-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.hm-agent-dot.d1{background:var(--teal)}
-.hm-agent-dot.d2{background:#1E6BFF}
-.hm-agent-dot.d3{background:var(--cyan)}
-.hm-agent-name{font-size:10.5px;font-weight:500;color:var(--white-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hm-agent-text{font-size:10px;color:var(--white-muted);line-height:1.45}
-.hm-status-tag{display:inline-flex;align-items:center;font-size:8px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;padding:2.5px 7px;border-radius:100px;width:fit-content}
-.hm-status-tag.tag-done{color:var(--teal);background:rgba(0,203,169,.12)}
-.hm-status-tag.tag-decision{color:#5B9FFF;background:rgba(91,159,255,.14)}
-.hm-status-tag.tag-sync{color:var(--cyan);background:rgba(0,174,239,.12)}
-.hm-lower{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.hm-decision,.hm-context{padding:13px 14px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.02)}
-.hm-block-title{font-size:10.5px;font-weight:600;color:var(--white-tech);margin-bottom:6px}
-.hm-block-text{font-size:10.5px;color:var(--white-muted);line-height:1.5;margin-bottom:10px}
+.hm-main{flex:1;min-width:0;padding:22px 24px;display:flex;gap:22px}
+.hm-timeline{flex:1.35;min-width:0;display:flex;flex-direction:column}
+.hm-tl-row{display:flex;gap:12px}
+.hm-tl-rail{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:28px}
+.hm-tl-avatar{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:#fff;flex-shrink:0;border:1px solid rgba(255,255,255,.14)}
+.hm-tl-avatar.person{background:rgba(255,255,255,.08);color:var(--white-tech)}
+.hm-tl-avatar.a-strategy{background:#1E6BFF}
+.hm-tl-avatar.a-delivery{background:var(--teal)}
+.hm-tl-avatar.a-knowledge{background:var(--cyan)}
+.hm-tl-avatar.a-risk{background:#FF6B6B}
+.hm-tl-line{width:2px;flex:1;min-height:16px;background:rgba(255,255,255,.16);margin:4px 0;border-radius:2px}
+.hm-tl-row:last-child .hm-tl-line{display:none}
+.hm-tl-content{flex:1;min-width:0;padding-bottom:16px}
+.hm-tl-name{font-size:11px;font-weight:600;color:var(--white-tech);margin-bottom:2px}
+.hm-tl-text{font-size:10.5px;color:var(--white-muted);line-height:1.4;margin-bottom:4px}
+.hm-tl-time{font-size:9px;color:var(--white-dim)}
+.hm-tl-status{flex-shrink:0;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.hm-tl-status.done{color:var(--teal);background:rgba(0,203,169,.12)}
+.hm-tl-status.progress{color:var(--cyan);background:rgba(0,174,239,.12)}
+.hm-tl-status.alert{color:#FF6B6B;background:rgba(255,107,107,.12)}
+.hm-panels{flex:1;min-width:0;display:flex;flex-direction:column;gap:12px}
+.hm-decision,.hm-context{padding:14px 15px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.02)}
+.hm-block-title{font-size:10.5px;font-weight:600;color:var(--white-tech);margin-bottom:7px}
+.hm-block-text{font-size:10.5px;color:var(--white-muted);line-height:1.5;margin-bottom:11px}
 .hm-decision-actions{display:flex;gap:8px}
 .hm-btn-ghost{font-size:9.5px;font-weight:500;padding:5px 12px;border-radius:100px;border:1px solid var(--border);color:var(--white-muted)}
 .hm-btn-ghost.approve{color:var(--cyan);border-color:rgba(0,174,239,.35)}
-.hm-context-items{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.hm-context-items{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px}
 .hm-context-items span{font-size:9px;color:var(--white-dim);background:rgba(255,255,255,.05);padding:3px 8px;border-radius:100px}
 .hm-context-msg{font-size:10px;color:var(--white-muted);line-height:1.5}
-.hm-activity{display:flex;align-items:center;gap:6px;padding-top:2px;flex-wrap:wrap}
-.hm-activity-item{display:flex;align-items:center;gap:6px;font-size:9.5px;color:var(--white-muted);white-space:nowrap}
-.hm-activity-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.18);flex-shrink:0}
-.hm-activity-dot.done{background:var(--teal)}
-.hm-activity-dot.active{background:var(--cyan);animation:pulse-dot 1.8s ease-in-out infinite}
-.hm-activity-line{flex:1;height:1px;background:var(--border);min-width:10px}
 @media(max-width:640px){
   .hm-sidenav{display:none}
-  .hm-agents{grid-template-columns:1fr}
-  .hm-lower{grid-template-columns:1fr}
+  .hm-main{flex-direction:column;padding:16px 18px;gap:20px}
   .hm-topbar{padding:14px 16px}
-  .hm-main{padding:16px 18px}
 }
 @media(prefers-reduced-motion:reduce){
   .hero-mockup-panel *,.hero-mockup-panel{animation:none!important;transition:none!important}
@@ -613,19 +614,24 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
   <div class="hero-content">
     <div>
       <div class="hero-eyebrow"><span class="hero-dot"></span><span data-i18n="hero_eyebrow">GESTÃO AGÊNTICA DE PROJETOS</span></div>
-      <h1 class="hero-headline" data-i18n-html="hero_headline">Pessoas e agentes de IA trabalhando juntos em cada <span class="grad-text">projeto</span>.</h1>
-      <p class="hero-subhead" data-i18n="hero_subhead">O FrameOn conecta projetos, decisões e contexto para que equipes e agentes de inteligência artificial executem o trabalho continuamente sobre a mesma memória organizacional.</p>
+      <h1 class="hero-headline" data-i18n-html="hero_headline">A IA faz parte da execução dos seus <span class="grad-text">projetos</span>.</h1>
+      <p class="hero-subhead" data-i18n="hero_subhead">Pessoas e agentes de IA trabalham sobre o mesmo contexto para executar projetos com mais velocidade e governança.</p>
       <p class="hero-sub" data-i18n="hero_sub">O FrameOn conecta estratégia, pessoas e iniciativas em uma camada contínua de inteligência organizacional orientada por memória organizacional, dados e inteligência artificial.</p>
       <div class="hero-ctas">
-        <a href="https://app.frameonlab.com/signup" class="btn-grad" data-i18n="hero_cta1" data-track="signup_cta_clicked" data-loc="hero">Experimentar o FrameOn</a>
+        <a href="https://app.frameonlab.com/signup" class="btn-grad" data-i18n="hero_cta1" data-track="signup_cta_clicked" data-loc="hero">Criar meu primeiro projeto</a>
         <a href="#" onclick="openModal();return false;" class="btn-outline" data-i18n="hero_cta2" data-track="implementation_cta_clicked" data-loc="hero">Agendar demonstração</a>
       </div>
-      <p class="hero-microcopy" data-i18n="hero_microcopy">Comece com um projeto real da sua empresa.</p>
+      <div class="hero-benefits">
+        <div class="hero-benefit"><span class="hero-benefit-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="5.5" cy="4.5" r="2.2" stroke="currentColor" stroke-width="1.3"/><path d="M1.5 12c.5-2.8 2.3-4 4-4s3.5 1.2 4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="10.3" cy="5.3" r="1.6" stroke="currentColor" stroke-width="1.1" opacity=".55"/></svg></span><span data-i18n="hero_b1">Pessoas</span></div>
+        <div class="hero-benefit"><span class="hero-benefit-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="4.3" height="4.3" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="8.2" y="1.5" width="4.3" height="4.3" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="1.5" y="8.2" width="4.3" height="4.3" rx="1" stroke="currentColor" stroke-width="1.3"/><rect x="8.2" y="8.2" width="4.3" height="4.3" rx="1" stroke="currentColor" stroke-width="1.3"/></svg></span><span data-i18n="hero_b2">IA integrada</span></div>
+        <div class="hero-benefit"><span class="hero-benefit-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 4h10M2 7h7M2 10h9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span><span data-i18n="hero_b3">Memória compartilhada</span></div>
+        <div class="hero-benefit"><span class="hero-benefit-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.3l4.5 1.6v3.4c0 3-1.9 5-4.5 5.7-2.6-.7-4.5-2.7-4.5-5.7V2.9L7 1.3z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></span><span data-i18n="hero_b4">Governança</span></div>
+      </div>
     </div>
     <div class="hero-mockup fade-up" aria-hidden="true">
       <div class="hero-mockup-panel">
         <div class="hm-topbar">
-          <div class="hm-topbar-title" data-i18n="hm_topbar_title">Expansão para novos mercados</div>
+          <div class="hm-topbar-title" data-i18n="hm_topbar_title">Implantação ERP — Portugal</div>
           <div class="hm-topbar-right">
             <span class="hm-status-pill" data-i18n="hm_status_running">Em execução</span>
             <div class="hm-progress-ring"><span>72%</span></div>
@@ -640,27 +646,84 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
             <div class="hm-nav-item" data-i18n="hm_nav5">Memória</div>
           </div>
           <div class="hm-main">
-            <div class="hm-agents">
-              <div class="hm-agent-card">
-                <div class="hm-agent-head"><span class="hm-agent-dot d1"></span><span class="hm-agent-name">Delivery Agent</span></div>
-                <div class="hm-agent-text" data-i18n="hm_agent1_text">Reorganizou o plano de execução</div>
-                <span class="hm-status-tag tag-done" data-i18n="hm_agent1_status">Concluído</span>
+            <div class="hm-timeline">
+            <div class="hm-tl-row">
+              <div class="hm-tl-rail">
+                <div class="hm-tl-avatar person">CL</div>
+                <div class="hm-tl-line"></div>
               </div>
-              <div class="hm-agent-card">
-                <div class="hm-agent-head"><span class="hm-agent-dot d2"></span><span class="hm-agent-name">Risk Agent</span></div>
-                <div class="hm-agent-text" data-i18n="hm_agent2_text">Identificou dependência regulatória</div>
-                <span class="hm-status-tag tag-decision" data-i18n="hm_agent2_status">Requer decisão</span>
+              <div class="hm-tl-content">
+                <div class="hm-tl-name">Carlos Lima</div>
+                <div class="hm-tl-text" data-i18n="hm_tl1_text">aprovou orçamento</div>
+                <div class="hm-tl-time">09:41</div>
               </div>
-              <div class="hm-agent-card">
-                <div class="hm-agent-head"><span class="hm-agent-dot d3"></span><span class="hm-agent-name">Knowledge Agent</span></div>
-                <div class="hm-agent-text" data-i18n="hm_agent3_text">Atualizou o contexto do projeto</div>
-                <span class="hm-status-tag tag-sync" data-i18n="hm_agent3_status">Sincronizado</span>
-              </div>
+              <div class="hm-tl-status done"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1.5 7l3.5 3.5 7.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
             </div>
-            <div class="hm-lower">
+            <div class="hm-tl-row">
+              <div class="hm-tl-rail">
+                <div class="hm-tl-avatar a-strategy"></div>
+                <div class="hm-tl-line"></div>
+              </div>
+              <div class="hm-tl-content">
+                <div class="hm-tl-name">Strategy Agent</div>
+                <div class="hm-tl-text" data-i18n="hm_tl2_text">Atualizou objetivos do projeto</div>
+                <div class="hm-tl-time">09:42</div>
+              </div>
+              <div class="hm-tl-status done"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1.5 7l3.5 3.5 7.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div class="hm-tl-row">
+              <div class="hm-tl-rail">
+                <div class="hm-tl-avatar a-delivery"></div>
+                <div class="hm-tl-line"></div>
+              </div>
+              <div class="hm-tl-content">
+                <div class="hm-tl-name">Delivery Agent</div>
+                <div class="hm-tl-text" data-i18n="hm_tl3_text">Replanejou cronograma automaticamente</div>
+                <div class="hm-tl-time">09:43</div>
+              </div>
+              <div class="hm-tl-status done"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1.5 7l3.5 3.5 7.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div class="hm-tl-row">
+              <div class="hm-tl-rail">
+                <div class="hm-tl-avatar person">MC</div>
+                <div class="hm-tl-line"></div>
+              </div>
+              <div class="hm-tl-content">
+                <div class="hm-tl-name">Marina Costa</div>
+                <div class="hm-tl-text" data-i18n="hm_tl4_text">recebeu nova atividade</div>
+                <div class="hm-tl-time">09:44</div>
+              </div>
+              <div class="hm-tl-status progress"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div class="hm-tl-row">
+              <div class="hm-tl-rail">
+                <div class="hm-tl-avatar a-knowledge"></div>
+                <div class="hm-tl-line"></div>
+              </div>
+              <div class="hm-tl-content">
+                <div class="hm-tl-name">Knowledge Agent</div>
+                <div class="hm-tl-text" data-i18n="hm_tl5_text">Atualizou o contexto compartilhado</div>
+                <div class="hm-tl-time">09:45</div>
+              </div>
+              <div class="hm-tl-status done"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M1.5 7l3.5 3.5 7.5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div class="hm-tl-row">
+              <div class="hm-tl-rail">
+                <div class="hm-tl-avatar a-risk"></div>
+                <div class="hm-tl-line"></div>
+              </div>
+              <div class="hm-tl-content">
+                <div class="hm-tl-name">Risk Agent</div>
+                <div class="hm-tl-text" data-i18n="hm_tl6_text">Identificou dependência regulatória</div>
+                <div class="hm-tl-time">09:46</div>
+              </div>
+              <div class="hm-tl-status alert"><svg width="11" height="11" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.3" stroke="currentColor" stroke-width="1.3"/><path d="M8 5v4M8 10.5h.01" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+            </div>
+            </div>
+            <div class="hm-panels">
               <div class="hm-decision">
                 <div class="hm-block-title" data-i18n="hm_decision_title">Próxima decisão</div>
-                <div class="hm-block-text" data-i18n="hm_decision_text">Validar o parceiro responsável pela implantação local.</div>
+                <div class="hm-block-text" data-i18n="hm_decision_text">Aprovar contratação do parceiro local.</div>
                 <div class="hm-decision-actions">
                   <span class="hm-btn-ghost approve" data-i18n="hm_btn_approve">Aprovar</span>
                   <span class="hm-btn-ghost" data-i18n="hm_btn_review">Revisar</span>
@@ -676,15 +739,6 @@ footer{background:#030810;border-top:1px solid var(--border);padding:64px 0 40px
                 </div>
                 <div class="hm-context-msg" data-i18n="hm_context_msg">Pessoas e agentes trabalham sobre o mesmo contexto.</div>
               </div>
-            </div>
-            <div class="hm-activity">
-              <div class="hm-activity-item"><span class="hm-activity-dot done"></span><span data-i18n="hm_activity1">Plano atualizado</span></div>
-              <span class="hm-activity-line"></span>
-              <div class="hm-activity-item"><span class="hm-activity-dot done"></span><span data-i18n="hm_activity2">Risco identificado</span></div>
-              <span class="hm-activity-line"></span>
-              <div class="hm-activity-item"><span class="hm-activity-dot active"></span><span data-i18n="hm_activity3">Decisão solicitada</span></div>
-              <span class="hm-activity-line"></span>
-              <div class="hm-activity-item"><span class="hm-activity-dot"></span><span data-i18n="hm_activity4">Contexto sincronizado</span></div>
             </div>
           </div>
         </div>
