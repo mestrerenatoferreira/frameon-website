@@ -302,13 +302,25 @@ function build() {
       const dateMod = a.dateModified || a.isoDate;
       const alternates = alternatesFor(a.slug, L.code);
 
+      // author pode ser Organization (padrao/legado) ou Person (via authorObject)
+      let authorLd;
+      if (a.authorObject && a.authorObject.name) {
+        authorLd = { '@type': a.authorObject.type || 'Person', 'name': a.authorObject.name };
+        if (a.authorObject.jobTitle) authorLd.jobTitle = a.authorObject.jobTitle;
+        if (a.authorObject.sameAs && a.authorObject.sameAs.length) authorLd.sameAs = a.authorObject.sameAs;
+        if (a.authorObject.url) authorLd.url = a.authorObject.url;
+      } else {
+        authorLd = { '@type': 'Organization', 'name': a.author || 'FrameOn Lab', 'url': SITE };
+      }
+      const publisherName = a.publisherName || 'FrameOn';
+
       const ld = {
         '@context': 'https://schema.org', '@type': 'Article',
         'headline': a.title, 'description': a.excerpt || '',
         'image': a.image ? [a.image] : undefined,
         'datePublished': a.isoDate, 'dateModified': dateMod,
-        'author': { '@type': 'Organization', 'name': a.author || 'FrameOn Lab', 'url': SITE },
-        'publisher': { '@type': 'Organization', 'name': 'FrameOn', 'url': SITE, 'logo': { '@type': 'ImageObject', 'url': SITE + '/insights/' } },
+        'author': authorLd,
+        'publisher': { '@type': 'Organization', 'name': publisherName, 'url': SITE, 'logo': { '@type': 'ImageObject', 'url': SITE + '/insights/' } },
         'mainEntityOfPage': { '@type': 'WebPage', '@id': canonical },
         'inLanguage': L.htmlLang
       };
@@ -340,7 +352,9 @@ function build() {
         '    <div class="article-date">' + escapeHtml(a.dateDisplay || '') + '</div>',
         '    <h1>' + escapeHtml(a.title) + '</h1>',
         a.excerpt ? '    <p class="article-desc">' + escapeHtml(a.excerpt) + '</p>' : '',
-        '    <div class="article-author">' + escapeHtml(L.by) + ' ' + escapeHtml(a.author || 'FrameOn Lab') + '</div>',
+        '    <div class="article-author">' + escapeHtml(L.by) + ' ' + (a.authorObject && a.authorObject.name
+            ? escapeHtml(a.authorObject.name) + (a.authorObject.jobTitle ? ' &middot; ' + escapeHtml(a.authorObject.jobTitle) : '')
+            : escapeHtml(a.author || 'FrameOn Lab')) + '</div>',
         '  </header>',
         a.image ? '  <img class="article-cover" src="' + escapeHtml(a.image) + '" alt="' + escapeHtml(a.title) + '"/>' : '',
         '  <div class="article-body">',

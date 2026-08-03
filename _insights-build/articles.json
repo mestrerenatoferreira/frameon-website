@@ -1,5 +1,25 @@
 [
   {
+    "id": "por-que-softwares-tradicionais-de-gestao-de-projetos-nao-funcionam-na-era-dos-agentes-de-ia",
+    "title": "Por que softwares tradicionais de gestão de projetos não funcionam na era dos agentes de IA",
+    "slug": "por-que-softwares-tradicionais-de-gestao-de-projetos-nao-funcionam-na-era-dos-agentes-de-ia",
+    "excerpt": "Softwares tradicionais de gestão de projetos com inteligência artificial não bastam. Veja como a Gestão Agêntica de Projetos e agentes de IA mudam a execução.",
+    "dateDisplay": "3 de agosto de 2026",
+    "isoDate": "2026-08-03T22:00:00.000+00:00",
+    "dateModified": "2026-08-03T22:00:00.000+00:00",
+    "image": "https://frameonlab.ai/insights/img/gestao-agentica-projetos-agentes-ia.webp",
+    "author": "João Lanzarotto",
+    "authorObject": {
+      "type": "Person",
+      "name": "João Lanzarotto",
+      "jobTitle": "CTO e Cofundador do FrameOn Lab",
+      "sameAs": [
+        "https://www.linkedin.com/in/joaolanzarotto/"
+      ]
+    },
+    "publisherName": "FrameOn Lab"
+  },
+  {
     "id": "qual-sistema-conecta-estrategia-e-operacao",
     "title": "Qual sistema conecta estratégia e operação?",
     "slug": "qual-sistema-conecta-estrategia-e-operacao",
