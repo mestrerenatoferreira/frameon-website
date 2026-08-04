@@ -710,6 +710,19 @@ function getLang(){ return localStorage.getItem('fo_lang')||'pt'; }
 window.setLang=function(lang){
   if(!T[lang])return;
   localStorage.setItem('fo_lang',lang);
+  // Se a pagina tem uma versao estatica desse idioma (link rel=alternate hreflang),
+  // navegar para ela em vez de so trocar strings no DOM. Isso e o que faz o /insights/
+  // ir para /en/insights/ quando o usuario clica EN.
+  var hrefTarget = lang==='pt' ? 'pt-BR' : lang;
+  var alt = document.querySelector('link[rel="alternate"][hreflang="'+hrefTarget+'"]');
+  if(alt && alt.href){
+    var here = location.origin + location.pathname;
+    var there = alt.href.split('#')[0].split('?')[0];
+    if(here.replace(/\/$/,'') !== there.replace(/\/$/,'')){
+      location.href = alt.href;
+      return;
+    }
+  }
   apply(lang);
   document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
   document.documentElement.lang=lang==='pt'?'pt-BR':lang;
