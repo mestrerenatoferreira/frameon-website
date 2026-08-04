@@ -1,5 +1,19 @@
 [
   {
+    "slug": "por-que-softwares-tradicionais-de-gestao-de-projetos-nao-funcionam-na-era-dos-agentes-de-ia",
+    "title": "Why traditional project management software doesn't work in the era of AI agents",
+    "excerpt": "Traditional project management software with artificial intelligence isn't enough. See how Agentic Project Management and AI agents change execution.",
+    "dateDisplay": "August 3, 2026",
+    "authorObject": {
+      "type": "Person",
+      "name": "João Lanzarotto",
+      "jobTitle": "CTO and Co-founder of FrameOn Lab",
+      "sameAs": [
+        "https://www.linkedin.com/in/joaolanzarotto/"
+      ]
+    }
+  },
+  {
     "slug": "qual-sistema-conecta-estrategia-e-operacao",
     "title": "Which system connects strategy and operations?",
     "excerpt": "No ERP, CRM, BI or management software connects strategy and operations on its own. Understand why this bridge requires a layer of organizational intelligence with context, memory and governance.",

@@ -1,5 +1,19 @@
 [
   {
+    "slug": "por-que-softwares-tradicionais-de-gestao-de-projetos-nao-funcionam-na-era-dos-agentes-de-ia",
+    "title": "Por qué los softwares tradicionales de gestión de proyectos no funcionan en la era de los agentes de IA",
+    "excerpt": "Los softwares tradicionales de gestión de proyectos con inteligencia artificial no bastan. Vea cómo la Gestión Agéntica de Proyectos y los agentes de IA cambian la ejecución.",
+    "dateDisplay": "3 de agosto de 2026",
+    "authorObject": {
+      "type": "Person",
+      "name": "João Lanzarotto",
+      "jobTitle": "CTO y Cofundador de FrameOn Lab",
+      "sameAs": [
+        "https://www.linkedin.com/in/joaolanzarotto/"
+      ]
+    }
+  },
+  {
     "slug": "qual-sistema-conecta-estrategia-e-operacao",
     "title": "¿Qué sistema conecta estrategia y operación?",
     "excerpt": "Ningún ERP, CRM, BI o software de gestión conecta estrategia y operación por sí solo. Entienda por qué ese puente exige una capa de inteligencia organizacional con contexto, memoria y gobernanza.",
