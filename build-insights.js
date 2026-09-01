@@ -80,7 +80,25 @@ function extractChrome() {
   const styleStart = html.indexOf('<style>');
   const styleEnd = html.indexOf('</style>', styleStart);
   if (styleStart === -1 || styleEnd === -1) die('bloco <style> principal nao encontrado.');
-  const css = html.slice(styleStart + 7, styleEnd).replace(/#soro-blog[^{]*\{[^}]*\}/g, '');
+  let css = html.slice(styleStart + 7, styleEnd).replace(/#soro-blog[^{]*\{[^}]*\}/g, '');
+  // insights/index.html e o OUTPUT de uma rodada anterior do proprio gerador, entao seu
+  // <style> pode ja conter uma ou mais copias do BLOG_CSS (definido mais abaixo), que
+  // sera reanexado a cada pagina em pageShell(). Sem isso, cada rodada empilha mais uma
+  // copia do bloco (bug de duplicacao cumulativa) - e como o BLOG_CSS ja mudou de tamanho
+  // ao longo do tempo, as copias antigas nem sempre batem byte-a-byte com o BLOG_CSS
+  // atual, entao remover so as copias identicas ao texto de hoje nao seria suficiente.
+  // '.blog-grid{' e o primeiro seletor do BLOG_CSS e nunca aparece no CSS escrito a mao
+  // (confirmado: nao existe em index.html, a home, que o gerador nunca toca). Por isso,
+  // tudo a partir da primeira ocorrencia dele e sempre conteudo injetado por uma rodada
+  // anterior (uma ou varias copias, de qualquer versao) - descarta tudo dali pra frente e
+  // mantem so o CSS genuino que vem antes. O BLOG_CSS atual e reanexado logo abaixo, uma
+  // unica vez, garantindo sempre exatamente 1 copia no resultado final.
+  const injectedAt = css.indexOf('.blog-grid{');
+  if (injectedAt !== -1) css = css.slice(0, injectedAt);
+  // a formatacao original sempre junta css + NL + BLOG_CSS (ver pageShell abaixo); sem
+  // aparar essa quebra de linha antes de reanexar, cada rodada deixaria mais uma linha
+  // em branco acumulada bem antes do '.blog-grid{' da proxima rodada. Normaliza aqui.
+  css = css.replace(/[ \t\r\n]+$/, '');
 
   let gtag = '';
   const gStart = html.indexOf('<script async src="https://www.googletagmanager.com/gtag/js');
@@ -93,7 +111,11 @@ function extractChrome() {
   const navStart = html.indexOf('<nav id="main-nav">');
   const mainStart = html.indexOf('<main', navStart);
   if (navStart === -1 || mainStart === -1) die('nav/main nao encontrados.');
-  const header = html.slice(navStart, mainStart);
+  // mesmo raciocinio do css acima: insights/index.html e o OUTPUT de uma rodada anterior,
+  // entao o trecho entre </nav>...<main> ja pode trazer linhas em branco acumuladas de
+  // rodadas passadas (pageShell junta header + bodyInner com uma unica quebra de linha).
+  // Apara o final antes de devolver, para nao empilhar mais uma a cada rodada.
+  const header = html.slice(navStart, mainStart).replace(/[ \t\r\n]+$/, '');
 
   const footerStart = html.indexOf('<footer');
   const footerEnd = html.indexOf('</footer>');
@@ -356,7 +378,8 @@ function build() {
             ? escapeHtml(a.authorObject.name) + (a.authorObject.jobTitle ? ' &middot; ' + escapeHtml(a.authorObject.jobTitle) : '')
             : escapeHtml(a.author || 'FrameOn Lab')) + '</div>',
         '  </header>',
-        a.image ? '  <img class="article-cover" src="' + escapeHtml(a.image) + '" alt="' + escapeHtml(a.title) + '"/>' : '',
+        // imageAlt e opcional (fallback: titulo, comportamento igual ao de sempre quando ausente)
+        a.image ? '  <img class="article-cover" src="' + escapeHtml(a.image) + '" alt="' + escapeHtml(a.imageAlt || a.title) + '"/>' : '',
         '  <div class="article-body">',
         body,
         '  </div>',
@@ -366,7 +389,8 @@ function build() {
       ].filter(Boolean).join(NL);
 
       const page = pageShell({
-        htmlLang: L.htmlLang, title: a.title + ' — FrameOn', description: a.excerpt || '',
+        // metaTitle e opcional (fallback: 'titulo — FrameOn', comportamento igual ao de sempre quando ausente)
+        htmlLang: L.htmlLang, title: a.metaTitle || (a.title + ' — FrameOn'), description: a.excerpt || '',
         canonical: canonical, alternates: alternates, head: head,
         css: chrome.css, gtag: chrome.gtag, header: headerArt, footer: footerArt,
         behavior: chrome.behavior, i18n: i18nArt, bodyInner: inner
@@ -389,7 +413,8 @@ function build() {
         '        <div class="card-body">',
         '          <span class="card-date">' + escapeHtml(a.dateDisplay || '') + '</span>',
         '          <h2>' + escapeHtml(a.title) + '</h2>',
-        '          <p>' + escapeHtml(a.excerpt || '') + '</p>',
+        // cardExcerpt e opcional (fallback: excerpt, comportamento igual ao de sempre quando ausente)
+        '          <p>' + escapeHtml(a.cardExcerpt || a.excerpt || '') + '</p>',
         '          <span class="read-more">' + escapeHtml(L.readMore) + ' &rarr;</span>',
         '        </div>',
         '      </a>',

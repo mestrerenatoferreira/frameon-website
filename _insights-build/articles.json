@@ -1,5 +1,28 @@
 [
   {
+    "id": "trabalho-agentico-coordenacao-projetos",
+    "title": "Trabalho agêntico e a coordenação de projetos",
+    "slug": "trabalho-agentico-coordenacao-projetos",
+    "excerpt": "Entenda o que é trabalho agêntico e como agentes de IA podem apoiar a gestão de projetos, preservar contexto, acompanhar decisões, riscos e dependências.",
+    "metaTitle": "Trabalho agêntico e gestão de projetos com IA | FrameOn",
+    "imageAlt": "Trabalho agêntico e coordenação de projetos entre pessoas e agentes de IA",
+    "cardExcerpt": "Como pessoas e agentes de IA podem trabalhar sobre contexto, decisões e memória compartilhados para melhorar a coordenação e a execução de projetos.",
+    "dateDisplay": "1 de setembro de 2026",
+    "isoDate": "2026-09-01T14:00:00.000+00:00",
+    "dateModified": "2026-09-01T14:00:00.000+00:00",
+    "image": "https://frameonlab.ai/insights/img/trabalho-agentico-coordenacao-projetos.webp",
+    "author": "João Lanzarotto",
+    "authorObject": {
+      "type": "Person",
+      "name": "João Lanzarotto",
+      "jobTitle": "CTO e Cofundador do FrameOn Lab",
+      "sameAs": [
+        "https://www.linkedin.com/in/joaolanzarotto/"
+      ]
+    },
+    "publisherName": "FrameOn Lab"
+  },
+  {
     "id": "por-que-softwares-tradicionais-de-gestao-de-projetos-nao-funcionam-na-era-dos-agentes-de-ia",
     "title": "Por que softwares tradicionais de gestão de projetos não funcionam na era dos agentes de IA",
     "slug": "por-que-softwares-tradicionais-de-gestao-de-projetos-nao-funcionam-na-era-dos-agentes-de-ia",
