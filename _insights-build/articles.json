@@ -1,5 +1,20 @@
 [
   {
+    "id": "tendencias-de-governanca-com-inteligencia-artificial",
+    "title": "Tendências de governança com inteligência artificial",
+    "slug": "tendencias-de-governanca-com-inteligencia-artificial",
+    "excerpt": "Cinco tendências de governança com inteligência artificial para executivos e PMOs: contexto, papéis de agentes, rastreabilidade, supervisão humana e portfólio.",
+    "metaTitle": "Tendências de governança com inteligência artificial | FrameOn",
+    "imageAlt": "Executiva analisa no notebook um painel de governança de IA que conecta pessoas, segurança, conformidade e processos",
+    "cardExcerpt": "Governar IA não é criar mais burocracia: é dar a pessoas e agentes contexto, limites claros e rastreabilidade para decidir melhor.",
+    "dateDisplay": "13 de novembro de 2026",
+    "isoDate": "2026-11-13T14:00:00.000+00:00",
+    "dateModified": "2026-11-13T14:00:00.000+00:00",
+    "image": "https://frameonlab.ai/insights/img/tendencias-de-governanca-com-inteligencia-artificial.webp",
+    "author": "FrameOn Lab",
+    "publisherName": "FrameOn Lab"
+  },
+  {
     "id": "trabalho-agentico-coordenacao-projetos",
     "title": "Trabalho agêntico e a coordenação de projetos",
     "slug": "trabalho-agentico-coordenacao-projetos",
